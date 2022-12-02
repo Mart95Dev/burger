@@ -1,5 +1,4 @@
 import styled from "styled-components";
-
 import { theme } from "../../theme/index";
 
 export default function Logo() {
@@ -23,7 +22,7 @@ const LogoStyled = styled.div`
      text-align: center; */
     font-size: ${theme.fonts.P4};
     line-height: 1em;
-    font-weight: ${theme.weigths.bold};
+    font-weight: ${theme.weights.bold};
     text-transform: UPPERCASE;
     letter-spacing: 1.5px;
     font-family: "Amatic SC", cursive;
