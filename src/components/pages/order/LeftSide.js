@@ -17,9 +17,8 @@ export default function RightSide() {
 }
 
 const ContainerLogoNavbarStyled = styled.div`
-  /* transform: scale(0.3); */
+  transform: scale(0.35);
   width: 240.48px;
   height: 98.19px;
   margin-left: 20px;
-  border: 2px solid black;
 `;
