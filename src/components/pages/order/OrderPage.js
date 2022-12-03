@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
-
-// import { theme } from "./../../../theme/index";
+import Navbar from "./Navbar";
+import Main from "./Main";
 
 export default function OrderPage() {
   //state
@@ -12,19 +12,21 @@ export default function OrderPage() {
 
   //affichage
   return (
-    <ContainerStyled>
-      <h1>Bonjour {username}</h1>
-      <Link to="/">
-        <button>Déconnexion</button>
-      </Link>
-    </ContainerStyled>
+    <BackgroundOrderPageStyled>
+      <ContainerStyled>
+        <Navbar />
+        <Main />
+      </ContainerStyled>
+    </BackgroundOrderPageStyled>
   );
 }
 
-const ContainerStyled = styled.div`
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+const BackgroundOrderPageStyled = styled.div`
   background-color: #ff9f1a;
+  height: 100vh;
   overflow: hidden;
+`;
+
+const ContainerStyled = styled.div`
+  border: 4px solid red;
 `;
