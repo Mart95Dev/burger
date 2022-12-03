@@ -19,4 +19,5 @@ const NavbarStyled = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 15px 15px 0 0;
+  font-family: "Open Sans", sans-serif;
 `;
