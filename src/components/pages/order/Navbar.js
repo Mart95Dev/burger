@@ -15,4 +15,8 @@ export default function Navbar() {
 const NavbarStyled = styled.div`
   border: 2px solid blue;
   margin-top: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
