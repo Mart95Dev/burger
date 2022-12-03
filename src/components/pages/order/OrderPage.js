@@ -16,6 +16,10 @@ export default function OrderPage() {
       <ContainerStyled>
         <Navbar />
         <Main />
+        <h1>Bonjour {username}</h1>
+        <Link to="/">
+          <button>Déconnexion</button>
+        </Link>
       </ContainerStyled>
     </BackgroundOrderPageStyled>
   );
