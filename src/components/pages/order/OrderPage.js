@@ -32,5 +32,7 @@ const BackgroundOrderPageStyled = styled.div`
 `;
 
 const ContainerStyled = styled.div`
-  border: 4px solid red;
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
 `;
