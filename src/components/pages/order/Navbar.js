@@ -6,8 +6,8 @@ import LeftSide from "./LeftSide";
 export default function Navbar() {
   return (
     <NavbarStyled>
-      <RightSide />
       <LeftSide />
+      <RightSide />
     </NavbarStyled>
   );
 }
@@ -19,4 +19,5 @@ const NavbarStyled = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 15px 15px 0 0;
 `;
