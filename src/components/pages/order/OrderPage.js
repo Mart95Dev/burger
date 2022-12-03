@@ -1,24 +1,30 @@
-import React from 'react'
-import {Link,useParams} from "react-router-dom";
+import React from "react";
+import { Link, useParams } from "react-router-dom";
+import styled from "styled-components";
+
+// import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
-//state
-const {username} = useParams();
+  //state
+  const { username } = useParams();
 
-//comortements
+  //comortements
 
-
-//affichage
-
-
-
+  //affichage
   return (
-    <div>
-        <h1>Bonjour {username}</h1>
-        <Link to="/">
+    <ContainerStyled>
+      <h1>Bonjour {username}</h1>
+      <Link to="/">
         <button>Déconnexion</button>
-        </Link>
-        
-    </div>
-  )
+      </Link>
+    </ContainerStyled>
+  );
 }
+
+const ContainerStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #ff9f1a;
+  overflow: hidden;
+`;
