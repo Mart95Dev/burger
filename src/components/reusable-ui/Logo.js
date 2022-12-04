@@ -20,9 +20,9 @@ const LogoStyled = styled.div`
   h1 {
     /* display: inline;
      text-align: center; */
-    font-size: ${theme.fonts.P4};
+    font-size: ${theme.fonts.size.P4};
     line-height: 1em;
-    font-weight: ${theme.weights.bold};
+    font-weight: ${theme.fonts.weights.bold};
     text-transform: UPPERCASE;
     letter-spacing: 1.5px;
     font-family: "Amatic SC", cursive;
@@ -32,7 +32,7 @@ const LogoStyled = styled.div`
   img {
     object-fit: contain;
     object-position: center;
-    height: ${theme.fonts.P6};
+    height: ${theme.fonts.size.P6};
     width: 80px; //for safari and firefox
     margin: 0 5px;
   }
