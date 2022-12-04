@@ -25,4 +25,8 @@ const ContainerStyled = styled.div`
   width: 98%;
   margin-left: auto;
   margin-right: auto;
+
+  @media screen and (min-width: 1520px) {
+    max-width: 1400px;
+  }
 `;
