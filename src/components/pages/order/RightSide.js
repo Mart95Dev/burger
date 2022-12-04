@@ -4,7 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 import { theme } from "../../../theme/index";
 
-export default function LeftSide() {
+export default function RightSide() {
   //state
   const { username } = useParams();
 
@@ -15,7 +15,7 @@ export default function LeftSide() {
     <ContainerRightSideStyled>
       <div className="text-profil">
         <h1>
-          Hey, <span>{username}</span>
+          Hey, <span className="username">{username}</span>
         </h1>
         <Link to="/">
           <button>Se déconnecter</button>
@@ -43,7 +43,7 @@ const ContainerRightSideStyled = styled.div`
     margin-right: 10px;
   }
 
-  span {
+  .username {
     color: ${theme.colors.primary};
   }
 
