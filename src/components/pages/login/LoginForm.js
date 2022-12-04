@@ -37,7 +37,7 @@ function LoginForm() {
         />
         <PrimaryButton
           label={"Accèder à mon"}
-          Icon={<IoChevronForward className="icon-button" />}
+          Icon={<IoChevronForward className="icon icon-button" />}
         />
       </LoginFormStyled>
     </>
@@ -47,7 +47,6 @@ function LoginForm() {
 export default LoginForm;
 
 const LoginFormStyled = styled.form`
-  background: ${theme.colors.green};
   text-align: center;
   padding: 2.5rem 2rem;
   margin: 0 auto;
@@ -63,48 +62,27 @@ const LoginFormStyled = styled.form`
 
   h1 {
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P5};
+    font-size: ${theme.fonts.size.P5};
     margin: 26px 0;
   }
 
   h2 {
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.P4};
+    font-size: ${theme.fonts.size.P4};
     margin: 20px 10px 10px;
   }
 
-  .input-with-icon {
-    background-color: ${theme.colors.white};
-    border-radius: ${theme.borderRadius.round};
-    display: flex;
-    align-items: center;
-    padding: 18px 24px;
-    margin: 18px opx; // could be handle in parent too
-
-    .icon {
-      font-size: ${theme.fonts.P0};
-      margin-right: ${theme.spacing.xs};
-      color: ${theme.colors.greySemiDark};
-    }
-
-    input {
-      border: none;
-      font-size: ${theme.fonts.P0};
-      color: ${theme.colors.dark};
-      width: 100%;
-    }
-
-    &::placeholder {
-      background: ${theme.colors.white};
-      color: ${theme.colors.greyLight};
-    }
+  .icon {
+    font-size: ${theme.fonts.size.P0};
+    margin-right: ${theme.spacing.xs};
+    color: ${theme.colors.greySemiDark};
   }
 
   .icon-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: ${theme.fonts.P0};
+    font-size: ${theme.fonts.size.P0};
     margin-left: 10px;
   }
 `;

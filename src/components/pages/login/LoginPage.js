@@ -18,11 +18,12 @@ const LoginPageStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  overflow: hidden;
+  align-items: center;
+  /* overflow: hidden; */
 
   ::before {
     content: "";
-    background-image: url("/images/burger-background.jpg");
+    background: url("/images/burger-background.jpg") rgba(0, 0, 0, 0.7);
     background-size: cover;
     background-position: center;
     background-blend-mode: darken;
