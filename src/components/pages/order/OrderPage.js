@@ -23,7 +23,7 @@ const BackgroundOrderPageStyled = styled.div`
 `;
 
 const ContainerStyled = styled.div`
-  width: 98%;
+  width: 95%;
   height: 100vh;
   margin-left: auto;
   margin-right: auto;
