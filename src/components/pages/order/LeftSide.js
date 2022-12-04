@@ -3,7 +3,7 @@ import Logo from "./../../reusable-ui/Logo";
 import styled from "styled-components";
 // import { theme } from "../../../theme/index";
 
-export default function RightSide() {
+export default function LeftSide() {
   //state
 
   //comportement
