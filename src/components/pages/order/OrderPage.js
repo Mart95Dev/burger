@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-// import Navbar from "./Navbar";
-// import Main from "./Main";
+import Navbar from "./Navbar";
+import Main from "./Main";
 
 export default function OrderPage() {
   return (
     <OrderPageStyled>
       <div className="container">
-        <p>kscqsncnqskcnqscnqsk</p>
-        <p>nckncqknck</p>
-        {/* <Navbar />
-        <Main /> */}
+        <Navbar />
+        <Main />
       </div>
     </OrderPageStyled>
   );
