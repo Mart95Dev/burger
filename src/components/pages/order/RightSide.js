@@ -32,7 +32,7 @@ const ContainerRightSideStyled = styled.div`
   padding-right: 70px;
 
   h1 {
-    font-size: 15px;
+    font-size: ${theme.fonts.size.P0};
   }
 
   .text-profile {

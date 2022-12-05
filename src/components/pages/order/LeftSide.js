@@ -1,7 +1,6 @@
 import React from "react";
 import Logo from "./../../reusable-ui/Logo";
 import styled from "styled-components";
-// import { theme } from "../../../theme/index";
 
 export default function LeftSide() {
   //state

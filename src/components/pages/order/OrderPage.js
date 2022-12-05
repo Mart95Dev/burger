@@ -1,13 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-// import { Link, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import Main from "./Main";
+import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
-  //state
-  // const { username } = useParams();
-
   return (
     <OrderPageStyled>
       <div className="container">
@@ -19,7 +16,7 @@ export default function OrderPage() {
 }
 
 const OrderPageStyled = styled.div`
-  background-color: orange;
+  background-color: ${theme.colors.primary};
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -30,5 +27,7 @@ const OrderPageStyled = styled.div`
     width: 1400px;
     display: flex;
     flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound}
+      ${theme.borderRadius.extraRound} 0 0;
   }
 `;
