@@ -19,6 +19,7 @@ const NavbarStyled = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-left: 20px;
   /* border-radius: 15px 15px 0 0;
-  font-family: "Open Sans", sans-serif; */
+   */
 `;

@@ -13,7 +13,7 @@ export default function RightSide() {
   //affichage
   return (
     <ContainerRightSideStyled>
-      <div className="text-profil">
+      <div className="text-profile">
         <h1>
           Hey, <span className="username">{username}</span>
         </h1>
@@ -21,24 +21,21 @@ export default function RightSide() {
           <button>Se déconnecter</button>
         </Link>
       </div>
-      <BsPersonCircle className="icon-navbar" />
+      <BsPersonCircle className="profile" />
     </ContainerRightSideStyled>
   );
 }
 
 const ContainerRightSideStyled = styled.div`
-  background: purple;
   display: flex;
   align-items: center;
-  margin-right: 70px;
-  margin-top: 31.09px;
-  margin-bottom: 31.09px;
+  padding-right: 70px;
 
   h1 {
     font-size: 15px;
   }
 
-  .text-profil {
+  .text-profile {
     display: flex;
     flex-direction: column;
     margin-right: 10px;
@@ -48,7 +45,7 @@ const ContainerRightSideStyled = styled.div`
     color: ${theme.colors.primary};
   }
 
-  .icon-navbar {
+  .profile {
     width: 36px;
     height: 36px;
   }
@@ -60,9 +57,8 @@ const ContainerRightSideStyled = styled.div`
     margin: auto;
   }
 
-  .text-profil,
-  .icon-navbar,
-  .text-profil,
+  .text-profile,
+  .profile,
   button {
     color: ${theme.colors.greyMedium};
   }
