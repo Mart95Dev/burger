@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import RightSide from "./RightSide";
 import LeftSide from "./LeftSide";
+import { theme } from "./../../../theme/index";
 
 export default function Navbar() {
   return (
@@ -12,12 +13,13 @@ export default function Navbar() {
   );
 }
 
-const NavbarStyled = styled.div`
-  margin-top: 20px;
-  background-color: white;
+const NavbarStyled = styled.nav`
+  background-color: ${theme.colors.white};
+  height: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 15px 15px 0 0;
-  font-family: "Open Sans", sans-serif;
+  padding-left: ${theme.spacing.md};
+  border-radius: ${theme.borderRadius.extraRound}
+    ${theme.borderRadius.extraRound} 0 0;
 `;

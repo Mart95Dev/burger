@@ -1,34 +1,33 @@
 import React from "react";
-
 import styled from "styled-components";
 import Navbar from "./Navbar";
 import Main from "./Main";
+import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
   return (
-    <BackgroundOrderPageStyled>
-      <ContainerStyled>
+    <OrderPageStyled>
+      <div className="container">
         <Navbar />
         <Main />
-      </ContainerStyled>
-    </BackgroundOrderPageStyled>
+      </div>
+    </OrderPageStyled>
   );
 }
 
-const BackgroundOrderPageStyled = styled.div`
-  background-color: #ff9f1a;
+const OrderPageStyled = styled.div`
+  background-color: ${theme.colors.primary};
   height: 100vh;
-  overflow: hidden;
-  z-index: 999;
-`;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-const ContainerStyled = styled.div`
-  width: 95%;
-  height: 100vh;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 0px;
-  @media screen and (min-width: 1520px) {
-    max-width: 1400px;
+  .container {
+    height: 95vh;
+    width: 1400px;
+    display: flex;
+    flex-direction: column;
+    border-radius: ${theme.borderRadius.extraRound}
+      ${theme.borderRadius.extraRound} 0 0;
   }
 `;
