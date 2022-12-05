@@ -27,6 +27,7 @@ export default function RightSide() {
 }
 
 const ContainerRightSideStyled = styled.div`
+  background: purple;
   display: flex;
   align-items: center;
   margin-right: 70px;
