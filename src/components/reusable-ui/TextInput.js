@@ -19,11 +19,11 @@ const InputStyled = styled.div`
   padding: 18px 24px;
   margin: 18px opx; // could be handle in parent too
 
-  /* .icon {
+  .icon {
     font-size: ${theme.fonts.size.P0};
     margin-right: ${theme.spacing.xs};
     color: ${theme.colors.greySemiDark};
-  } */
+  }
 
   input {
     border: none;
