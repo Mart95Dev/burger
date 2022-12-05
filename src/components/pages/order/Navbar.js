@@ -13,7 +13,6 @@ export default function Navbar() {
 }
 
 const NavbarStyled = styled.div`
-  margin-top: 20px;
   background-color: white;
   display: flex;
   justify-content: space-between;
