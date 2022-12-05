@@ -12,7 +12,7 @@ export default function Navbar() {
   );
 }
 
-const NavbarStyled = styled.div`
+const NavbarStyled = styled.nav`
   /* background-color: white; */
   background: blue;
   height: 10vh;
