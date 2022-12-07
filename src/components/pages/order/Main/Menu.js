@@ -13,11 +13,7 @@ function Menu() {
   return (
     <MenuStyled>
       {products.map((product) => (
-        <Product
-          title={product.title}
-          imageSource={product.imageSource}
-          price={product.price}
-        />
+        <Product {...product} />
       ))}
     </MenuStyled>
   );
