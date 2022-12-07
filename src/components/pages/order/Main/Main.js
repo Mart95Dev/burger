@@ -20,4 +20,6 @@ const MainStyled = styled.div`
   display: grid;
   /* grid-template-columns: 25% 1fr; */
   grid-template-columns: 1fr;
+
+  overflow-y: scroll;
 `;
