@@ -12,7 +12,7 @@ function Menu() {
   return (
     <MenuStyled>
       {products.map((product) => (
-        <div>{product.title}</div>
+        <div class="product">{product.title}</div>
       ))}
     </MenuStyled>
   );
@@ -21,5 +21,16 @@ function Menu() {
 export default Menu;
 
 const MenuStyled = styled.div`
-  background: red;
+  background: $(theme.colors.background_white);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 60px;
+  padding: 50px 50px 150px;
+  justify-items: center;
+
+  .product {
+    background: red;
+    width: 240px;
+    height: 330px;
+  }
 `;
