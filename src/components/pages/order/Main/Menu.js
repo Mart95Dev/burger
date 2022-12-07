@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { fakeMenu2 } from "../../../api/fakeData/fakeMenu";
+import Product from "./../Product";
 
 function Menu() {
   //state
@@ -12,18 +13,11 @@ function Menu() {
   return (
     <MenuStyled>
       {products.map((product) => (
-        <div class="product">
-          <div className="image">
-            <img src={product.imageSource} alt={product.title} />
-          </div>
-          <div className="info-text">
-            <div className="title">{product.title}</div>
-            <div className="description">
-              <div className="price">{product.price}</div>
-              <button className="add-button">Ajouter</button>
-            </div>
-          </div>
-        </div>
+        <Product
+          title={product.title}
+          imageSource={product.imageSource}
+          price={product.price}
+        />
       ))}
     </MenuStyled>
   );
@@ -38,23 +32,4 @@ const MenuStyled = styled.div`
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
-
-  .product {
-    background: red;
-    width: 240px;
-    height: 330px;
-  }
-
-  .image {
-    border: 3px solid pink;
-    height: 100px;
-    width: 100px;
-    img {
-      width: 100%;
-      heigth: 100%;
-    }
-  }
-
-  .info-text {
-  }
 `;
