@@ -26,13 +26,14 @@ export default function ToggleButton({
       draggable: true,
       progress: undefined,
     });
+
   //display
   return (
     <ToggleButtonStyled className={className}>
-      <button onClick={notify}>Notify !</button>
-      <ToastContainer />
+      {/* <button onClick={notify}>Notify !</button> */}
 
       <input
+        onClick={notify}
         type="checkbox"
         className="toggle"
         id="rounded"
@@ -45,6 +46,7 @@ export default function ToggleButton({
         data-checked={labelIfChecked}
         data-unchecked={labelIfUnchecked}
       ></label>
+      <ToastContainer />
     </ToggleButtonStyled>
   );
 }
