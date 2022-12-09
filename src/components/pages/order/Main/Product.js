@@ -8,7 +8,11 @@ export default function Product({ title, imageSource, price }) {
         <img src={imageSource} alt={title} />
       </div>
       <div className="info-text">
-        <p>,lll</p>
+        <div className="title">{title}</div>
+        <div className="description">
+          <div className="price">{pri}</div>
+          <button className="add-button">Ajouter</button>
+        </div>
       </div>
     </ProductStyled>
   );
