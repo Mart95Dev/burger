@@ -48,7 +48,7 @@ const CardStyled = styled.div`
   .text-info {
     display: grid;
     grid-template-rows: 30% 70%;
-    padding: 5px;
+    padding: 0px;
 
     .title {
       margin: auto 0;
@@ -66,6 +66,7 @@ const CardStyled = styled.div`
     }
 
     .description {
+      padding: 0px;
       display: grid;
       grid-template-columns: 1fr 1fr;
 
@@ -74,10 +75,10 @@ const CardStyled = styled.div`
         justify-content: flex-start;
         align-items: center;
         font-weight: ${theme.fonts.weights.medium};
+        font-size: ${theme.fonts.size.P1};
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-weight: ${theme.fonts.weights.medium};
         color: ${theme.colors.primary};
       }
 
@@ -85,7 +86,7 @@ const CardStyled = styled.div`
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        font-size: ${theme.fonts.size.P1};
+        font-size: ${theme.fonts.size.P0};
 
         .primary-button {
           font-size: ${theme.fonts.size.XS};
