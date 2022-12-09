@@ -17,6 +17,7 @@ const NavbarStyled = styled.nav`
   background-color: ${theme.colors.white};
   height: 10vh;
   display: flex;
+  padding-right: 20px;
   justify-content: space-between;
   align-items: center;
   padding-left: ${theme.spacing.md};

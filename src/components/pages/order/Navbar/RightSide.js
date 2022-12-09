@@ -13,6 +13,7 @@ export default function RightSide() {
   //affichage
   return (
     <ContainerRightSideStyled>
+      <div className="admin-button">Admin button</div>
       <div className="text-profile">
         <h1>
           Hey, <span className="username">{username}</span>
@@ -29,7 +30,16 @@ export default function RightSide() {
 const ContainerRightSideStyled = styled.div`
   display: flex;
   align-items: center;
-  padding-right: 70px;
+  padding-right: 50px;
+  height: 100%;
+  background: yellow;
+
+  .admin-button {
+    background: lightblue;
+    margin-right: 50px;
+    width: 240px;
+    height: 40px;
+  }
 
   h1 {
     font-size: ${theme.fonts.size.P0};
