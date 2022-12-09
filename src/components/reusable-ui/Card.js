@@ -67,7 +67,7 @@ const CardStyled = styled.div`
 
     .description {
       display: grid;
-      grid-template-columns: 0.5fr 1fr;
+      grid-template-columns: 1fr 1fr;
 
       .left-description {
         display: flex;
