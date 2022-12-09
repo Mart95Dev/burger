@@ -6,8 +6,8 @@ export default function ToggleButton({
   className,
   isChecked,
   onToggle,
-  labelIfChecked = "Fermer",
-  labelIfUnchecked = "Ouvrir",
+  labelIfChecked = "DÉSACTIVER LE MODE ADMIN",
+  labelIfUnchecked = "ACTIVER LE MODE ADMIN",
 }) {
   return (
     <ToggleButtonStyled className={className}>
