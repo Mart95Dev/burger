@@ -37,7 +37,7 @@ function LoginForm() {
         />
         <PrimaryButton
           label={"Accèder à mon"}
-          Icon={<IoChevronForward className="icon icon-button" />}
+          Icon={<IoChevronForward className="icon-button" />}
         />
       </LoginFormStyled>
     </>
@@ -58,6 +58,11 @@ const LoginFormStyled = styled.form`
   hr {
     border: 1.5px solid #f56a2c;
     margin-bottom: 40px;
+  }
+
+  h1,
+  h2 {
+    font-family: "Amatic SC", cursive;
   }
 
   h1 {
