@@ -3,13 +3,14 @@ import styled from "styled-components/macro";
 import { theme } from "../../../../theme/index";
 
 export default function ToggleButton({
+  className,
   isChecked,
   onToggle,
   labelIfChecked = "Fermer",
   labelIfUnchecked = "Ouvrir",
 }) {
   return (
-    <ToggleButtonStyled>
+    <ToggleButtonStyled className={className}>
       <input
         type="checkbox"
         className="toggle"

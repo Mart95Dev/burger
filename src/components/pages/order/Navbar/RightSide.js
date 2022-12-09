@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 import { theme } from "../../../../theme/index";
+import ToggleButton from "./ToggleButton";
 
 export default function RightSide() {
   //state
@@ -13,7 +14,8 @@ export default function RightSide() {
   //affichage
   return (
     <ContainerRightSideStyled>
-      <div className="admin-button">Admin button</div>
+      {/* <div className="admin-button">Admin button</div> */}
+      <ToggleButton className={"admin-button"} />
       <div className="text-profile">
         <h1>
           Hey, <span className="username">{username}</span>
@@ -32,10 +34,8 @@ const ContainerRightSideStyled = styled.div`
   align-items: center;
   padding-right: 50px;
   height: 100%;
-  background: yellow;
 
   .admin-button {
-    background: lightblue;
     margin-right: 50px;
     width: 240px;
     height: 40px;
