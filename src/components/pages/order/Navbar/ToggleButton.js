@@ -5,15 +5,17 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function ToggleButton({
+  admin,
   className,
   isChecked,
   onToggle,
-  labelIfChecked = "DÉSACTIVER LE MODE ADMIN",
-  labelIfUnchecked = "ACTIVER LE MODE ADMIN",
+  labelIfChecked = "Fermer",
+  labelIfUnchecked = "Ouvrir",
 }) {
   //state
 
   //comportement
+
   const notify = () =>
     toast.info("Mode admin activé", {
       // icon: <FaUserSecret size={30} />,
@@ -30,8 +32,6 @@ export default function ToggleButton({
   //display
   return (
     <ToggleButtonStyled className={className}>
-      {/* <button onClick={notify}>Notify !</button> */}
-
       <input
         onClick={notify}
         type="checkbox"

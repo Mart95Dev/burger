@@ -15,7 +15,11 @@ export default function RightSide() {
   return (
     <ContainerRightSideStyled>
       {/* <div className="admin-button">Admin button</div> */}
-      <ToggleButton className={"admin-button"} />
+      <ToggleButton
+        className={"admin-button"}
+        labelIfChecked={"Désactiver le mode admin"}
+        labelIfUnchecked={"Activer le mode admin"}
+      />
       <div className="text-profile">
         <h1>
           Hey, <span className="username">{username}</span>
