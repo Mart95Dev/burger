@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { fakeMenu2 } from "../../../api/fakeData/fakeMenu";
-import Product from "./../Product";
+import Product from "../Main/Product";
 
 function Menu() {
   //state

@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
-import Menu from "./Menu";
+import Menu from "../Main/Menu";
 
 export default function Main() {
   return (
