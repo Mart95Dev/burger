@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import { formatPrice } from "../../../../utils/maths";
 
-export default function Product({ title, imageSource, price }) {
+export default function Card({ title, imageSource, price }) {
   return (
-    <ProductStyled>
+    <CardStyled>
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -15,11 +15,11 @@ export default function Product({ title, imageSource, price }) {
           <button className="add-button">Ajouter</button>
         </div>
       </div>
-    </ProductStyled>
+    </CardStyled>
   );
 }
 
-const ProductStyled = styled.div`
+const CardStyled = styled.div`
   background: ${theme.colors.white};
   width: 200px;
   height: 300px;

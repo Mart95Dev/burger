@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { fakeMenu2 } from "../../../api/fakeData/fakeMenu";
-import Product from "../Main/Product";
+import Card from "../Main/Card";
 
 function Menu() {
   //state
@@ -13,7 +13,7 @@ function Menu() {
   return (
     <MenuStyled>
       {products.map((product) => (
-        <Product {...product} />
+        <Card {...product} />
       ))}
     </MenuStyled>
   );
