@@ -57,7 +57,7 @@ const LoginFormStyled = styled.form`
 
   hr {
     border: 1.5px solid #f56a2c;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
   }
 
   h1,
@@ -68,13 +68,13 @@ const LoginFormStyled = styled.form`
   h1 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P5};
-    margin: 10px 0;
+    margin: 30px 0;
   }
 
   h2 {
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P4};
-    margin: 20px 10px 10px;
+    margin: 30px 10px 10px;
   }
 
   .icon {
