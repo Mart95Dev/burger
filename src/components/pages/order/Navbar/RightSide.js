@@ -3,10 +3,10 @@ import { useState } from "react";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
-import { theme } from "../../../../theme/index";
-import ToggleButton from "./ToggleButton";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
+import { theme } from "./../../../../theme/index";
 
 export default function RightSide() {
   //state
@@ -78,6 +78,7 @@ const ContainerRightSideStyled = styled.div`
   }
 
   .username {
+    text-transform: capitalize;
     color: ${theme.colors.primary};
   }
 
