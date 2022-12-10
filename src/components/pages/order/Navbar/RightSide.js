@@ -5,8 +5,8 @@ import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
 import { theme } from "../../../../theme/index";
 import ToggleButton from "./ToggleButton";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import ToastAdmin from "./ToastAdmin";
+import { toast } from "react-toastify";
 
 export default function RightSide() {
   //state
@@ -42,7 +42,7 @@ export default function RightSide() {
         onToggle={displayToastNotification}
       />
       <div className="text-profile">
-        <ToastContainer className="toaster" bodyClassName="body-toast" />
+        <ToastAdmin />
         <h1>
           Hey, <span className="username">{username}</span>
         </h1>
@@ -97,23 +97,5 @@ const ContainerRightSideStyled = styled.div`
   .profile,
   button {
     color: ${theme.colors.greyMedium};
-  }
-
-  .toaster {
-    max-width: 300px;
-  }
-
-  .Toastify__toast.Toastify__toast-theme--dark.Toastify__toast--info {
-    background: ${theme.colors.background_dark};
-  }
-
-  .body-toast {
-    .Toastify__toast-icon.Toastify--animate-icon.Toastify__zoom-enter {
-      margin-right: 20px;
-      margin-left: 5px;
-    }
-    div {
-      line-height: 1.3em;
-    }
   }
 `;
