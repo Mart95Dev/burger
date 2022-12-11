@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { theme } from "../../theme/index";
-import PrimaryButton from "../reusable-ui/PrimaryButton";
+import { theme } from "../../theme";
+import PrimaryButton from "./PrimaryButton";
 
 export default function Card({ title, imageSource, leftDescription }) {
   return (
-    <CardStyled>
+    <CardStyled className="produit">
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -66,9 +66,6 @@ const CardStyled = styled.div`
     }
 
     .description {
-      /* display: flex;
-      justify-content: space-between;
-      align-items: center; */
       display: grid;
       grid-template-columns: 1fr 1fr;
 
@@ -94,7 +91,6 @@ const CardStyled = styled.div`
           font-size: ${theme.fonts.size.XS};
           cursor: pointer;
           padding: 12px;
-          margin-top: 5px;
         }
       }
     }

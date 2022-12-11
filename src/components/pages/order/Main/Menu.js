@@ -27,6 +27,7 @@ function Menu() {
 export default Menu;
 
 const MenuStyled = styled.div`
+  background: red;
   background: $(theme.colors.background_white);
   display: grid;
   grid-template-columns: repeat(4, 1fr);
