@@ -7,11 +7,17 @@ import ToggleButton from "../../../reusable-ui/ToggleButton";
 import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
 import { theme } from "./../../../../theme/index";
+// import PanelContext from "../../../../context/PanelContex";
 
 export default function RightSide() {
   //state
   const { username } = useParams();
   const [isModeAdmin, setisModeAdmin] = useState(false);
+
+  // const isModeAdminContextValue = {
+  //   isModeAdmin,
+  //   setisModeAdmin,
+  // };
 
   //comortements
   const displayToastNotification = () => {
@@ -33,8 +39,8 @@ export default function RightSide() {
 
   //affichage
   return (
+    // <PanelContext.Provider value={isModeAdminContextValue}>
     <ContainerRightSideStyled>
-      {/* <div className="admin-button">Admin button</div> */}
       <ToggleButton
         className={"admin-button"}
         labelIfUnchecked={"Activer le mode admin"}
@@ -52,6 +58,7 @@ export default function RightSide() {
       </div>
       <BsPersonCircle className="profile" />
     </ContainerRightSideStyled>
+    // </PanelContext.Provider>
   );
 }
 
