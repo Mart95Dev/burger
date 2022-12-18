@@ -15,6 +15,7 @@ function Menu() {
     <MenuStyled>
       {products.map(({ id, title, imageSource, price }) => (
         <Card
+          key={id}
           title={title}
           imageSource={imageSource}
           leftDescription={formatPrice(price)}
