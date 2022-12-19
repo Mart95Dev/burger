@@ -11,12 +11,10 @@ function PanelAdmin() {
 
   return (
     <PanelStyled>
-      <div>
-        <div className="container-tabs">
-          <div>Réduire / ouvrir</div>
-          <div>Ajouter un produit</div>
-          <div>Modifier un produit</div>
-        </div>
+      <div className="container-tabs">
+        <div>Réduire / ouvrir</div>
+        <div>Ajouter un produit</div>
+        <div>Modifier un produit</div>
       </div>
     </PanelStyled>
   );
