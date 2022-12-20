@@ -1,17 +1,27 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
+import PanelContext from "../../../context/PanelContext";
 import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
+  //state
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const panelContextValue = { isModeAdmin, setIsModeAdmin };
+
+  //comportement
+
+  //display
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <PanelContext.Provider value={panelContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </PanelContext.Provider>
   );
 }
 
