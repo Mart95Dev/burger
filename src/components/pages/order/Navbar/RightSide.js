@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+//import { useState } from "react";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
@@ -7,18 +7,15 @@ import ToggleButton from "../../../reusable-ui/ToggleButton";
 import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
 import { theme } from "./../../../../theme/index";
-// import PanelContext from "../../../../context/PanelContex";
+import { useContext } from "react";
+import PanelContext from "../../../../context/PanelContext";
 
 export default function RightSide() {
   //state
   const { username } = useParams();
-  const [isModeAdmin, setisModeAdmin] = useState(false);
-
-  // const isModeAdminContextValue = {
-  //   isModeAdmin,
-  //   setisModeAdmin,
-  // };
-
+  const { isModeAdmin, setIsModeAdmin } = useContext(PanelContext);
+  //const [isModeAdmin, setisModeAdmin] = useState(false);
+  console.log("avant toggle button " + isModeAdmin);
   //comortements
   const displayToastNotification = () => {
     if (!isModeAdmin) {
@@ -34,7 +31,8 @@ export default function RightSide() {
         progress: undefined,
       });
     }
-    setisModeAdmin(!isModeAdmin);
+    setIsModeAdmin(!isModeAdmin);
+    console.log(isModeAdmin);
   };
 
   //affichage
