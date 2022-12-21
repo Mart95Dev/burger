@@ -15,7 +15,7 @@ export default function RightSide() {
   const { username } = useParams();
   const { isModeAdmin, setIsModeAdmin } = useContext(PanelContext);
   //const [isModeAdmin, setisModeAdmin] = useState(false);
-  console.log("avant toggle button " + isModeAdmin);
+
   //comortements
   const displayToastNotification = () => {
     if (!isModeAdmin) {
@@ -32,7 +32,6 @@ export default function RightSide() {
       });
     }
     setIsModeAdmin(!isModeAdmin);
-    console.log(isModeAdmin);
   };
 
   //affichage
