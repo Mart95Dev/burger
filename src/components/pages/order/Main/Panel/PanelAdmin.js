@@ -84,10 +84,11 @@ const PanelStyled = styled.div`
   border: 1px solid #dddddd;
   height: ${(props) => (props.contextPanel ? props.height : "0")}px;  
   z-index: 5;
-  left: 24.6%;
   bottom: 0;
   right: 0;
-  width: 74.2%;
+  left:0;
+  width: 72.5%; 
+  margin-left: 25%;
   animation: ${(props) =>
     props.contextPanel ? "1s slidein " : "1s slideout "};   
  
