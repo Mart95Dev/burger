@@ -24,6 +24,11 @@ function PanelAdmin() {
     }
   };
 
+  const addUpdateproductPanelAdmin = () => {
+    setHeightPanelAdmin(250);
+    setReducePanelAdmin(!reducePanelAdmin);
+  };
+
   //display
   return (
     <PanelStyled contextPanel={isModeAdmin} height={heightPanelAdmin}>
@@ -44,6 +49,7 @@ function PanelAdmin() {
           name="tabs-example"
           id="tab1"
           defaultChecked={checked}
+          onClick={addUpdateproductPanelAdmin}
         />
         <label htmlFor="tab1" className="tabs__label">
           Ajouter un produit
@@ -56,6 +62,7 @@ function PanelAdmin() {
           className="tabs__radio"
           name="tabs-example"
           id="tab2"
+          onClick={addUpdateproductPanelAdmin}
         />
         <label htmlFor="tab2" className="tabs__label">
           Modifier un produit
@@ -104,8 +111,6 @@ const PanelStyled = styled.div`
       height: 0px;
     }
   }
-
-
 
   .container-tabs {
     grid-column-start: 2;
