@@ -15,6 +15,7 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
+  position: relative;
   flex: 1;
   background: ${theme.colors.background_white};
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
