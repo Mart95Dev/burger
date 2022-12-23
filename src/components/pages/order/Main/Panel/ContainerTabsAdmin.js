@@ -54,8 +54,7 @@ const ContainerTabsAdminStyled = styled.div`
   z-index: 3;
   grid-column-start: 2;
   position: absolute;
-  bottom: 0px;
-  top: 460px;
+  bottom: 243px;
   height: 40px;
   left: 45px;
   font-size: 16px;
