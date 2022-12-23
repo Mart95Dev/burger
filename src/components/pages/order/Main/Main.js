@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import Menu from "../Main/Menu";
 import Basket from "./Basket";
-import PanelAdmin from "./Panel/PanelAdmin";
+import ContainerTabsAdmin from "../Main/Panel/ContainerTabsAdmin";
 
 export default function Main() {
   return (
     <MainStyled>
       <Basket />
       <Menu />
-      <PanelAdmin />
+      <ContainerTabsAdmin />
     </MainStyled>
   );
 }
