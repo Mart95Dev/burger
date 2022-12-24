@@ -1,19 +1,18 @@
 import styled from "styled-components";
-import { useContext } from "react";
-import PanelContext from "../../../../../context/PanelContext";
 
-function ContainerContentTabsAdmin({ toggleTabs, contentTabDisplay }) {
+function ContainerContentTabsAdmin({
+  toggleTabs,
+  contentTabDisplay,
+  isModeAdmin,
+}) {
   //state
-  const { isModeAdmin } = useContext(PanelContext);
+
   console.log({ contentTabDisplay });
 
   //display
   return (
     <>
-      <PanelStyled
-        contextPanel={isModeAdmin}
-        displayContentTab={contentTabDisplay}
-      >
+      <PanelStyled displayContentTab={contentTabDisplay}>
         <div
           className={
             toggleTabs === 1 ? "content-tab active-content-tab" : "content-tab"

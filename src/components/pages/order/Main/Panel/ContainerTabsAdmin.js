@@ -1,13 +1,16 @@
 import { useState } from "react";
-// import { FiChevronUp } from "react-icons/fi";
+import { useContext } from "react";
+import { FiChevronUp } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
 import ContainerContentTabsAdmin from "./ContainerContentTabsAdmin";
 import styled from "styled-components/macro";
+import PanelContext from "../../../../../context/PanelContext";
 
 function ContainerTabsAdmin() {
   //state
+  const { isModeAdmin } = useContext(PanelContext);
   const [toggleTabs, setToggleTabs] = useState(1);
   const [tabsBottom, setTabsBottom] = useState(243);
   const [tabDisplay, setTabDisplay] = useState("block");
@@ -25,11 +28,23 @@ function ContainerTabsAdmin() {
       setTabDisplay("block");
       setReduceContainer(!reduceContainer);
     }
+    clickTabProduct(index);
+  };
+
+  const clickTabProduct = (index) => {
+    if ((index === 2 || index === 1) && reduceContainer) {
+      setTabsBottom(243);
+      setTabDisplay("block");
+      setReduceContainer(!reduceContainer);
+    }
   };
 
   return (
     <>
-      <ContainerTabsAdminStyled tabBottom={tabsBottom}>
+      <ContainerTabsAdminStyled
+        tabBottom={tabsBottom}
+        contextPanel={isModeAdmin}
+      >
         <div className="container-tabs">
           <div
             className={
@@ -39,7 +54,11 @@ function ContainerTabsAdmin() {
             }
             onClick={() => toggleTab(3)}
           >
-            <FiChevronDown className="icon-chevron" />
+            {reduceContainer ? (
+              <FiChevronUp className="icon-chevron" />
+            ) : (
+              <FiChevronDown className="icon-chevron" />
+            )}
           </div>
           <div
             className={toggleTabs === 1 ? "tabs active-tabs" : "tabs"}
@@ -60,6 +79,7 @@ function ContainerTabsAdmin() {
       <ContainerContentTabsAdmin
         toggleTabs={toggleTabs}
         contentTabDisplay={tabDisplay}
+        contextPanel={isModeAdmin}
       />
     </>
   );
