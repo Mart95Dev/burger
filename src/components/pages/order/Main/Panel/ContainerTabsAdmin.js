@@ -9,27 +9,27 @@ import styled from "styled-components/macro";
 function ContainerTabsAdmin() {
   //state
   const [toggleTabs, setToggleTabs] = useState(1);
-  const [containerTabsBottom, setContainerTabsBottom] = useState(243);
-  const [contentTabDisplay, setContentTabDisplay] = useState("block");
+  const [tabsBottom, setTabsBottom] = useState(243);
+  const [tabDisplay, setTabDisplay] = useState("block");
   const [reduceContainer, setReduceContainer] = useState(false);
 
   //comportement
   const toggleTab = (index) => {
     setToggleTabs(index);
     if (index === 3 && !reduceContainer) {
-      setContainerTabsBottom(0);
-      setContentTabDisplay("none");
+      setTabsBottom(-6);
+      setTabDisplay("none");
       setReduceContainer(!reduceContainer);
     } else if (index === 3 && reduceContainer) {
-      setContainerTabsBottom(243);
-      setContentTabDisplay("block");
+      setTabsBottom(243);
+      setTabDisplay("block");
       setReduceContainer(!reduceContainer);
     }
   };
 
   return (
     <>
-      <ContainerTabsAdminStyled tabBottom={containerTabsBottom}>
+      <ContainerTabsAdminStyled tabBottom={tabsBottom}>
         <div className="container-tabs">
           <div
             className={
@@ -59,7 +59,7 @@ function ContainerTabsAdmin() {
       </ContainerTabsAdminStyled>
       <ContainerContentTabsAdmin
         toggleTabs={toggleTabs}
-        contentTabDisplay={contentTabDisplay}
+        contentTabDisplay={tabDisplay}
       />
     </>
   );

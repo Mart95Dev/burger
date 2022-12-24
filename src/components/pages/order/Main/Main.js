@@ -22,5 +22,6 @@ const MainStyled = styled.div`
   border-radius: 0px 0px 15px 15px;
   display: grid;
   grid-template-columns: 25% 1fr;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+  overflow: hidden;
 `;

@@ -5,6 +5,7 @@ import PanelContext from "../../../../../context/PanelContext";
 function ContainerContentTabsAdmin({ toggleTabs, contentTabDisplay }) {
   //state
   const { isModeAdmin } = useContext(PanelContext);
+  console.log({ contentTabDisplay });
 
   //display
   return (
@@ -35,7 +36,7 @@ function ContainerContentTabsAdmin({ toggleTabs, contentTabDisplay }) {
 export default ContainerContentTabsAdmin;
 
 const PanelStyled = styled.div`
-  z-index: 2;
+  z-index: 5;
   grid-column-start: 2;
   background: white;
   position: absolute;
