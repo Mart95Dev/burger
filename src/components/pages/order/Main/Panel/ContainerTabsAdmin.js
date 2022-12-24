@@ -16,6 +16,15 @@ function ContainerTabsAdmin() {
   //comportement
   const toggleTab = (index) => {
     setToggleTabs(index);
+    if (index === 3 && !reduceContainer) {
+      setContainerTabsBottom(0);
+      setContentTabDisplay("none");
+      setReduceContainer(!reduceContainer);
+    } else if (index === 3 && reduceContainer) {
+      setContainerTabsBottom(243);
+      setContentTabDisplay("block");
+      setReduceContainer(!reduceContainer);
+    }
   };
 
   return (
@@ -50,7 +59,7 @@ function ContainerTabsAdmin() {
       </ContainerTabsAdminStyled>
       <ContainerContentTabsAdmin
         toggleTabs={toggleTabs}
-        contentTabDisplay={"block"}
+        contentTabDisplay={contentTabDisplay}
       />
     </>
   );
