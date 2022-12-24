@@ -7,8 +7,6 @@ function ContainerContentTabsAdmin({
 }) {
   //state
 
-  console.log({ contentTabDisplay });
-
   //display
   return (
     <>
