@@ -9,6 +9,9 @@ import styled from "styled-components/macro";
 function ContainerTabsAdmin() {
   //state
   const [toggleTabs, setToggleTabs] = useState(1);
+  const [containerTabsBottom, setContainerTabsBottom] = useState(243);
+  const [contentTabDisplay, setContentTabDisplay] = useState("block");
+  const [reduceContainer, setReduceContainer] = useState(false);
 
   //comportement
   const toggleTab = (index) => {
@@ -17,15 +20,17 @@ function ContainerTabsAdmin() {
 
   return (
     <>
-      <ContainerTabsAdminStyled>
+      <ContainerTabsAdminStyled tabBottom={containerTabsBottom}>
         <div className="container-tabs">
           <div
             className={
-              toggleTabs === 3 ? "tabs active-tabs icon-tabs" : "tabs icon-tabs"
+              toggleTabs === 3
+                ? "tabs active-tabs icon-tabs active-icons"
+                : "tabs icon-tabs"
             }
             onClick={() => toggleTab(3)}
           >
-            <FiChevronDown />
+            <FiChevronDown className="icon-chevron" />
           </div>
           <div
             className={toggleTabs === 1 ? "tabs active-tabs" : "tabs"}
@@ -43,7 +48,10 @@ function ContainerTabsAdmin() {
           </div>
         </div>
       </ContainerTabsAdminStyled>
-      <ContainerContentTabsAdmin toggleTabs={toggleTabs} />
+      <ContainerContentTabsAdmin
+        toggleTabs={toggleTabs}
+        contentTabDisplay={"block"}
+      />
     </>
   );
 }
@@ -54,7 +62,8 @@ const ContainerTabsAdminStyled = styled.div`
   z-index: 3;
   grid-column-start: 2;
   position: absolute;
-  bottom: 243px;
+  bottom: ${(props) => props.tabBottom}px;
+  /* bottom: 243px; */
   height: 40px;
   left: 45px;
   font-size: 16px;
@@ -90,7 +99,17 @@ const ContainerTabsAdminStyled = styled.div`
   }
 
   .icons {
-    font-size: 15px;
+    height: 15px;
+    width: 15px;
     margin-right: 10px;
+  }
+
+  .icon-chevron {
+    height: 20px;
+    width: 20px;
+  }
+
+  .active-icons {
+    color: white;
   }
 `;
