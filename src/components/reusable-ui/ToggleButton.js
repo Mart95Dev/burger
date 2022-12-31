@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { theme } from "../../../../theme/index";
+import { theme } from "../../theme/index";
 
 export default function ToggleButton({
   className,

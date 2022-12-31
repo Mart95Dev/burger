@@ -1,8 +1,7 @@
-import React from "react";
+import styled from "styled-components";
 
-export default function basket() {
-const BasketStyled = styled.div`
-return < className="basket">basket</>;
+export default function Basket() {
+  return <BasketStyled className="basket">basket</BasketStyled>;
 }
 
 const BasketStyled = styled.div`
