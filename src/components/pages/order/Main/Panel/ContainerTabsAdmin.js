@@ -13,7 +13,7 @@ function ContainerTabsAdmin() {
   const { isModeAdmin } = useContext(PanelContext);
   const [toggleTabs, setToggleTabs] = useState(1);
   const [toggleTabsCurrent, setToggleTabsCurrent] = useState(1);
-  const [tabsBottom, setTabsBottom] = useState(243.5);
+  const [tabsBottom, setTabsBottom] = useState(243);
   const [tabDisplay, setTabDisplay] = useState("block");
   const [reduceContainer, setReduceContainer] = useState(false);
   const [tabsChevron, setTabsChevron] = useState("tabs icon-tabs");
@@ -28,7 +28,7 @@ function ContainerTabsAdmin() {
 
   const clickTabsProduct = (index) => {
     if ((index === 2 || index === 1) && reduceContainer) {
-      setTabsBottom(243.5);
+      setTabsBottom(243);
       setTabDisplay("block");
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs icon-tabs");
@@ -42,7 +42,7 @@ function ContainerTabsAdmin() {
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs active-tabs icon-tabs active-icons");
     } else if (index === 3 && reduceContainer) {
-      setTabsBottom(243.5);
+      setTabsBottom(243);
       setTabDisplay("block");
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs icon-tabs");
