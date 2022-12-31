@@ -30,7 +30,7 @@ export default function RightSide() {
         draggable: true,
         progress: undefined,
       });
-    }
+    } else toast.dismiss();
     setIsModeAdmin(!isModeAdmin);
   };
 
