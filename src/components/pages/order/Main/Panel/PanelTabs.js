@@ -4,23 +4,33 @@ import { FiChevronUp } from "react-icons/fi";
 import { FiChevronDown } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { BsPencil } from "react-icons/bs";
-import ContainerContentTabsAdmin from "./ContainerContentTabsAdmin";
+import PanelContentTabs from "./PanelContentTabs";
 import styled from "styled-components/macro";
 import PanelContext from "../../../../../context/PanelContext";
 
-function ContainerTabsAdmin() {
+function PanelTabs() {
   //state
+  const open = 243;
+  const reduce = -10;
   const { isModeAdmin } = useContext(PanelContext);
-  const [toggleTabs, setToggleTabs] = useState(1);
   const [toggleTabsCurrent, setToggleTabsCurrent] = useState(1);
-  const [tabsBottom, setTabsBottom] = useState(243);
-  const [tabDisplay, setTabDisplay] = useState("block");
+  const [tabsBottom, setTabsBottom] = useState(open); // refait
+  const [tabDisplay, setTabDisplay] = useState(true); // refait
   const [reduceContainer, setReduceContainer] = useState(false);
   const [tabsChevron, setTabsChevron] = useState("tabs icon-tabs");
-
+  const display = tabDisplay ? "block" : "none";
   //comportement
+
+  const modifyTabClass = (tab) => {
+    if (toggleTabsCurrent === tab) {
+      return "tabs active-tabs";
+    } else {
+      return "tabs";
+    }
+  };
+
   const toggleTab = (index) => {
-    setToggleTabs(index);
+    // setToggleTabs(index);
     if (index !== 3) setToggleTabsCurrent(index);
     reduceTabChevron(index);
     clickTabsProduct(index);
@@ -28,31 +38,34 @@ function ContainerTabsAdmin() {
 
   const clickTabsProduct = (index) => {
     if ((index === 2 || index === 1) && reduceContainer) {
-      setTabsBottom(243);
-      setTabDisplay("block");
+      setTabsBottom(open); // refait
+      setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs icon-tabs");
+      return display;
     }
   };
 
   const reduceTabChevron = (index) => {
     if (index === 3 && !reduceContainer) {
-      setTabsBottom(-10);
-      setTabDisplay("none");
+      setTabsBottom(reduce); // refait
+      setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs active-tabs icon-tabs active-icons");
+      return display;
     } else if (index === 3 && reduceContainer) {
-      setTabsBottom(243);
-      setTabDisplay("block");
+      setTabsBottom(open); // refait
+      setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs icon-tabs");
+      return display;
     }
   };
 
   //display
   return (
     <>
-      <ContainerTabsAdminStyled
+      <PanelTabsStyled
         tabBottom={tabsBottom}
         contextPanel={isModeAdmin}
         tabsChevron={tabsChevron}
@@ -65,34 +78,29 @@ function ContainerTabsAdmin() {
               <FiChevronDown className="icon-chevron" />
             )}
           </div>
-          <div
-            className={toggleTabsCurrent === 1 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(1)}
-          >
+          <div className={modifyTabClass(1)} onClick={() => toggleTab(1)}>
             <AiOutlinePlus className="icons" />
             Ajouter un produit
           </div>
-          <div
-            className={toggleTabsCurrent === 2 ? "tabs active-tabs" : "tabs"}
-            onClick={() => toggleTab(2)}
-          >
+          <div className={modifyTabClass(2)} onClick={() => toggleTab(2)}>
             <BsPencil className="icons" />
             Modifier un produit
           </div>
         </div>
-      </ContainerTabsAdminStyled>
-      <ContainerContentTabsAdmin
-        toggleTabs={toggleTabs}
+      </PanelTabsStyled>
+      <PanelContentTabs
+        toggleTabsCurrent={toggleTabsCurrent}
         contentTabDisplay={tabDisplay}
+        display={display}
         contextPanel={isModeAdmin}
       />
     </>
   );
 }
 
-export default ContainerTabsAdmin;
+export default PanelTabs;
 
-const ContainerTabsAdminStyled = styled.div`
+const PanelTabsStyled = styled.div`
   z-index: 5;
   /* grid-column-start: 2; */ //désactiver pour le panel
   position: absolute;
@@ -106,7 +114,6 @@ const ContainerTabsAdminStyled = styled.div`
     display: flex;
     background: transparent;
     padding: 0px;
-    /* box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset; */
   }
 
   .tabs {
@@ -155,6 +162,3 @@ const ContainerTabsAdminStyled = styled.div`
     color: white;
   }
 `;
-
-// revoir tab chevron reste actif après réouverture
-// resoudre le pb de focus
