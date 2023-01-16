@@ -21,6 +21,7 @@ function PanelTabs() {
   const display = tabDisplay ? "block" : "none";
   //comportement
 
+  // function to modify class
   const modifyTabClass = (index) => {
     if (toggleTabsCurrent === index) {
       return "tabs active-tabs";
