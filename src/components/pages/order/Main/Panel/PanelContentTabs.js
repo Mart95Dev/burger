@@ -7,8 +7,7 @@ function PanelContentTabs({
   contextPanel,
 }) {
   //state
-  console.log(display);
-  // console.log(contentTabDisplay);
+
   //comportement
   const modifyTabContentClass = (index) => {
     if (toggleTabsCurrent === index) {
@@ -40,13 +39,14 @@ const PanelStyled = styled.div`
   /* grid-column-start: 2; */ //désactiver pour le panel
   background: white;
   position: absolute;
-  bottom: ${(props) => (props.isModeAdmin ? "0" : "-60")}px;
+  bottom: ${(props) => (props.isModeAdmin ? "0" : "-60")}px; // aucune modif
   right: 0;
   left: 0;
   height: 250px;
   padding: 30px;
   border: 1px solid #e4e5e9;
-  display: ${(props) => (props.isModeAdmin ? props.contentTabDisplay : "none")};
+  display: ${(props) =>
+    props.isModeAdmin ? props.contentTabDisplay : "none"}; // aucune modif
 
   .content-tab {
     display: flex;
@@ -56,6 +56,7 @@ const PanelStyled = styled.div`
   }
 
   .active-content-tab {
-    display: ${(props) => (props.isModeAdmin ? props.contentTabDisplay : "")};
+    display: ${(props) =>
+      props.isModeAdmin ? props.contentTabDisplay : ""}; //aucune modif
   }
 `;
