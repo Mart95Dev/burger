@@ -10,19 +10,19 @@ import PanelContext from "../../../../../context/PanelContext";
 
 function PanelTabs() {
   //state
-  const open = 243;
-  const reduce = -10;
+  const openPanelAdmin = 243;
+  const reducePanelAdmin = -10;
   const { isModeAdmin } = useContext(PanelContext);
   const [toggleTabsCurrent, setToggleTabsCurrent] = useState(1);
-  const [tabsBottom, setTabsBottom] = useState(open); // refait
-  const [tabDisplay, setTabDisplay] = useState(true); // refait
+  const [tabsBottom, setTabsBottom] = useState(openPanelAdmin); // avant modif usaState(243)
+  const [tabDisplay, setTabDisplay] = useState(true); // avant modif useState("block")
   const [reduceContainer, setReduceContainer] = useState(false);
   const [tabsChevron, setTabsChevron] = useState("tabs icon-tabs");
   const display = tabDisplay ? "block" : "none";
   //comportement
 
-  const modifyTabClass = (tab) => {
-    if (toggleTabsCurrent === tab) {
+  const modifyTabClass = (index) => {
+    if (toggleTabsCurrent === index) {
       return "tabs active-tabs";
     } else {
       return "tabs";
@@ -38,7 +38,7 @@ function PanelTabs() {
 
   const clickTabsProduct = (index) => {
     if ((index === 2 || index === 1) && reduceContainer) {
-      setTabsBottom(open); // refait
+      setTabsBottom(openPanelAdmin); // refait
       setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs icon-tabs");
@@ -48,13 +48,13 @@ function PanelTabs() {
 
   const reduceTabChevron = (index) => {
     if (index === 3 && !reduceContainer) {
-      setTabsBottom(reduce); // refait
+      setTabsBottom(reducePanelAdmin); // refait
       setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs active-tabs icon-tabs active-icons");
       return display;
     } else if (index === 3 && reduceContainer) {
-      setTabsBottom(open); // refait
+      setTabsBottom(openPanelAdmin); // refait
       setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
       setTabsChevron("tabs icon-tabs");
@@ -104,7 +104,8 @@ const PanelTabsStyled = styled.div`
   z-index: 5;
   /* grid-column-start: 2; */ //désactiver pour le panel
   position: absolute;
-  bottom: ${(props) => (props.contextPanel ? props.tabBottom : "-50")}px;
+  bottom: ${(props) =>
+    props.contextPanel ? props.tabBottom : "-50"}px; //aucune modif
   height: 40px;
   left: 45px;
   font-size: 16px;
