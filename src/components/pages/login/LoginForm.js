@@ -36,7 +36,7 @@ function LoginForm() {
           Icon={<BsPersonCircle className="icon" />}
         />
         <PrimaryButton
-          label={"Accèder à mon espace"}
+          label={"Accéder à mon espace"}
           Icon={<IoChevronForward className="icon-button" />}
         />
       </LoginFormStyled>
