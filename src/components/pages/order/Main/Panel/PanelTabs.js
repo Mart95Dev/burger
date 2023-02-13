@@ -1,12 +1,10 @@
-import { useState } from "react";
-import { useContext } from "react";
-import { FiChevronUp } from "react-icons/fi";
-import { FiChevronDown } from "react-icons/fi";
+import { useState, useContext } from "react";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
-import { BsPencil } from "react-icons/bs";
-import PanelContentTabs from "./PanelContentTabs";
+import { MdModeEditOutline } from "react-icons/md";
+import PanelEditTabs from "./PanelEditTabs";
 import styled from "styled-components/macro";
-import PanelContext from "../../../../../context/PanelContext";
+import PanelContext from "../../../../context/OrderContext";
 
 function PanelTabs() {
   //state
@@ -103,12 +101,12 @@ function PanelTabs() {
             <p>Ajouter un produit</p>
           </div>
           <div className={modifyTabClass(2)} onClick={() => toggleTab(2)}>
-            <BsPencil className={() => activeIcons(2)} />
+            <MdModeEditOutline className={() => activeIcons(2)} />
             <p>Modifier un produit</p>
           </div>
         </div>
       </PanelTabsStyled>
-      <PanelContentTabs
+      <PanelEditTabs
         toggleTabsCurrent={toggleTabsCurrent}
         contentTabDisplay={tabDisplay}
         display={display}
@@ -123,11 +121,12 @@ export default PanelTabs;
 const PanelTabsStyled = styled.div`
   z-index: 5;
   /* grid-column-start: 2; */ //désactiver pour le panel
-  position: absolute;
+  /* position: absolute; */
   bottom: ${(props) =>
     props.contextPanel ? props.tabBottom : "-50"}px; //aucune modif
   height: 43px;
-  left: 71px;
+  position: absolute;
+  left: 5%;
   font-size: 16px;
   width: 80%;
 

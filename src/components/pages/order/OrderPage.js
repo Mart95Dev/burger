@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
-import PanelContext from "../../../context/PanelContext";
+import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {

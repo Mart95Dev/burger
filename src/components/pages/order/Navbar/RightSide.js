@@ -8,19 +8,17 @@ import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
 import { theme } from "./../../../../theme/index";
 import { useContext } from "react";
-import PanelContext from "../../../../context/PanelContext";
+import PanelContext from "../../../context/OrderContext";
 
 export default function RightSide() {
   //state
   const { username } = useParams();
   const { isModeAdmin, setIsModeAdmin } = useContext(PanelContext);
-  //const [isModeAdmin, setisModeAdmin] = useState(false);
 
   //comortements
   const displayToastNotification = () => {
     if (!isModeAdmin) {
       toast.info("Mode admin activé", {
-        // icon: <FaUserSecret size={30} />,
         theme: "dark",
         position: "bottom-right",
         autoClose: 5000,

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-function PanelContentTabs({
+function PanelEditTabs({
   toggleTabsCurrent,
   contentTabDisplay,
   display,
@@ -20,21 +20,21 @@ function PanelContentTabs({
   //display
   return (
     <>
-      <PanelContent contentTabDisplay={display} isModeAdmin={contextPanel}>
+      <PanelEditStyled contentTabDisplay={display} isModeAdmin={contextPanel}>
         <div className={modifyTabContentClass(1)}>
           <p className="text-add-update">Ajouter produit</p>
         </div>
         <div className={modifyTabContentClass(2)}>
           <p className="text-add-update">Modifier produit</p>
         </div>
-      </PanelContent>
+      </PanelEditStyled>
     </>
   );
 }
 
-export default PanelContentTabs;
+export default PanelEditTabs;
 
-const PanelContent = styled.div`
+const PanelEditStyled = styled.div`
   z-index: 3;
   /* grid-column-start: 2; */ //désactiver pour le panel
   position: absolute;
@@ -45,7 +45,7 @@ const PanelContent = styled.div`
   bottom: ${(props) => (props.isModeAdmin ? "0" : "-60")}px; // aucune modif
   right: 0;
   left: 0;
-  height: 251px;
+  height: 250px;
   padding: 30px;
   display: ${(props) =>
     props.isModeAdmin ? props.contentTabDisplay : "none"}; // aucune modif
