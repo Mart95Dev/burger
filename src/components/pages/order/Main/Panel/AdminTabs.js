@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Tabs from "./../../../../reusable-ui/Tabs";
+import Tab from "./../../../../reusable-ui/Tab";
 
 function AdminTabs() {
   return (
     <AdminTabsStyled>
-      <Tabs />
+      <Tab />
     </AdminTabsStyled>
   );
 }

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import PanelContext from "../../../../context/PanelContext";
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import Menu from "../Main/Menu";
@@ -5,11 +7,13 @@ import Menu from "../Main/Menu";
 import Admin from "./Panel/Admin";
 
 export default function Main() {
+  const { isModeAdmin } = useContext(PanelContext);
+
   return (
     <MainStyled>
       {/* <Basket /> désactiver pour la mise en place du panel */}
       <Menu />
-      <Admin />
+      {isModeAdmin ? <Admin /> : ""}
     </MainStyled>
   );
 }
