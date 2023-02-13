@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
+import { FiChevronDown, FiChevronUp } from "react-icons/fi";
+import { AiOutlinePlus } from "react-icons/ai";
+import { MdModeEditOutline } from "react-icons/md";
 
-function Tabs() {
-  return (
-    <TabsStyled>
-      <p>chevron</p>
-    </TabsStyled>
-  );
+function Tab({ icon, label }) {
+  return <TabsStyled></TabsStyled>;
 }
 
-export default Tabs;
+export default Tab;
 
 const TabsStyled = styled.button`
   border: 2px solid green;

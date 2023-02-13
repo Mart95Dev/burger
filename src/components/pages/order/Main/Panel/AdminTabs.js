@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Tab from "./../../../../reusable-ui/Tab";
 
+// import tabConfig from "./tabsConfig";
+
 function AdminTabs() {
   return (
     <AdminTabsStyled>
@@ -13,7 +15,6 @@ function AdminTabs() {
 export default AdminTabs;
 
 const AdminTabsStyled = styled.div`
-  border: 3px solid blue;
-
-  bottom: 0px;
+  display: flex;
+  flex-direction: row;
 `;

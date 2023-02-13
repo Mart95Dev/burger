@@ -36,7 +36,6 @@ export default function RightSide() {
 
   //affichage
   return (
-    // <PanelContext.Provider value={isModeAdminContextValue}>
     <ContainerRightSideStyled>
       <ToggleButton
         className={"admin-button"}
@@ -55,7 +54,6 @@ export default function RightSide() {
       </div>
       <BsPersonCircle className="profile" />
     </ContainerRightSideStyled>
-    // </PanelContext.Provider>
   );
 }
 

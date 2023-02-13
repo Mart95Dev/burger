@@ -16,7 +16,7 @@ const AdminStyled = styled.div`
   position: absolute;
 
   /* grid-column-start: 2; */
-  border: 3px solid red;
+
   left: 0;
   right: 0;
   bottom: 0;
