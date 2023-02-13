@@ -2,15 +2,14 @@ import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import Menu from "../Main/Menu";
 // import Basket from "./Basket";
-// import PanelAdmin from "../Main/Panel/PanelTabs";
-import PanelAdmin from "../Main/Panel/PanelTabs";
+import Admin from "./Panel/Admin";
 
 export default function Main() {
   return (
     <MainStyled>
-      {/* <Basket /> désactiver pour la mise en place du panel*/}
+      {/* <Basket /> désactiver pour la mise en place du panel */}
       <Menu />
-      {/* <PanelAdmin /> */}
+      <Admin />
     </MainStyled>
   );
 }
@@ -24,6 +23,6 @@ const MainStyled = styled.div`
   display: grid;
   /* grid-template-columns: 25% 1fr; désactiver pour la mise en place du panel */
   grid-template-columns: 1fr;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   overflow: hidden;
 `;
