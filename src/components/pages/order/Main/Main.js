@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import Menu from "../Main/Menu";
 // import Basket from "./Basket";
+// import PanelAdmin from "../Main/Panel/PanelTabs";
 import PanelAdmin from "../Main/Panel/PanelTabs";
 
 export default function Main() {
@@ -9,7 +10,7 @@ export default function Main() {
     <MainStyled>
       {/* <Basket /> désactiver pour la mise en place du panel*/}
       <Menu />
-      <PanelAdmin />
+      {/* <PanelAdmin /> */}
     </MainStyled>
   );
 }

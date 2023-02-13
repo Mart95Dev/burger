@@ -10,14 +10,16 @@ import PanelContext from "../../../../../context/PanelContext";
 
 function PanelTabs() {
   //state
-  const openPanelAdmin = 243;
+  const openPanelAdmin = 250;
   const reducePanelAdmin = -10;
   const { isModeAdmin } = useContext(PanelContext);
   const [toggleTabsCurrent, setToggleTabsCurrent] = useState(1);
   const [tabsBottom, setTabsBottom] = useState(openPanelAdmin); // avant modif usaState(243)
   const [tabDisplay, setTabDisplay] = useState(true); // avant modif useState("block")
   const [reduceContainer, setReduceContainer] = useState(false);
-  const [tabsChevron, setTabsChevron] = useState("tabs icon-tabs");
+  const [tabChevron, setTabsChevron] = useState("tab-chevron");
+  // const [icons, setIcons] = useState("icons");
+
   const display = tabDisplay ? "block" : "none";
   //comportement
 
@@ -30,11 +32,28 @@ function PanelTabs() {
     }
   };
 
+  const activeIcons = (index) => {
+    if (index === 1 || index === 2) {
+      return "icons active-icons";
+    } else {
+      return "icons";
+    }
+  };
+
+  const activeIconChevron = (index) => {
+    if (index === 3) {
+      return "icon-chevron active-icons";
+    } else {
+      return "icon-chevron";
+    }
+  };
+
   const toggleTab = (index) => {
     // setToggleTabs(index);
     if (index !== 3) setToggleTabsCurrent(index);
     reduceTabChevron(index);
     clickTabsProduct(index);
+    activeIcons(index);
   };
 
   const clickTabsProduct = (index) => {
@@ -42,7 +61,7 @@ function PanelTabs() {
       setTabsBottom(openPanelAdmin); // refait
       setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
-      setTabsChevron("tabs icon-tabs");
+      setTabsChevron("tab-chevron");
       return display;
     }
   };
@@ -52,13 +71,13 @@ function PanelTabs() {
       setTabsBottom(reducePanelAdmin); // refait
       setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
-      setTabsChevron("tabs active-tabs icon-tabs active-icons");
+      setTabsChevron("tab-chevron active-tabs");
       return display;
     } else if (index === 3 && reduceContainer) {
       setTabsBottom(openPanelAdmin); // refait
       setTabDisplay(!tabDisplay); // refait
       setReduceContainer(!reduceContainer);
-      setTabsChevron("tabs icon-tabs");
+      setTabsChevron("tab-chevron");
       return display;
     }
   };
@@ -69,23 +88,23 @@ function PanelTabs() {
       <PanelTabsStyled
         tabBottom={tabsBottom}
         contextPanel={isModeAdmin}
-        tabsChevron={tabsChevron}
+        tabChevron={tabChevron}
       >
         <div className="container-tabs">
-          <div className={tabsChevron} onClick={() => toggleTab(3)}>
+          <div className={tabChevron} onClick={() => toggleTab(3)}>
             {reduceContainer ? (
-              <FiChevronUp className="icon-chevron" />
+              <FiChevronUp className={() => activeIconChevron(3)} />
             ) : (
-              <FiChevronDown className="icon-chevron" />
+              <FiChevronDown className={() => activeIconChevron(3)} />
             )}
           </div>
           <div className={modifyTabClass(1)} onClick={() => toggleTab(1)}>
-            <AiOutlinePlus className="icons" />
-            Ajouter un produit
+            <AiOutlinePlus className={() => activeIcons(1)} />
+            <p>Ajouter un produit</p>
           </div>
           <div className={modifyTabClass(2)} onClick={() => toggleTab(2)}>
-            <BsPencil className="icons" />
-            Modifier un produit
+            <BsPencil className={() => activeIcons(2)} />
+            <p>Modifier un produit</p>
           </div>
         </div>
       </PanelTabsStyled>
@@ -107,60 +126,83 @@ const PanelTabsStyled = styled.div`
   position: absolute;
   bottom: ${(props) =>
     props.contextPanel ? props.tabBottom : "-50"}px; //aucune modif
-  height: 40px;
-  left: 45px;
+  height: 43px;
+  left: 71px;
   font-size: 16px;
-  width: 50%;
+  width: 80%;
 
   .container-tabs {
     display: flex;
+    flex-direction: row;
+    gap: 1px;
     background: transparent;
     padding: 0px;
   }
 
+  .tabs,
+  .tab-chevron {
+    height: 43px;
+    background: #ffffff;
+    border-width: 1px 1px 2px 1px;
+    border-style: solid;
+    border-color: #e4e5e9;
+    box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+    border-radius: 5px 5px 0px 0px;
+    color: #93a2b1;
+  }
+
   .tabs {
+    position: relative;
     display: flex;
     align-items: center;
-    background: white;
-    color: #a7a8ad;
-    margin-left: 1px;
-    border: 1px solid #e4e5e9;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 0;
-    border-bottom-left-radius: 0;
-    padding: 5px 10px;
+    justify-content: space-between;
+    padding: 10px 22px 11px 51px;
     cursor: pointer;
   }
 
-  .tabs:hover {
+  .tab-chevron {
+    width: 60px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .tabs:hover,
+  .tab-chevron:hover {
     border-bottom-color: white;
     text-decoration: underline;
+    text-decoration-color: #93a2b1;
   }
 
   .active-tabs {
-    background: black;
-    color: white;
-  }
-
-  .icon-tabs {
-    padding: 5px 15px;
-  }
-
-  .icons {
-    display: flex;
-    align-items: center;
-    height: 15px;
-    width: 15px;
-    margin-right: 10px;
-  }
-
-  .icon-chevron {
-    height: 15px;
-    width: 15px;
+    background: #292729;
+    color: #ffffff;
   }
 
   .active-icons {
-    color: white;
+    position: absolute;
+    left: 24px;  }
+    color: #ffffff;
+  }
+
+  .icons {
+    position: absolute;
+    left: 24px;
+  }
+
+  .icons,
+  .icon-chevron {
+    height: 15px;
+    width: 15px;
+    color: #93a2b1;
+  }
+
+  .test1 {
+    background: red;
+    margin-left: 2px;
+  }
+  .test2 {
+    background: blue;
   }
 `;
