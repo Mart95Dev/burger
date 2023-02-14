@@ -1,20 +1,19 @@
-// import { useContext } from "react";
-// import PanelContext from "../../../context/OrderContext";
+import { useContext } from "react";
+import PanelContext from "../../../context/OrderContext";
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import Menu from "../Main/Menu";
 // import Basket from "./Basket";
-// import Admin from "./Panel/Admin";
-import PanelTabs from "./Panel/PanelTabs";
+import Admin from "./Panel/Admin";
 
 export default function Main() {
-  // const { isModeAdmin } = useContext(PanelContext);
+  const { isModeAdmin } = useContext(PanelContext);
 
   return (
     <MainStyled>
       {/* <Basket /> désactiver pour la mise en place du panel */}
       <Menu />
-      <PanelTabs />
+      {isModeAdmin ? <Admin /> : ""}
     </MainStyled>
   );
 }

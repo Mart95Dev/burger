@@ -35,9 +35,9 @@ function PanelEditTabs({
 export default PanelEditTabs;
 
 const PanelEditStyled = styled.div`
-  z-index: 3;
+  z-index: 2;
   /* grid-column-start: 2; */ //désactiver pour le panel
-  position: absolute;
+  /* position: absolute; */
   background: #ffffff;
   /* border-top: 1px solid #e4e5e9; */
   box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);

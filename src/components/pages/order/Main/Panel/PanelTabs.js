@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
-import PanelEditTabs from "./PanelEditTabs";
+// import PanelEditTabs from "./PanelEditTabs";
 import styled from "styled-components/macro";
 import PanelContext from "../../../../context/OrderContext";
 
@@ -12,11 +12,10 @@ function PanelTabs() {
   const reducePanelAdmin = -10;
   const { isModeAdmin } = useContext(PanelContext);
   const [toggleTabsCurrent, setToggleTabsCurrent] = useState(1);
-  const [tabsBottom, setTabsBottom] = useState(openPanelAdmin); // avant modif usaState(243)
-  const [tabDisplay, setTabDisplay] = useState(true); // avant modif useState("block")
+  const [tabsBottom, setTabsBottom] = useState(openPanelAdmin);
+  const [tabDisplay, setTabDisplay] = useState(true);
   const [reduceContainer, setReduceContainer] = useState(false);
   const [tabChevron, setTabsChevron] = useState("tab-chevron");
-  // const [icons, setIcons] = useState("icons");
 
   const display = tabDisplay ? "block" : "none";
   //comportement
@@ -106,12 +105,12 @@ function PanelTabs() {
           </div>
         </div>
       </PanelTabsStyled>
-      <PanelEditTabs
+      {/* <PanelEditTabs
         toggleTabsCurrent={toggleTabsCurrent}
         contentTabDisplay={tabDisplay}
         display={display}
         contextPanel={isModeAdmin}
-      />
+      /> */}
     </>
   );
 }
@@ -119,16 +118,15 @@ function PanelTabs() {
 export default PanelTabs;
 
 const PanelTabsStyled = styled.div`
-  z-index: 5;
+  z-index: 2;
   /* grid-column-start: 2; */ //désactiver pour le panel
   /* position: absolute; */
-  bottom: ${(props) =>
-    props.contextPanel ? props.tabBottom : "-50"}px; //aucune modif
   height: 43px;
-  position: absolute;
   left: 5%;
   font-size: 16px;
-  width: 80%;
+
+  bottom: ${(props) =>
+    props.contextPanel ? props.tabBottom : "-50"}px; //aucune modif
 
   .container-tabs {
     display: flex;
@@ -181,7 +179,7 @@ const PanelTabsStyled = styled.div`
 
   .active-icons {
     position: absolute;
-    left: 24px;  }
+    left: 24px;
     color: #ffffff;
   }
 
@@ -195,13 +193,5 @@ const PanelTabsStyled = styled.div`
     height: 15px;
     width: 15px;
     color: #93a2b1;
-  }
-
-  .test1 {
-    background: red;
-    margin-left: 2px;
-  }
-  .test2 {
-    background: blue;
   }
 `;
