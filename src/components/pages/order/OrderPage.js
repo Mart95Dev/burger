@@ -8,7 +8,16 @@ import { theme } from "./../../../theme/index";
 export default function OrderPage() {
   //state
   const [isModeAdmin, setIsModeAdmin] = useState(false);
-  const panelContextValue = { isModeAdmin, setIsModeAdmin };
+  const [isReduce, setIsReduceAdmin] = useState(false);
+  const [isTabActive, setIsTabActive] = useState(false);
+  const panelContextValue = {
+    isModeAdmin,
+    setIsModeAdmin,
+    isReduce,
+    setIsReduceAdmin,
+    isTabActive,
+    setIsTabActive,
+  };
 
   //comportement
 
