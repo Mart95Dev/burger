@@ -3,8 +3,10 @@ import { createContext } from "react";
 export default createContext({
   isModeAdmin: false,
   setIsModeAdmin: () => {},
-  isreduce: false,
-  setIsReduceAdmin: () => {},
-  isTabActive: false,
+  isReduce: false,
+  setIsReduce: () => {},
+  isTabActive: "",
   setIsTabActive: () => {},
+  tabSelected: "add",
+  setTabSelected: () => {},
 });

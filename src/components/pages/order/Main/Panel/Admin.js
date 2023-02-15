@@ -1,13 +1,17 @@
-import React from "react";
+import { useContext } from "react";
+import PanelContext from "../../../../context/OrderContext";
 import styled from "styled-components";
 import PanelTabs from "./PanelTabs";
 import PanelEditTabs from "./PanelEditTabs";
 
 function Admin() {
+  //state
+  const { isReduce } = useContext(PanelContext);
+
   return (
     <AdminStyled>
       <PanelTabs />
-      <PanelEditTabs />
+      {!isReduce ? <PanelEditTabs /> : ""}
     </AdminStyled>
   );
 }
