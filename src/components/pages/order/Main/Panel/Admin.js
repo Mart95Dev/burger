@@ -6,12 +6,12 @@ import PanelEditTabs from "./PanelEditTabs";
 
 function Admin() {
   //state
-  const { isReduce } = useContext(PanelContext);
+  const { tabIconSelected } = useContext(PanelContext);
 
   return (
     <AdminStyled>
       <PanelTabs />
-      {!isReduce ? <PanelEditTabs /> : ""}
+      {!tabIconSelected ? <PanelEditTabs /> : ""}
     </AdminStyled>
   );
 }
