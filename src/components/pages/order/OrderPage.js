@@ -9,7 +9,7 @@ export default function OrderPage() {
   //state
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isReduce, setIsReduce] = useState(false);
-  const [isTabActive, setIsTabActive] = useState(false);
+  const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
 
   const panelContextValue = {
@@ -17,8 +17,8 @@ export default function OrderPage() {
     setIsModeAdmin,
     isReduce,
     setIsReduce,
-    isTabActive,
-    setIsTabActive,
+    tabIconSelected,
+    setTabIconSelected,
     tabSelected,
     setTabSelected,
   };
