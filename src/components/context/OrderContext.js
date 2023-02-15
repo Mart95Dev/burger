@@ -5,8 +5,8 @@ export default createContext({
   setIsModeAdmin: () => {},
   isReduce: false,
   setIsReduce: () => {},
-  isTabActive: "",
-  setIsTabActive: () => {},
+  tabIconSelected: false,
+  setTabIconSelected: () => {},
   tabSelected: "add",
   setTabSelected: () => {},
 });
