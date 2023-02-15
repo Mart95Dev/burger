@@ -9,6 +9,6 @@ export default createContext({
   setTabIconSelected: () => {},
   tabSelected: "add",
   setTabSelected: () => {},
-  tabIconActive: "add",
-  setTabIconActive: () => {},
+  isCollasped: false,
+  setIsCollasped: () => {},
 });

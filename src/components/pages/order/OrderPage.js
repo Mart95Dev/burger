@@ -11,7 +11,7 @@ export default function OrderPage() {
   const [isReduce, setIsReduce] = useState(false);
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
-  const [tabIconActive, setTabIconActive] = useState(false);
+  const [isCollasped, setIsCollasped] = useState(false);
 
   const panelContextValue = {
     isModeAdmin,
@@ -22,8 +22,8 @@ export default function OrderPage() {
     setTabIconSelected,
     tabSelected,
     setTabSelected,
-    tabIconActive,
-    setTabIconActive,
+    isCollasped,
+    setIsCollasped,
   };
 
   //comportement
