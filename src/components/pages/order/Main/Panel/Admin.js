@@ -7,11 +7,12 @@ import PanelEditTabs from "./PanelEditTabs";
 function Admin() {
   //state
   const { tabIconSelected } = useContext(PanelContext);
+  console.log(!tabIconSelected);
 
   return (
     <AdminStyled>
       <PanelTabs />
-      {!tabIconSelected ? <PanelEditTabs /> : ""}
+      {tabIconSelected ? <PanelEditTabs /> : ""}
     </AdminStyled>
   );
 }
