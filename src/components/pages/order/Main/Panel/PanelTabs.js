@@ -9,36 +9,50 @@ import Tab from "./Tab";
 import { theme } from "./../../../../../theme/index";
 
 function PanelTabs() {
-  const { tabSelected, setTabSelected, tabIconSelected, setTabIconSelected } =
-    useContext(PanelContext);
+  const {
+    tabSelected,
+    setTabSelected,
+    tabIconSelected,
+    setTabIconSelected,
+    tabIconActive,
+    setTabIconActive,
+  } = useContext(PanelContext);
 
   const isTabSelected = (index) => {
     if (index === "icon") {
       setTabIconSelected(!tabIconSelected);
+      setTabIconActive(index);
     }
-    setTabSelected(index);
+
+    if (index !== "icon") {
+      setTabSelected(index);
+    }
   };
 
-  const tabActive = (index) => (tabSelected === index ? "is-active" : "");
+  const ModifyClassTabSelected = (index) => {
+    if (tabSelected === index) {
+      return "is-active";
+    }
+  };
 
   return (
     <PanelTabsStyled>
       <Tab
         icon={tabIconSelected ? <FiChevronUp /> : <FiChevronDown />}
         label=""
-        className={tabActive("icon")}
+        className={tabIconSelected ? "is-active" : ""}
         onClick={() => isTabSelected("icon")}
       />
       <Tab
         icon={<AiOutlinePlus />}
         label="Ajouter un produit"
-        className={tabActive("add")}
+        className={ModifyClassTabSelected("add")}
         onClick={() => isTabSelected("add")}
       />
       <Tab
         icon={<MdModeEditOutline />}
         label="Modifier un produit"
-        className={tabActive("edit")}
+        className={ModifyClassTabSelected("edit")}
         onClick={() => isTabSelected("edit")}
       />
     </PanelTabsStyled>

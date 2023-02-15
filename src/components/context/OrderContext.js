@@ -9,4 +9,6 @@ export default createContext({
   setTabIconSelected: () => {},
   tabSelected: "add",
   setTabSelected: () => {},
+  tabIconActive: "add",
+  setTabIconActive: () => {},
 });
