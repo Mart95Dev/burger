@@ -6,13 +6,15 @@ import PanelEditTabs from "./PanelEditTabs";
 
 function Admin() {
   //state
-  const { tabIconSelected } = useContext(PanelContext);
-  console.log(!tabIconSelected);
+  const { isCollasped } = useContext(PanelContext);
+
+  // console.log("tabIconSelected" + !tabIconSelected);
+  // console.log("isCollasped" + isCollasped);
 
   return (
     <AdminStyled>
       <PanelTabs />
-      {tabIconSelected ? <PanelEditTabs /> : ""}
+      {!isCollasped ? <PanelEditTabs /> : ""}
     </AdminStyled>
   );
 }
@@ -20,7 +22,6 @@ function Admin() {
 export default Admin;
 
 const AdminStyled = styled.div`
-  border: 2px solid red;
   position: absolute;
   left: 0;
   right: 0;

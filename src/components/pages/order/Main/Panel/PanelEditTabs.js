@@ -11,20 +11,8 @@ function PanelEditTabs() {
   return (
     <>
       <PanelEditStyled>
-        <div>
-          {tabSelected === "add" ? (
-            <p className="text-add-update">Ajouter produit</p>
-          ) : (
-            ""
-          )}
-        </div>
-        <div>
-          {tabSelected === "edit" ? (
-            <p className="text-add-update">Modifier produit</p>
-          ) : (
-            ""
-          )}
-        </div>
+        <div>{tabSelected === "add" ? <p>Ajouter produit</p> : ""}</div>
+        <div>{tabSelected === "edit" ? <p>Modifier produit</p> : ""}</div>
       </PanelEditStyled>
     </>
   );

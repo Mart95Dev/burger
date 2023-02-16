@@ -9,6 +9,7 @@ import Tab from "./Tab";
 import { theme } from "./../../../../../theme/index";
 
 function PanelTabs() {
+  //// revoir les condition true et false de tabicon et add ** edit en position collapsed avec icon
   const {
     tabSelected,
     setTabSelected,
@@ -21,24 +22,26 @@ function PanelTabs() {
   const isTabSelected = (tab) => {
     if (tab === "icon") {
       setTabIconSelected(!tabIconSelected);
+      setIsCollasped(!isCollasped);
     }
     if (tab !== "icon") {
       setTabSelected(tab);
     }
-  };
-
-  const ModifyClassTabSelected = (tab) => {
-    if (tabSelected === tab) {
-      return "is-active";
+    if ((tabSelected === "add" || tabSelected === "edit") && tabIconSelected) {
+      setIsCollasped(!isCollasped);
+      setTabIconSelected(!tabIconSelected);
     }
   };
+
+  const ModifyClassTabSelected = (tab) =>
+    tabSelected === tab ? "is-active" : "";
 
   return (
     <PanelTabsStyled>
       <Tab
         icon={tabIconSelected ? <FiChevronUp /> : <FiChevronDown />}
         label=""
-        className={!tabIconSelected ? "is-active" : ""}
+        className={tabIconSelected ? "is-active" : ""}
         onClick={() => isTabSelected("icon")}
       />
       <Tab
