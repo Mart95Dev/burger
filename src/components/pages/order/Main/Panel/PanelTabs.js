@@ -2,11 +2,10 @@ import React from "react";
 import { useContext } from "react";
 import PanelContext from "../../../../context/OrderContext";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
-import { AiOutlinePlus } from "react-icons/ai";
-import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components/macro";
 import Tab from "../../../../reusable-ui/Tab";
 import { theme } from "./../../../../../theme/index";
+import { configTabs } from "./configTabs";
 
 function PanelTabs() {
   //// revoir les condition true et false de tabicon et add ** edit en position collapsed avec icon
@@ -36,6 +35,8 @@ function PanelTabs() {
   const ModifyClassTabSelected = (tab) =>
     tabSelected === tab ? "is-active" : "";
 
+  const tabs = configTabs;
+
   return (
     <PanelTabsStyled>
       <Tab
@@ -43,18 +44,15 @@ function PanelTabs() {
         className={tabIconSelected ? "is-active" : ""}
         onClick={() => isTabSelected("icon")}
       />
-      <Tab
-        icon={<AiOutlinePlus />}
-        label="Ajouter un produit"
-        className={ModifyClassTabSelected("add")}
-        onClick={() => isTabSelected("add")}
-      />
-      <Tab
-        icon={<MdModeEditOutline />}
-        label="Modifier un produit"
-        className={ModifyClassTabSelected("edit")}
-        onClick={() => isTabSelected("edit")}
-      />
+      {tabs.map((tab) => (
+        <Tab
+          key={tab.index}
+          icon={tab.icon}
+          label={tab.label}
+          className={ModifyClassTabSelected(tab.index)}
+          onClick={() => isTabSelected(tab.index)}
+        />
+      ))}
     </PanelTabsStyled>
   );
 }
