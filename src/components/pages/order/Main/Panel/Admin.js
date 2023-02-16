@@ -8,9 +8,6 @@ function Admin() {
   //state
   const { isCollasped } = useContext(PanelContext);
 
-  // console.log("tabIconSelected" + !tabIconSelected);
-  // console.log("isCollasped" + isCollasped);
-
   return (
     <AdminStyled>
       <PanelTabs />
