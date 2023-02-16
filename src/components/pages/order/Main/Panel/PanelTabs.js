@@ -5,7 +5,7 @@ import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { MdModeEditOutline } from "react-icons/md";
 import styled from "styled-components/macro";
-import Tab from "./Tab";
+import Tab from "../../../../reusable-ui/Tab";
 import { theme } from "./../../../../../theme/index";
 
 function PanelTabs() {
@@ -40,7 +40,6 @@ function PanelTabs() {
     <PanelTabsStyled>
       <Tab
         icon={tabIconSelected ? <FiChevronUp /> : <FiChevronDown />}
-        label=""
         className={tabIconSelected ? "is-active" : ""}
         onClick={() => isTabSelected("icon")}
       />
