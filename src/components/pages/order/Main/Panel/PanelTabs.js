@@ -61,6 +61,9 @@ export default PanelTabs;
 
 const PanelTabsStyled = styled.div`
   display: flex;
+  position: absolute;
+  left: 5%;
+  top: -43px;
 
   button {
     margin-left: 1px;

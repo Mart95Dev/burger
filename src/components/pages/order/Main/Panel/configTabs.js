@@ -5,11 +5,11 @@ export const configTabs = [
   {
     index: "add",
     label: "Ajouter un produit",
-    Icon: <AiOutlinePlus />,
+    icon: <AiOutlinePlus />,
   },
   {
     index: "edit",
     label: "Modifier un produit",
-    Icon: <MdModeEditOutline />,
+    icon: <MdModeEditOutline />,
   },
 ];

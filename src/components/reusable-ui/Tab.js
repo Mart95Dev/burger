@@ -28,9 +28,6 @@ const TabStyled = styled.button`
   padding: 10px 22px;
   height: 43px;
 
-  position: relative;
-  left: 5%;
-
   font-size: ${theme.fonts.size.P0};
   color: ${theme.colors.greySemiDark};
 
