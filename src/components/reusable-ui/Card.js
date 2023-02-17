@@ -29,7 +29,7 @@ const CardStyled = styled.div`
   grid-template-rows: 65% 1fr;
   padding: 20px;
   padding-bottom: 10px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
 
   .image {
@@ -66,9 +66,6 @@ const CardStyled = styled.div`
     }
 
     .description {
-      /* display: flex;
-      justify-content: space-between;
-      align-items: center; */
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;
