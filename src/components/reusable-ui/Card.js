@@ -83,7 +83,7 @@ const CardStyled = styled.div`
       }
 
       .right-description {
-        display: flex-block;
+        display: flex;
         justify-content: flex-end;
         align-items: center;
         font-size: ${theme.fonts.size.P0};
