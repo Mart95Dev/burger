@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { theme } from "./../../../../theme/index";
 

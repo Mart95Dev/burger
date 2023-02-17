@@ -1,23 +1,24 @@
 import React from "react";
-import { useState } from "react";
+//import { useState } from "react";
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { BsPersonCircle } from "react-icons/bs";
-import { theme } from "../../../../theme/index";
-import ToggleButton from "./ToggleButton";
+import ToggleButton from "../../../reusable-ui/ToggleButton";
 import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
+import { theme } from "./../../../../theme/index";
+import { useContext } from "react";
+import PanelContext from "../../../context/OrderContext";
 
 export default function RightSide() {
   //state
   const { username } = useParams();
-  const [isModeAdmin, setisModeAdmin] = useState(false);
+  const { isModeAdmin, setIsModeAdmin } = useContext(PanelContext);
 
   //comortements
   const displayToastNotification = () => {
     if (!isModeAdmin) {
       toast.info("Mode admin activé", {
-        // icon: <FaUserSecret size={30} />,
         theme: "dark",
         position: "bottom-right",
         autoClose: 5000,
@@ -27,14 +28,13 @@ export default function RightSide() {
         draggable: true,
         progress: undefined,
       });
-    }
-    setisModeAdmin(!isModeAdmin);
+    } else toast.dismiss();
+    setIsModeAdmin(!isModeAdmin);
   };
 
   //affichage
   return (
     <ContainerRightSideStyled>
-      {/* <div className="admin-button">Admin button</div> */}
       <ToggleButton
         className={"admin-button"}
         labelIfUnchecked={"Activer le mode admin"}
@@ -78,6 +78,7 @@ const ContainerRightSideStyled = styled.div`
   }
 
   .username {
+    text-transform: capitalize;
     color: ${theme.colors.primary};
   }
 

@@ -1,17 +1,43 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
+import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
+  //state
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isReduce, setIsReduce] = useState(false);
+  const [tabIconSelected, setTabIconSelected] = useState(false);
+  const [tabSelected, setTabSelected] = useState("add");
+  const [isCollasped, setIsCollasped] = useState(false);
+
+  const panelContextValue = {
+    isModeAdmin,
+    setIsModeAdmin,
+    isReduce,
+    setIsReduce,
+    tabIconSelected,
+    setTabIconSelected,
+    tabSelected,
+    setTabSelected,
+    isCollasped,
+    setIsCollasped,
+  };
+
+  //comportement
+
+  //display
   return (
-    <OrderPageStyled>
-      <div className="container">
-        <Navbar />
-        <Main />
-      </div>
-    </OrderPageStyled>
+    <PanelContext.Provider value={panelContextValue}>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
+    </PanelContext.Provider>
   );
 }
 
