@@ -23,8 +23,8 @@ export default function Card({ title, imageSource, leftDescription }) {
 
 const CardStyled = styled.div`
   background: ${theme.colors.white};
-  width: 200px;
-  height: 300px;
+  width: 240px;
+  height: 330px;
   display: grid;
   grid-template-rows: 65% 1fr;
   padding: 20px;
@@ -71,6 +71,7 @@ const CardStyled = styled.div`
       align-items: center; */
       display: grid;
       grid-template-columns: 1fr 1fr;
+      align-items: center;
 
       .left-description {
         display: flex;
