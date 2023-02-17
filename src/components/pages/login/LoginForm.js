@@ -31,13 +31,13 @@ function LoginForm() {
           value={name}
           onChange={handleChange}
           type="text"
-          placeholder={"Entrer votre prénom"}
+          placeholder={"Entrez votre prénom"}
           required
           Icon={<BsPersonCircle className="icon" />}
         />
         <PrimaryButton
-          label={"Accèder à mon"}
-          Icon={<IoChevronForward className="icon-button" />}
+          label={"Accèder à mon espace"}
+          Icon={<IoChevronForward className="icon" />}
         />
       </LoginFormStyled>
     </>
@@ -48,46 +48,37 @@ export default LoginForm;
 
 const LoginFormStyled = styled.form`
   text-align: center;
-  padding: 2.5rem 2rem;
-  margin: 0 auto;
+  padding: 40px ${theme.spacing.lg};
+  margin: 0px auto;
   max-width: 500px;
   min-width: 400px;
   border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
   hr {
-    border: 1.5px solid #f56a2c;
-    margin-bottom: 45px;
-  }
-
-  h1,
-  h2 {
-    font-family: "Amatic SC", cursive;
+    margin-top: ${theme.gridUnit * 3}px;
+    margin-bottom: ${theme.gridUnit * 5}px;
+    border: 1.5px solid ${theme.colors.loginLine};
+    width: 102%;
   }
 
   h1 {
+    margin-top: ${theme.gridUnit * 5}px;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P5};
-    margin: 30px 0;
   }
 
   h2 {
+    margin: 20px 10px 10px;
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P4};
-    margin: 30px 10px 10px;
   }
 
   .icon {
-    font-size: ${theme.fonts.size.P0};
-    margin-right: ${theme.spacing.xs};
-    color: ${theme.colors.greySemiDark};
-  }
-
-  .icon-button {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     margin-left: 10px;
   }
 `;

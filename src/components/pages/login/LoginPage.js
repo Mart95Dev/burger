@@ -1,6 +1,5 @@
 import React from "react";
 import LoginForm from "./LoginForm";
-
 import styled from "styled-components";
 import Logo from "./../../reusable-ui/Logo";
 
@@ -19,7 +18,6 @@ const LoginPageStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* overflow: hidden; */
 
   ::before {
     content: "";

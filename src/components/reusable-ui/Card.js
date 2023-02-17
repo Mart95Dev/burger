@@ -23,8 +23,8 @@ export default function Card({ title, imageSource, leftDescription }) {
 
 const CardStyled = styled.div`
   background: ${theme.colors.white};
-  width: 200px;
-  height: 300px;
+  width: 240px;
+  height: 330px;
   display: grid;
   grid-template-rows: 55% 1fr;
   padding: 20px;
@@ -66,9 +66,9 @@ const CardStyled = styled.div`
     }
 
     .description {
-      padding: 0px;
       display: grid;
       grid-template-columns: 1fr 1fr;
+      align-items: center;
 
       .left-description {
         display: flex;
@@ -83,10 +83,11 @@ const CardStyled = styled.div`
       }
 
       .right-description {
-        display: flex;
+        display: flex-block;
         justify-content: flex-end;
         align-items: center;
         font-size: ${theme.fonts.size.P0};
+        padding-bottom: 20px;
 
         .primary-button {
           font-size: ${theme.fonts.size.XS};
