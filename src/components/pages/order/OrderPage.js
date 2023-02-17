@@ -8,7 +8,6 @@ import { theme } from "./../../../theme/index";
 export default function OrderPage() {
   //state
   const [isModeAdmin, setIsModeAdmin] = useState(false);
-  const [isReduce, setIsReduce] = useState(false);
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
@@ -16,8 +15,6 @@ export default function OrderPage() {
   const panelContextValue = {
     isModeAdmin,
     setIsModeAdmin,
-    isReduce,
-    setIsReduce,
     tabIconSelected,
     setTabIconSelected,
     tabSelected,

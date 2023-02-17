@@ -18,7 +18,7 @@ function PanelTabs() {
     setIsCollasped,
   } = useContext(PanelContext);
 
-  const isTabSelected = (tab) => {
+  const selectTab = (tab) => {
     if (tab === "icon") {
       setTabIconSelected(!tabIconSelected);
       setIsCollasped(!isCollasped);
@@ -32,7 +32,7 @@ function PanelTabs() {
     }
   };
 
-  const ModifyClassTabSelected = (tab) =>
+  const modifyClassTabSelected = (tab) =>
     tabSelected === tab ? "is-active" : "";
 
   const tabs = configTabs;
@@ -42,15 +42,15 @@ function PanelTabs() {
       <Tab
         icon={tabIconSelected ? <FiChevronUp /> : <FiChevronDown />}
         className={tabIconSelected ? "is-active" : ""}
-        onClick={() => isTabSelected("icon")}
+        onClick={() => selectTab("icon")}
       />
       {tabs.map((tab) => (
         <Tab
           key={tab.index}
           icon={tab.icon}
           label={tab.label}
-          className={ModifyClassTabSelected(tab.index)}
-          onClick={() => isTabSelected(tab.index)}
+          className={modifyClassTabSelected(tab.index)}
+          onClick={() => selectTab(tab.index)}
         />
       ))}
     </PanelTabsStyled>
