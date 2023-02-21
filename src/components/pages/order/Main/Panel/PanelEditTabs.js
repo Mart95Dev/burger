@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import PanelContext from "../../../../context/OrderContext";
+import FormAdminPanel from "./../../../../reusable-ui/FormAdminPanel";
+import { theme } from "./../../../../../theme/index";
 
 function PanelEditTabs() {
   //state
@@ -11,8 +13,8 @@ function PanelEditTabs() {
   return (
     <>
       <PanelEditStyled>
-        <div>{tabSelected === "add" ? <p>Ajouter produit</p> : ""}</div>
-        <div>{tabSelected === "edit" ? <p>Modifier produit</p> : ""}</div>
+        <div>{tabSelected === "add" ? <FormAdminPanel /> : ""}</div>
+        <div>{tabSelected === "edit" ? <FormAdminPanel /> : ""}</div>
       </PanelEditStyled>
     </>
   );
@@ -24,12 +26,13 @@ const PanelEditStyled = styled.div`
   /* grid-column-start: 2; */ //désactiver pour le panel
 
   background: #ffffff;
-  box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: ${theme.shadows.medium};
   right: 0;
   left: 0;
   height: 250px;
   padding-top: 17px;
   padding-left: 21px;
-  display: flex;
-  justify-content: start;
+
+  /* display: flex;
+  justify-content: start; */
 `;
