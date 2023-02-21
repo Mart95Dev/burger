@@ -28,9 +28,9 @@ function FormAdminPanel() {
         <div className="preview-image">
           <div className="image">Aucune image</div>
         </div>
-        <div className="">
+        <div className="grid-inputs">
           <TextInput
-            className="text-inputs"
+            className="text-inputs grid-input-first-row"
             value={name}
             onChange={handleChange}
             type="text"
@@ -40,6 +40,7 @@ function FormAdminPanel() {
           />
 
           <TextInput
+            className="text-inputs grid-input-second-row"
             value={name}
             onChange={handleChange}
             type="text"
@@ -49,6 +50,7 @@ function FormAdminPanel() {
           />
 
           <TextInput
+            className="text-inputs grid-input-third-row"
             value={name}
             onChange={handleChange}
             type="text"
@@ -58,6 +60,7 @@ function FormAdminPanel() {
           />
 
           <TextInput
+            className="text-inputs grid-input-third-row"
             value={name}
             onChange={handleChange}
             type="text"
@@ -67,6 +70,7 @@ function FormAdminPanel() {
           />
 
           <TextInput
+            className="text-inputs grid-input-third-row"
             value={name}
             onChange={handleChange}
             type="text"
@@ -105,6 +109,8 @@ const FormAdminPanelStyled = styled.div`
       width: 100%;
       display: flex;
 
+      grid-area: 1/1/3/1;
+
       border-radius: ${theme.borderRadius.round};
       line-height: 1.5px;
     }
@@ -116,9 +122,26 @@ const FormAdminPanelStyled = styled.div`
       align-items: center;
     }
 
+    .grid-inputs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 10px;
+    }
+
     .text-inputs {
       background-color: ${theme.colors.background_white};
       color: ${theme.colors.greyLight};
+    }
+
+    .grid-input-first-row {
+      grid-area: 1/1/2/4;
+    }
+    .grid-input-second-row {
+      grid-area: 2/1/3/4;
+    }
+    .grid-input-third-row {
+      grid-column: 1fr 1fr 1fr;
     }
 
     .color-icon {
