@@ -2,17 +2,28 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function TextInput({ value, onChange, Icon, ...restProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  ...restProps
+}) {
   return (
-    <InputStyled>
+    <InputStyled className={className}>
       {Icon && Icon}
-      <input value={value} onChange={onChange} {...restProps} />
+      <input
+        className={className}
+        value={value}
+        onChange={onChange}
+        {...restProps}
+      />
     </InputStyled>
   );
 }
 
 const InputStyled = styled.div`
-  background-color: ${theme.colors.white};
+  /* background-color: ${theme.colors.white}; */
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
