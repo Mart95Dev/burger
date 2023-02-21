@@ -23,12 +23,12 @@ export default function TextInput({
 }
 
 const InputStyled = styled.div`
-  /* background-color: ${theme.colors.white}; */
+  background-color: ${theme.colors.white};
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
   padding: 18px 24px;
-  margin: 18px opx; // could be handle in parent too
+  /* margin: 18px 0px; // could be handle in parent too */
 
   .icon {
     font-size: ${theme.fonts.size.P0};
@@ -46,4 +46,6 @@ const InputStyled = styled.div`
   &::placeholder {
     background: ${theme.colors.white};
     color: ${theme.colors.greyLight};
+
+  
 `;
