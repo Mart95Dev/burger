@@ -19,6 +19,8 @@ function Admin() {
 export default Admin;
 
 const AdminStyled = styled.div`
+  display: grid;
+  grid-column-start: 2;
   position: absolute;
   left: 0;
   right: 0;
