@@ -121,7 +121,7 @@ const FormAdminPanelStyled = styled.div`
 
   .preview-image {
     border: 1px solid ${theme.colors.greyLight};
-    height: 90%;
+    height: 100%;
     width: 100%;
     display: flex;
     border-radius: ${theme.borderRadius.round};
