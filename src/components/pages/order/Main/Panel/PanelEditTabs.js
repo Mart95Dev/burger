@@ -51,6 +51,7 @@ const PanelEditStyled = styled.div`
     top: 50px;
 
     span {
+      margin-left: 40px;
       color: rgb(116, 123, 145);
       font-family: "Amatic SC", cursive;
       font-size: 24px;
