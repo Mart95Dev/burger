@@ -37,7 +37,7 @@ function LoginForm() {
       />
       <PrimaryButton
         label={"Accéder à mon espace"}
-        Icon={<IoChevronForward className="icon-button" />}
+        Icon={<IoChevronForward className="icon" />}
       />
     </LoginFormStyled>
   );
