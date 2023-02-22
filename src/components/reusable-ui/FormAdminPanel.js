@@ -85,7 +85,10 @@ function FormAdminPanel() {
             required
             Icon={<GoMegaphone className="icon color-icon" />}
           />
-          <PrimaryButton className="grid-button" />
+          <PrimaryButton
+            className="grid-button add-product-menu"
+            label={"Ajouter un nouveau produit au menu"}
+          />
         </div>
       </form>
     </FormAdminPanelStyled>
@@ -172,9 +175,28 @@ const FormAdminPanelStyled = styled.div`
     .grid-pub {
       grid-area: pub;
     }
-
     .color-icon {
       color: ${theme.colors.greyBlue};
+    }
+
+    .add-product-menu {
+      margin-top: 0px;
+      padding: 10px;
+      background-color: ${theme.colors.success};
+      border: 1px solid ${theme.colors.success};
+      font-weight: ${theme.fonts.weights.semiBold};
+
+      :hover {
+        color: ${theme.colors.success};
+        background-color: ${theme.colors.white};
+        border: 1px solid ${theme.colors.success};
+        transition: all 200ms ease-out;
+      }
+
+      :active {
+        background-color: ${theme.colors.success};
+        color: ${theme.colors.white};
+      }
     }
   }
 `;
