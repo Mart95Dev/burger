@@ -7,12 +7,14 @@ export default function TextInput({
   onChange,
   Icon,
   className,
+  inputText,
   ...restProps
 }) {
   return (
     <InputStyled className={className}>
       {Icon && Icon}
       <input
+        style={inputText && inputText}
         className={className}
         value={value}
         onChange={onChange}
@@ -28,7 +30,6 @@ const InputStyled = styled.div`
   display: flex;
   align-items: center;
   padding: 18px 24px;
-  /* margin: 18px 0px; // could be handle in parent too */
 
   .icon {
     font-size: ${theme.fonts.size.P0};

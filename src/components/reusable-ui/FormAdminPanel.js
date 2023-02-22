@@ -6,9 +6,13 @@ import { FaHamburger } from "react-icons/fa";
 import { MdPhotoCamera, MdEuro } from "react-icons/md";
 import { BsBoxSeam } from "react-icons/bs";
 import { GoMegaphone } from "react-icons/go";
+import PrimaryButton from "./PrimaryButton";
 
 function FormAdminPanel() {
   //state
+  const inputStyle = {
+    outline: "none",
+  };
   const [name, setName] = useState(""); // mettre context en fonction input
   const handleChange = (e) => {
     setName(e.target.value); // modifier le state de la value de input
@@ -31,6 +35,7 @@ function FormAdminPanel() {
         <div className="grid-inputs">
           <TextInput
             className="text-inputs grid-input-first-row"
+            inputText={inputStyle}
             value={name}
             onChange={handleChange}
             type="text"
@@ -41,43 +46,46 @@ function FormAdminPanel() {
 
           <TextInput
             className="text-inputs grid-input-second-row"
+            inputText={inputStyle}
             value={name}
             onChange={handleChange}
             type="text"
             placeholder={"Lien URL d'une image (ex: https//photo-frites.jpg)"}
             required
-            Icon={<MdPhotoCamera className="icon" />}
+            Icon={<MdPhotoCamera className="icon color-icon" />}
           />
 
           <TextInput
-            className="text-inputs grid-input-third-row"
+            className="text-inputs grid-price"
+            inputText={inputStyle}
             value={name}
             onChange={handleChange}
             type="text"
             placeholder={"Prix"}
             required
-            Icon={<MdEuro className="icon" />}
+            Icon={<MdEuro className="icon color-icon" />}
           />
 
           <TextInput
-            className="text-inputs grid-input-third-row"
+            className="text-inputs grid-stock"
             value={name}
             onChange={handleChange}
             type="text"
             placeholder={"Stock"}
             required
-            Icon={<BsBoxSeam className="icon" />}
+            Icon={<BsBoxSeam className="icon color-icon" />}
           />
 
           <TextInput
-            className="text-inputs grid-input-third-row"
+            className="text-inputs grid-pub"
             value={name}
             onChange={handleChange}
             type="text"
             placeholder={"Pub"}
             required
-            Icon={<GoMegaphone className="icon" />}
+            Icon={<GoMegaphone className="icon color-icon" />}
           />
+          <PrimaryButton className="grid-button" />
         </div>
       </form>
     </FormAdminPanelStyled>
@@ -87,7 +95,7 @@ function FormAdminPanel() {
 export default FormAdminPanel;
 
 const FormAdminPanelStyled = styled.div`
-  padding: 25px 30px 20px 60px;
+  padding: 20px 30px 20px 60px;
   display: flex;
   align-items: flex-start;
   color: ${theme.colors.greyDark};
@@ -99,49 +107,70 @@ const FormAdminPanelStyled = styled.div`
     display: grid;
     grid-template-columns: 20% 1fr;
     grid-template-rows: 70% 1fr;
+    grid-template-areas:
+      "image inputs"
+      ". button";
+
     gap: 8px 20px;
     width: 70%;
     margin: auto 0px;
+  }
 
-    .preview-image {
-      border: 1px solid ${theme.colors.greyLight};
-      height: 100%;
-      width: 100%;
-      display: flex;
-
-      grid-area: 1/1/3/1;
-
-      border-radius: ${theme.borderRadius.round};
-      line-height: 1.5px;
-    }
+  .preview-image {
+    border: 1px solid ${theme.colors.greyLight};
+    height: 90%;
+    width: 100%;
+    display: flex;
+    border-radius: ${theme.borderRadius.round};
+    line-height: 1.5px;
 
     .image {
+      grid-area: image;
       margin: auto;
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: ${theme.fonts.size.P0};
     }
+  }
 
-    .grid-inputs {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: repeat(3, 1fr);
-      gap: 10px;
-    }
+  .grid-button {
+    grid-area: button;
+    grid-column: span 2;
+  }
+
+  .grid-inputs {
+    grid-area: inputs;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-areas:
+      "product product product"
+      "url url url"
+      "price stock pub";
+
+    gap: 6px;
 
     .text-inputs {
       background-color: ${theme.colors.background_white};
-      color: ${theme.colors.greyLight};
+      padding: 5px 16px;
+      /* color: ${theme.colors.greyLight}; */
     }
 
     .grid-input-first-row {
-      grid-area: 1/1/2/4;
+      grid-area: product;
     }
     .grid-input-second-row {
-      grid-area: 2/1/3/4;
+      grid-area: url;
     }
-    .grid-input-third-row {
-      grid-column: 1fr 1fr 1fr;
+    .grid-price {
+      grid-area: price;
+    }
+    .grid-stock {
+      grid-area: stock;
+    }
+    .grid-pub {
+      grid-area: pub;
     }
 
     .color-icon {
