@@ -8,7 +8,6 @@ import { theme } from "./../../../../../theme/index";
 import { configTabs } from "./configTabs";
 
 function PanelTabs() {
-  //// revoir les condition true et false de tabicon et add ** edit en position collapsed avec icon
   const {
     tabSelected,
     setTabSelected,

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../api/fakeData/fakeMenu";
-import Card from "../../../reusable-ui/Card";
-import { formatPrice } from "./../../../../utils/maths";
+import { fakeMenu2 } from "../../../../api/fakeData/fakeMenu";
+import Card from "../../../../reusable-ui/Card";
+import { formatPrice } from "../../../../../utils/maths";
 
 function Menu() {
   //state
