@@ -1,27 +1,83 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
-import { FaHamburger } from "react-icons/fa";
-import { MdPhotoCamera, MdEuro } from "react-icons/md";
-import { BsBoxSeam } from "react-icons/bs";
-import { GoMegaphone } from "react-icons/go";
 import PrimaryButton from "./PrimaryButton";
+import InputSelect from "./../pages/order/Main/Panel/InputSelect";
+import formAdminPanelContext from "../context/AdminContext";
+import {
+  configTextInput,
+  configSelectInput,
+} from "../../components/pages/order/Main/Panel/configForm";
 
 function FormAdminPanel() {
   //state
+  const inputText = configTextInput;
+  const selectInput = configSelectInput;
+
+  const {
+    nameProduct,
+    url,
+    price,
+    setNameProduct,
+    setUrl,
+    setPrice,
+    // setStock,
+    // setPub,
+  } = useContext(formAdminPanelContext);
+  console.log(nameProduct, url, price);
   const inputStyle = {
     outline: "none",
   };
-  const [name, setName] = useState(""); // mettre context en fonction input
+
+  const valueInput = (item) => {
+    switch (item) {
+      case "nameProduct":
+        item = { nameProduct };
+        console.log(nameProduct);
+        break;
+      case "url":
+        item = { url };
+        console.log(url);
+        break;
+      case "price":
+        item = { price };
+        console.log(price);
+        break;
+      default:
+        item = "";
+        break;
+    }
+  };
+
   const handleChange = (e) => {
-    setName(e.target.value); // modifier le state de la value de input
+    let value = e.target.value;
+    let name = e.target.name;
+    switch (name) {
+      case "title-product":
+        setNameProduct(value);
+        break;
+      case "imageSrc":
+        setUrl(value);
+        break;
+      case "price":
+        setPrice(value);
+        break;
+      default:
+        name = "";
+        break;
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setName(""); // modifier le state de la value de input
+    setNameProduct("");
+    setUrl("");
+    setPrice("");
+    // setStock(stock);
+    // setPub(pub);
   };
+
   return (
     <FormAdminPanelStyled>
       <form
@@ -33,58 +89,36 @@ function FormAdminPanel() {
           <div className="image">Aucune image</div>
         </div>
         <div className="grid-inputs">
-          <TextInput
-            className="text-inputs grid-input-first-row"
-            inputText={inputStyle}
-            value={name}
-            onChange={handleChange}
-            type="text"
-            placeholder={"Nom du produit"}
-            required
-            Icon={<FaHamburger className="icon color-icon" />}
-          />
+          {inputText.map((item) => (
+            <TextInput
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              Icon={item.Icon}
+              placeholder={item.placeholder}
+              value={valueInput(item.value)}
+              className={item.className}
+              inputText={inputStyle}
+              type="text"
+              onChange={handleChange}
+              required
+            />
+          ))}
 
-          <TextInput
-            className="text-inputs grid-input-second-row"
-            inputText={inputStyle}
-            value={name}
-            onChange={handleChange}
-            type="text"
-            placeholder={"Lien URL d'une image (ex: https//photo-frites.jpg)"}
-            required
-            Icon={<MdPhotoCamera className="icon color-icon" />}
-          />
+          {selectInput.map((item) => (
+            <InputSelect
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              Icon={item.Icon}
+              value={item.value}
+              onChange={handleChange}
+              className={item.className}
+              option_1={item.option_1}
+              option_2={item.option_2}
+            />
+          ))}
 
-          <TextInput
-            className="text-inputs grid-price"
-            inputText={inputStyle}
-            value={name}
-            onChange={handleChange}
-            type="text"
-            placeholder={"Prix"}
-            required
-            Icon={<MdEuro className="icon color-icon" />}
-          />
-
-          <TextInput
-            className="text-inputs grid-stock"
-            value={name}
-            onChange={handleChange}
-            type="text"
-            placeholder={"Stock"}
-            required
-            Icon={<BsBoxSeam className="icon color-icon" />}
-          />
-
-          <TextInput
-            className="text-inputs grid-pub"
-            value={name}
-            onChange={handleChange}
-            type="text"
-            placeholder={"Pub"}
-            required
-            Icon={<GoMegaphone className="icon color-icon" />}
-          />
           <PrimaryButton
             className="grid-button add-product-menu"
             label={"Ajouter un nouveau produit au menu"}
@@ -157,7 +191,6 @@ const FormAdminPanelStyled = styled.div`
     .text-inputs {
       background-color: ${theme.colors.background_white};
       padding: 5px 16px;
-      /* color: ${theme.colors.greyLight}; */
     }
 
     .grid-input-first-row {
@@ -175,8 +208,10 @@ const FormAdminPanelStyled = styled.div`
     .grid-pub {
       grid-area: pub;
     }
+
     .color-icon {
       color: ${theme.colors.greyBlue};
+      font-size: 18px;
     }
 
     .add-product-menu {
