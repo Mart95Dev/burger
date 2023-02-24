@@ -1,23 +1,23 @@
-export const fakeMenu1 = [
-  {
-    id: 1,
-    imageSource: "/images/burger1.png",
-    title: "Burger 1",
-    price: 5.297,
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  },
-  {
-    id: 2,
-    imageSource: "/images/burger2.png",
-    title: "Burger 2",
-    price: 7.556,
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  },
-]
+// export const fakeMenu1 = [
+//   {
+//     id: 1,
+//     imageSource: "/images/burger1.png",
+//     title: "Burger 1",
+//     price: 5.297,
+//     quantity: 0,
+//     isAvailable: true,
+//     isAdvertised: false,
+//   },
+//   {
+//     id: 2,
+//     imageSource: "/images/burger2.png",
+//     title: "Burger 2",
+//     price: 7.556,
+//     quantity: 0,
+//     isAvailable: true,
+//     isAdvertised: false,
+//   },
+// ]
 
 export const fakeMenu2 = [
   {
@@ -110,4 +110,4 @@ export const fakeMenu2 = [
     isAvailable: true,
     isAdvertised: false,
   },
-]
+];
