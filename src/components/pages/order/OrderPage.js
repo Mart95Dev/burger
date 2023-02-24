@@ -15,8 +15,8 @@ export default function OrderPage() {
   const [nameProduct, setNameProduct] = useState("");
   const [url, setUrl] = useState("");
   const [price, setPrice] = useState("");
-  const [stock, setStock] = useState(true);
-  const [pub, setPub] = useState(false);
+  const [isAvailable, setIsAvailable] = useState(true);
+  const [isAdvertised, setIsAdvertised] = useState(false);
 
   const panelContextValue = {
     isModeAdmin,
@@ -36,10 +36,10 @@ export default function OrderPage() {
     setUrl,
     price,
     setPrice,
-    stock,
-    setStock,
-    pub,
-    setPub,
+    isAvailable,
+    setIsAvailable,
+    isAdvertised,
+    setIsAdvertised,
   };
 
   //comportement

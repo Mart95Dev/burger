@@ -14,7 +14,7 @@ const configTextInput = [
   },
   {
     id: "image",
-    name: "imageSrc",
+    name: "imageSource",
     className: "text-inputs grid-input-second-row",
     Icon: <MdPhotoCamera className="icon color-icon" />,
     placeholder: "Lien URL d'une image (ex: https//photo-frites.jpg)",

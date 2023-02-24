@@ -7,8 +7,8 @@ export default createContext({
   setUrl: () => {},
   price: "",
   setPrice: () => {},
-  stock: true,
-  setStock: () => {},
-  pub: false,
-  setPub: () => {},
+  isAvailable: true,
+  setIsAvailable: () => {},
+  isAdvertised: false,
+  setIsAdvertised: () => {},
 });

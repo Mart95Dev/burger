@@ -19,13 +19,15 @@ function FormAdminPanel() {
     nameProduct,
     url,
     price,
+    isAvailable,
+    isAdvertised,
     setNameProduct,
     setUrl,
     setPrice,
-    // setStock,
-    // setPub,
+    setIsAdvertised,
+    setIsAvailable,
   } = useContext(formAdminPanelContext);
-  console.log(nameProduct, url, price);
+
   const inputStyle = {
     outline: "none",
   };
@@ -34,15 +36,12 @@ function FormAdminPanel() {
     switch (item) {
       case "nameProduct":
         item = { nameProduct };
-        console.log(nameProduct);
         break;
       case "url":
         item = { url };
-        console.log(url);
         break;
       case "price":
         item = { price };
-        console.log(price);
         break;
       default:
         item = "";
@@ -69,13 +68,22 @@ function FormAdminPanel() {
     }
   };
 
+  const handleSelectChange = (e) => {
+    let valueSelect = e.target.value;
+    let nameSelectId = e.target.id;
+    if (nameSelectId === "stock") {
+      return setIsAdvertised(valueSelect);
+    }
+    if (nameSelectId === "pub") {
+      return setIsAdvertised(valueSelect);
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setNameProduct("");
     setUrl("");
     setPrice("");
-    // setStock(stock);
-    // setPub(pub);
   };
 
   return (
@@ -111,8 +119,7 @@ function FormAdminPanel() {
               id={item.id}
               name={item.name}
               Icon={item.Icon}
-              value={item.value}
-              onChange={handleChange}
+              onChange={handleSelectChange}
               className={item.className}
               option_1={item.option_1}
               option_2={item.option_2}
