@@ -19,8 +19,6 @@ function FormAdminPanel() {
     nameProduct,
     url,
     price,
-    isAvailable,
-    isAdvertised,
     setNameProduct,
     setUrl,
     setPrice,
@@ -53,7 +51,7 @@ function FormAdminPanel() {
     let value = e.target.value;
     let name = e.target.name;
     switch (name) {
-      case "title-product":
+      case "title":
         setNameProduct(value);
         break;
       case "imageSrc":
@@ -71,10 +69,10 @@ function FormAdminPanel() {
   const handleSelectChange = (e) => {
     let valueSelect = e.target.value;
     let nameSelectId = e.target.id;
-    if (nameSelectId === "stock") {
-      return setIsAdvertised(valueSelect);
+    if (nameSelectId === "isAvailable") {
+      return setIsAvailable(valueSelect);
     }
-    if (nameSelectId === "pub") {
+    if (nameSelectId === "isAdvertised") {
       return setIsAdvertised(valueSelect);
     }
   };
@@ -115,8 +113,7 @@ function FormAdminPanel() {
 
           {selectInput.map((item) => (
             <InputSelect
-              key={item.id}
-              id={item.id}
+              key={item.name}
               name={item.name}
               Icon={item.Icon}
               onChange={handleSelectChange}

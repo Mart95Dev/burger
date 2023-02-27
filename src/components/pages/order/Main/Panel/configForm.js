@@ -5,8 +5,8 @@ import { GoMegaphone } from "react-icons/go";
 
 const configTextInput = [
   {
-    id: "title-product",
-    name: "title-product",
+    id: "title",
+    name: "title",
     className: "text-inputs grid-input-first-row",
     Icon: <FaHamburger className="icon color-icon" />,
     placeholder: "Produit (ex: Super Burger)",
@@ -32,16 +32,14 @@ const configTextInput = [
 
 const configSelectInput = [
   {
-    id: "stock",
-    name: "stock-select",
+    name: "isAvailable",
     className: "text-inputs grid-stock",
     Icon: <BsBoxSeam className="icon color-icon" />,
     option_1: <option value="true">Stock</option>,
     option_2: <option value="false">Rupture</option>,
   },
   {
-    id: "pub",
-    name: "pub-select",
+    name: "isAdvertised",
     className: "text-inputs grid-pub",
     Icon: <GoMegaphone className="icon color-icon" />,
     option_1: <option value="true">Sans pub</option>,
