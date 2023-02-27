@@ -40,10 +40,10 @@ const configSelectInput = [
   },
   {
     name: "isAdvertised",
-    className: "text-inputs grid-pub",
+    className: "text-inputs grid-advertise",
     Icon: <GoMegaphone className="icon color-icon" />,
-    option_1: <option value="true">Sans pub</option>,
-    option_2: <option value="false">Avec pub</option>,
+    option_1: <option value="false">Sans pub</option>,
+    option_2: <option value="true">Avec pub</option>,
   },
 ];
 
