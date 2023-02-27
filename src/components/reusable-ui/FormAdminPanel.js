@@ -1,10 +1,10 @@
-import { useContext } from "react";
+import { useRef } from "react";
 import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
 import PrimaryButton from "./PrimaryButton";
 import InputSelect from "./../pages/order/Main/Panel/InputSelect";
-import formAdminPanelContext from "../context/AdminContext";
+// import formAdminPanelContext from "../context/AdminContext";
 import {
   configTextInput,
   configSelectInput,
@@ -15,50 +15,64 @@ function FormAdminPanel() {
   const inputText = configTextInput;
   const selectInput = configSelectInput;
 
-  const {
-    nameProduct,
-    url,
-    price,
-    setNameProduct,
-    setUrl,
-    setPrice,
-    setIsAdvertised,
-    setIsAvailable,
-  } = useContext(formAdminPanelContext);
+  const refTitle = useRef(null);
+  const refUrl = useRef(null);
+  const refPrice = useRef(null);
+  const refIsAvailable = useRef(null);
+  const refIsAdvertised = useRef(null);
+
+  // const {
+  //   nameProduct,
+  //   url,
+  //   price,
+  //   isAvailable,
+  //   isAdvertised,
+  //   setNameProduct,
+  //   setUrl,
+  //   setPrice,
+  //   setIsAdvertised,
+  //   setIsAvailable,
+  // } = useContext(formAdminPanelContext);
 
   const inputStyle = {
     outline: "none",
   };
 
-  const valueInput = (item) => {
-    switch (item) {
-      case "nameProduct":
-        item = { nameProduct };
-        break;
-      case "url":
-        item = { url };
-        break;
-      case "price":
-        item = { price };
-        break;
-      default:
-        item = "";
-        break;
-    }
-  };
+  // const valueInput = (item) => {
+  //   switch (item) {
+  //     case "nameProduct":
+  //       // item = { nameProduct };  //
+  //       break;
+  //     case "url":
+  //       // item = { url };
+  //     //       break;
+  //     case "price":
+  //       // item = { price };  //
+  //       break;
+  //     default:
+  //       item = "";
+  //       break;
+  //   }
+  // };
 
   const handleChange = (e) => {
     let value = e.target.value;
     let name = e.target.name;
     switch (name) {
       case "title":
-        setNameProduct(value);
+        // setNameProduct(value);
+        refTitle.current = value;
+        console.log(refTitle);
         break;
-      case "imageSrc":
-        setUrl(value);
+      case "imageSource":
+        // setUrl(value);
+        refUrl.current = value;
+        console.log(refUrl);
         break;
       case "price":
-        setPrice(value);
+        // setPrice(value);
+        refPrice.current = value;
+        console.log(refPrice);
         break;
       default:
         name = "";
@@ -68,29 +82,32 @@ function FormAdminPanel() {
 
   const handleSelectChange = (e) => {
     let valueSelect = e.target.value;
-    let nameSelectId = e.target.id;
-    if (nameSelectId === "isAvailable") {
-      return setIsAvailable(valueSelect);
-    }
-    if (nameSelectId === "isAdvertised") {
-      return setIsAdvertised(valueSelect);
+    let nameSelect = e.target.name;
+    switch (nameSelect) {
+      case "isAvailable":
+        // setIsAvailable(valueSelect);
+        refIsAvailable.current = valueSelect;
+        console.log(refIsAvailable);
+        break;
+      case "isAdvertised":
+        // setIsAdvertised(valueSelect);
+        refIsAdvertised.current = valueSelect;
+        console.log(refIsAdvertised);
+        break;
+      default:
+        nameSelect = "";
+        break;
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setNameProduct("");
-    setUrl("");
-    setPrice("");
+    console.log("envoyé");
   };
 
   return (
     <FormAdminPanelStyled>
-      <form
-        action="submit"
-        onSubmit={handleSubmit}
-        className="form-admin-panel"
-      >
+      <form onSubmit={handleSubmit} className="form-admin-panel">
         <div className="preview-image">
           <div className="image">Aucune image</div>
         </div>
@@ -102,7 +119,7 @@ function FormAdminPanel() {
               name={item.name}
               Icon={item.Icon}
               placeholder={item.placeholder}
-              value={valueInput(item.value)}
+              // value={valueInput(item.value)}
               className={item.className}
               inputText={inputStyle}
               type="text"
@@ -188,7 +205,7 @@ const FormAdminPanelStyled = styled.div`
     grid-template-areas:
       "product product product"
       "url url url"
-      "price stock pub";
+      "price stock advertise";
 
     gap: 6px;
 
@@ -209,8 +226,8 @@ const FormAdminPanelStyled = styled.div`
     .grid-stock {
       grid-area: stock;
     }
-    .grid-pub {
-      grid-area: pub;
+    .grid-advertise {
+      grid-area: advertise;
     }
 
     .color-icon {
