@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
-import FormPanelContext from "../../context/AdminContext";
+// import FormPanelContext from "../../context/AdminContext";
 import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
@@ -12,11 +12,6 @@ export default function OrderPage() {
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
-  const [nameProduct, setNameProduct] = useState("");
-  const [url, setUrl] = useState("");
-  const [price, setPrice] = useState("");
-  const [isAvailable, setIsAvailable] = useState(true);
-  const [isAdvertised, setIsAdvertised] = useState(false);
 
   const panelContextValue = {
     isModeAdmin,
@@ -29,32 +24,17 @@ export default function OrderPage() {
     setIsCollasped,
   };
 
-  const FormPanelValue = {
-    nameProduct,
-    setNameProduct,
-    url,
-    setUrl,
-    price,
-    setPrice,
-    isAvailable,
-    setIsAvailable,
-    isAdvertised,
-    setIsAdvertised,
-  };
-
   //comportement
 
   //display
   return (
     <PanelContext.Provider value={panelContextValue}>
-      <FormPanelContext.Provider value={FormPanelValue}>
-        <OrderPageStyled>
-          <div className="container">
-            <Navbar />
-            <Main />
-          </div>
-        </OrderPageStyled>
-      </FormPanelContext.Provider>
+      <OrderPageStyled>
+        <div className="container">
+          <Navbar />
+          <Main />
+        </div>
+      </OrderPageStyled>
     </PanelContext.Provider>
   );
 }
