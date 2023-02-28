@@ -1,10 +1,10 @@
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
 import PrimaryButton from "./PrimaryButton";
 import InputSelect from "./../pages/order/Main/Panel/InputSelect";
-// import formAdminPanelContext from "../context/AdminContext";
+
 import {
   configTextInput,
   configSelectInput,
@@ -15,62 +15,31 @@ function FormAdminPanel() {
   const inputText = configTextInput;
   const selectInput = configSelectInput;
 
+  const [imagePath, setImagePath] = useState(false);
+
   const refTitle = useRef(null);
-  const refUrl = useRef(null);
+  // const refUrl = useRef(null);
   const refPrice = useRef(null);
   const refIsAvailable = useRef(null);
   const refIsAdvertised = useRef(null);
 
-  // const {
-  //   nameProduct,
-  //   url,
-  //   price,
-  //   isAvailable,
-  //   isAdvertised,
-  //   setNameProduct,
-  //   setUrl,
-  //   setPrice,
-  //   setIsAdvertised,
-  //   setIsAvailable,
-  // } = useContext(formAdminPanelContext);
-
   const inputStyle = {
     outline: "none",
   };
-
-  // const valueInput = (item) => {
-  //   switch (item) {
-  //     case "nameProduct":
-  //       // item = { nameProduct };  //
-  //       break;
-  //     case "url":
-  //       // item = { url };
-  //     //       break;
-  //     case "price":
-  //       // item = { price };  //
-  //       break;
-  //     default:
-  //       item = "";
-  //       break;
-  //   }
-  // };
 
   const handleChange = (e) => {
     let value = e.target.value;
     let name = e.target.name;
     switch (name) {
       case "title":
-        // setNameProduct(value);
         refTitle.current = value;
         console.log(refTitle);
         break;
       case "imageSource":
-        // setUrl(value);
-        refUrl.current = value;
-        console.log(refUrl);
+        setImagePath(value);
+        console.log(imagePath);
         break;
       case "price":
-        // setPrice(value);
         refPrice.current = value;
         console.log(refPrice);
         break;
@@ -85,12 +54,10 @@ function FormAdminPanel() {
     let nameSelect = e.target.name;
     switch (nameSelect) {
       case "isAvailable":
-        // setIsAvailable(valueSelect);
         refIsAvailable.current = valueSelect;
         console.log(refIsAvailable);
         break;
       case "isAdvertised":
-        // setIsAdvertised(valueSelect);
         refIsAdvertised.current = valueSelect;
         console.log(refIsAdvertised);
         break;
@@ -102,24 +69,34 @@ function FormAdminPanel() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("envoyé");
+    const addMenu = {
+      id: "",
+      imageSource: imagePath,
+      title: refTitle,
+      price: refPrice,
+      quantity: 0,
+      isAvailable: refIsAvailable,
+      isAdvertised: refIsAdvertised,
+    };
   };
 
   return (
     <FormAdminPanelStyled>
       <form onSubmit={handleSubmit} className="form-admin-panel">
         <div className="preview-image">
-          <div className="image">Aucune image</div>
+          {imagePath ? (
+            <img src={imagePath} alt="refTitle" width="100%" height="100%" />
+          ) : (
+            <div className="no-image">Aucune image</div>
+          )}
         </div>
         <div className="grid-inputs">
           {inputText.map((item) => (
             <TextInput
-              key={item.id}
-              id={item.id}
+              key={item.name}
               name={item.name}
               Icon={item.Icon}
               placeholder={item.placeholder}
-              // value={valueInput(item.value)}
               className={item.className}
               inputText={inputStyle}
               type="text"
@@ -145,6 +122,7 @@ function FormAdminPanel() {
             label={"Ajouter un nouveau produit au menu"}
           />
         </div>
+        <img src="" alt="" />
       </form>
     </FormAdminPanelStyled>
   );
@@ -186,9 +164,17 @@ const FormAdminPanelStyled = styled.div`
       grid-area: image;
       margin: auto;
       display: flex;
-      justify-content: center;
+      margin: auto;
       align-items: center;
       font-size: ${theme.fonts.size.P0};
+    }
+
+    .no-image {
+      display: inline-block;
+      margin: auto;
+      vertical-align: middle;
+      line-height: normal;
+      font-size: ${theme.fonts.size.SM};
     }
   }
 

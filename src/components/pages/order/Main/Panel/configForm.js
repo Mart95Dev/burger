@@ -5,7 +5,7 @@ import { GoMegaphone } from "react-icons/go";
 
 const configTextInput = [
   {
-    id: "title",
+    // id: "title",
     name: "title",
     className: "text-inputs grid-input-first-row",
     Icon: <FaHamburger className="icon color-icon" />,
@@ -13,7 +13,7 @@ const configTextInput = [
     value: "nameProduct",
   },
   {
-    id: "image",
+    // id: "image",
     name: "imageSource",
     className: "text-inputs grid-input-second-row",
     Icon: <MdPhotoCamera className="icon color-icon" />,
@@ -21,7 +21,7 @@ const configTextInput = [
     value: "url",
   },
   {
-    id: "price",
+    // id: "price",
     name: "price",
     className: "text-inputs grid-price",
     Icon: <MdEuro className="icon color-icon" />,
