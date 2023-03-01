@@ -27,38 +27,33 @@ function FormAdminPanel() {
   };
 
   const handleChange = (e) => {
-    switch (e.target.name) {
+    const { name, value } = e.target;
+    switch (name) {
       case "title":
-        setInputName(e.target.value);
+        setInputName(value);
         console.log(inputName);
         break;
       case "imageSource":
-        setImagePath(e.target.value);
+        setImagePath(value);
         console.log(imagePath);
         break;
       case "price":
-        setInputPrice(e.target.value);
+        setInputPrice(value);
         console.log(inputPrice);
         break;
       default:
-        e.target.name = "";
         break;
     }
   };
 
   const handleSelectChange = (e) => {
-    switch (e.target.name) {
-      case "isAvailable":
-        setIsAvailable(e.target.value);
-        console.log(isAvailable);
-        break;
-      case "isAdvertised":
-        setIsAdvertised(e.target.value);
-        console.log(isAdvertised);
-        break;
-      default:
-        e.target.name = "";
-        break;
+    const { name, value } = e.target;
+    if (name === "isAvailable") {
+      setIsAvailable(value);
+      console.log(isAvailable);
+    } else if (name === "isAdvertised") {
+      setIsAdvertised(value);
+      console.log(isAdvertised);
     }
   };
 
