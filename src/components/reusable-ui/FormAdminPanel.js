@@ -2,9 +2,9 @@ import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
-import PrimaryButton from "./PrimaryButton";
-import { MdCheckCircleOutline } from "react-icons/md";
 import InputSelect from "./../pages/order/Main/Panel/InputSelect";
+import ImageForm from "./../pages/order/Main/Panel/ImageForm";
+import SubmitForm from "./../pages/order/Main/Panel/SubmitForm";
 
 import {
   configTextInput,
@@ -79,13 +79,7 @@ function FormAdminPanel() {
   return (
     <FormAdminPanelStyled>
       <form onSubmit={handleSubmit} className="form-admin-panel">
-        <div className="preview-image">
-          {imagePath ? (
-            <img src={imagePath} alt={inputName} width="100%" height="100%" />
-          ) : (
-            <div className="no-image">Aucune image</div>
-          )}
-        </div>
+        <ImageForm image={imagePath} alt={inputName} />
         <div className="grid-inputs">
           {inputText.map((item) => (
             <TextInput
@@ -112,23 +106,11 @@ function FormAdminPanel() {
               option_2={item.option_2}
             />
           ))}
-
-          <div className="submit">
-            <PrimaryButton
-              className="grid-button add-product-menu"
-              label={"Ajouter un nouveau produit au menu"}
-            />
-            {formSubmitted ? (
-              <div className=" success">
-                <span className="icon-success ">
-                  <MdCheckCircleOutline />
-                </span>
-                <span className="text-success"> Ajouté avec succès !</span>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
+          <SubmitForm
+            className="grid-button"
+            label={"Ajouter un nouveau produit au menu"}
+            formSubmitted={formSubmitted}
+          />
         </div>
       </form>
     </FormAdminPanelStyled>
@@ -157,32 +139,6 @@ const FormAdminPanelStyled = styled.div`
     gap: 8px 20px;
     width: 70%;
     margin: auto 0px;
-  }
-
-  .preview-image {
-    border: 1px solid ${theme.colors.greyLight};
-    height: 100%;
-    width: 100%;
-    display: flex;
-    border-radius: ${theme.borderRadius.round};
-    line-height: 1.5px;
-
-    .image {
-      grid-area: image;
-      margin: auto;
-      display: flex;
-      margin: auto;
-      align-items: center;
-      font-size: ${theme.fonts.size.P0};
-    }
-
-    .no-image {
-      display: inline-block;
-      margin: auto;
-      vertical-align: middle;
-      line-height: normal;
-      font-size: ${theme.fonts.size.SM};
-    }
   }
 
   .grid-button {
@@ -226,50 +182,6 @@ const FormAdminPanelStyled = styled.div`
     .color-icon {
       color: ${theme.colors.greyBlue};
       font-size: 18px;
-    }
-
-    .add-product-menu {
-      margin-top: 0px;
-      padding: 10px;
-      background-color: ${theme.colors.success};
-      border: 1px solid ${theme.colors.success};
-      font-weight: ${theme.fonts.weights.semiBold};
-
-      :hover {
-        color: ${theme.colors.success};
-        background-color: ${theme.colors.white};
-        border: 1px solid ${theme.colors.success};
-        transition: all 200ms ease-out;
-      }
-
-      :active {
-        background-color: ${theme.colors.success};
-        color: ${theme.colors.white};
-      }
-    }
-  }
-  .submit {
-    display: flex;
-    position: relative;
-    align-items: center;
-
-    .success {
-      position: absolute;
-      width: 100%;
-      left: 105%;
-      display: flex;
-      /* align-items: center; */
-    }
-
-    .icon-success {
-      display: flex;
-      align-items: center;
-      color: ${theme.colors.success};
-    }
-
-    .text-success {
-      font-size: ${theme.fonts.size.SM};
-      color: ${theme.colors.success};
     }
   }
 `;
