@@ -2,19 +2,18 @@ import React from "react";
 import styled from "styled-components";
 
 function inputSelect({
+  name,
   Icon,
   className,
-  value,
   onChange,
-  name,
-  id,
   option_1,
   option_2,
+  ref,
 }) {
   return (
     <InputSelectStyled className={className}>
       {Icon}
-      <select name={name} id={id} onChange={onChange} className="select">
+      <select name={name} className="select" onChange={onChange}>
         {option_1}
         {option_2}
       </select>

@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
@@ -14,70 +14,60 @@ function FormAdminPanel() {
   //state
   const inputText = configTextInput;
   const selectInput = configSelectInput;
-
+  const [inputName, setInputName] = useState(null);
   const [imagePath, setImagePath] = useState(false);
-
-  const refTitle = useRef(null);
-  // const refUrl = useRef(null);
-  const refPrice = useRef(null);
-  const refIsAvailable = useRef(null);
-  const refIsAdvertised = useRef(null);
+  const [inputPrice, setInputPrice] = useState(null);
+  const [isAvailable, setIsAvailable] = useState(true);
+  const [isAdvertised, setIsAdvertised] = useState(false);
 
   const inputStyle = {
     outline: "none",
   };
 
   const handleChange = (e) => {
-    let value = e.target.value;
-    let name = e.target.name;
-    switch (name) {
+    switch (e.target.name) {
       case "title":
-        refTitle.current = value;
-        console.log(refTitle);
+        setInputName(e.target.value);
+        console.log(inputName);
         break;
       case "imageSource":
-        setImagePath(value);
+        setImagePath(e.target.value);
         console.log(imagePath);
         break;
       case "price":
-        refPrice.current = value;
-        console.log(refPrice);
+        setInputPrice(e.target.value);
+        console.log(inputPrice);
         break;
       default:
-        name = "";
+        e.target.name = "";
         break;
     }
   };
 
   const handleSelectChange = (e) => {
-    let valueSelect = e.target.value;
-    let nameSelect = e.target.name;
-    switch (nameSelect) {
+    switch (e.target.name) {
       case "isAvailable":
-        refIsAvailable.current = valueSelect;
-        console.log(refIsAvailable);
+        setIsAvailable(e.target.value);
+        console.log(isAvailable);
         break;
       case "isAdvertised":
-        refIsAdvertised.current = valueSelect;
-        console.log(refIsAdvertised);
+        setIsAdvertised(e.target.value);
+        console.log(isAdvertised);
         break;
       default:
-        nameSelect = "";
+        e.target.name = "";
         break;
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const addMenu = {
-      id: "",
-      imageSource: imagePath,
-      title: refTitle,
-      price: refPrice,
-      quantity: 0,
-      isAvailable: refIsAvailable,
-      isAdvertised: refIsAdvertised,
-    };
+    setInputName("");
+    setInputPrice("");
+    setImagePath("");
+    console.log(inputName, inputPrice, imagePath, isAvailable, isAdvertised);
+    console.log("envoyé");
+    e.target.reset();
   };
 
   return (
@@ -85,7 +75,7 @@ function FormAdminPanel() {
       <form onSubmit={handleSubmit} className="form-admin-panel">
         <div className="preview-image">
           {imagePath ? (
-            <img src={imagePath} alt="refTitle" width="100%" height="100%" />
+            <img src={imagePath} alt={inputName} width="100%" height="100%" />
           ) : (
             <div className="no-image">Aucune image</div>
           )}
@@ -122,7 +112,6 @@ function FormAdminPanel() {
             label={"Ajouter un nouveau produit au menu"}
           />
         </div>
-        <img src="" alt="" />
       </form>
     </FormAdminPanelStyled>
   );
