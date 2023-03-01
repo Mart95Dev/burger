@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
 import PrimaryButton from "./PrimaryButton";
+import { MdCheckCircleOutline } from "react-icons/md";
 import InputSelect from "./../pages/order/Main/Panel/InputSelect";
 
 import {
@@ -19,6 +20,7 @@ function FormAdminPanel() {
   const [inputPrice, setInputPrice] = useState(null);
   const [isAvailable, setIsAvailable] = useState(true);
   const [isAdvertised, setIsAdvertised] = useState(false);
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const inputStyle = {
     outline: "none",
@@ -65,9 +67,13 @@ function FormAdminPanel() {
     setInputName("");
     setInputPrice("");
     setImagePath("");
-    console.log(inputName, inputPrice, imagePath, isAvailable, isAdvertised);
-    console.log("envoyé");
+    setIsAvailable(true);
+    setIsAdvertised(false);
     e.target.reset();
+    setFormSubmitted(true);
+    setTimeout(() => {
+      setFormSubmitted(false);
+    }, 3000);
   };
 
   return (
@@ -107,10 +113,22 @@ function FormAdminPanel() {
             />
           ))}
 
-          <PrimaryButton
-            className="grid-button add-product-menu"
-            label={"Ajouter un nouveau produit au menu"}
-          />
+          <div className="submit">
+            <PrimaryButton
+              className="grid-button add-product-menu"
+              label={"Ajouter un nouveau produit au menu"}
+            />
+            {formSubmitted ? (
+              <div className=" success">
+                <span className="icon-success ">
+                  <MdCheckCircleOutline />
+                </span>
+                <span className="text-success"> Ajouté avec succès !</span>
+              </div>
+            ) : (
+              ""
+            )}
+          </div>
         </div>
       </form>
     </FormAdminPanelStyled>
@@ -134,7 +152,7 @@ const FormAdminPanelStyled = styled.div`
     grid-template-rows: 70% 1fr;
     grid-template-areas:
       "image inputs"
-      ". button";
+      ". button ";
 
     gap: 8px 20px;
     width: 70%;
@@ -228,6 +246,30 @@ const FormAdminPanelStyled = styled.div`
         background-color: ${theme.colors.success};
         color: ${theme.colors.white};
       }
+    }
+  }
+  .submit {
+    display: flex;
+    position: relative;
+    align-items: center;
+
+    .success {
+      position: absolute;
+      width: 100%;
+      left: 105%;
+      display: flex;
+      /* align-items: center; */
+    }
+
+    .icon-success {
+      display: flex;
+      align-items: center;
+      color: ${theme.colors.success};
+    }
+
+    .text-success {
+      font-size: ${theme.fonts.size.SM};
+      color: ${theme.colors.success};
     }
   }
 `;
