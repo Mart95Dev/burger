@@ -5,7 +5,7 @@ import TextInput from "./TextInput";
 import InputSelect from "./../pages/order/Main/Panel/InputSelect";
 import ImageForm from "./../pages/order/Main/Panel/ImageForm";
 import SubmitForm from "./../pages/order/Main/Panel/SubmitForm";
-
+import { fakeMenu2 } from "./../api/fakeData/fakeMenu";
 import {
   configTextInput,
   configSelectInput,
@@ -13,11 +13,13 @@ import {
 
 function FormAdminPanel() {
   //state
+
+  const [listMenu, setListMenu] = useState(fakeMenu2);
   const inputText = configTextInput;
   const selectInput = configSelectInput;
-  const [inputName, setInputName] = useState(null);
+  const [title, setTitle] = useState(null);
   const [imagePath, setImagePath] = useState(false);
-  const [inputPrice, setInputPrice] = useState(null);
+  const [price, setPrice] = useState(null);
   const [isAvailable, setIsAvailable] = useState(true);
   const [isAdvertised, setIsAdvertised] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -30,16 +32,16 @@ function FormAdminPanel() {
     const { name, value } = e.target;
     switch (name) {
       case "title":
-        setInputName(value);
-        console.log(inputName);
+        setTitle(value);
+        console.log(title);
         break;
       case "imageSource":
         setImagePath(value);
         console.log(imagePath);
         break;
       case "price":
-        setInputPrice(value);
-        console.log(inputPrice);
+        setPrice(value);
+        console.log(price);
         break;
       default:
         break;
@@ -57,14 +59,37 @@ function FormAdminPanel() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setInputName("");
-    setInputPrice("");
+  const resetForm = (e) => {
+    setTitle("");
+    setPrice("");
     setImagePath("");
     setIsAvailable(true);
     setIsAdvertised(false);
     e.target.reset();
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const addMenu = {
+      id: listMenu.lenght + 1,
+      imageSource: imagePath,
+      title: title,
+      price: price,
+      quantity: 0,
+      isAvailable: isAvailable,
+      isAdvertised: isAdvertised,
+    };
+
+    setListMenu([...listMenu, addMenu]);
+    console.log(listMenu);
+    fakeMenu2.push(addMenu); // fetch(fakeMenu2, {
+    //   method: "POST",
+    //   mode: "cors",
+    //   body: JSON.stringify(addMenu), // body data type must match "Content-Type" header
+    // });
+
+    resetForm(e);
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
@@ -74,7 +99,7 @@ function FormAdminPanel() {
   return (
     <FormAdminPanelStyled>
       <form onSubmit={handleSubmit} className="form-admin-panel">
-        <ImageForm image={imagePath} alt={inputName} />
+        <ImageForm image={imagePath} alt={title} />
         <div className="grid-inputs">
           {inputText.map((item) => (
             <TextInput
