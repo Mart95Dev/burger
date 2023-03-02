@@ -72,7 +72,7 @@ function FormAdminPanel() {
     e.preventDefault();
 
     const addMenu = {
-      id: listMenu.lenght + 1,
+      id: listMenu.lengtht + 1,
       imageSource: imagePath,
       title: title,
       price: price,
@@ -83,7 +83,9 @@ function FormAdminPanel() {
 
     setListMenu([...listMenu, addMenu]);
     console.log(listMenu);
-    fakeMenu2.push(addMenu); // fetch(fakeMenu2, {
+    fakeMenu2.push(addMenu);
+
+    // fetch(fakeMenu2, {
     //   method: "POST",
     //   mode: "cors",
     //   body: JSON.stringify(addMenu), // body data type must match "Content-Type" header

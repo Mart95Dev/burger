@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
-// import FormPanelContext from "../../context/AdminContext";
 import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
