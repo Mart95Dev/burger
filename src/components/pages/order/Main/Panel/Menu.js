@@ -1,13 +1,11 @@
 import { useContext } from "react";
 import styled from "styled-components";
-// import { fakeMenu2 } from "../../../../api/fakeData/fakeMenu";
 import PanelContext from "../../../../context/OrderContext";
 import Card from "../../../../reusable-ui/Card";
 import { formatPrice } from "../../../../../utils/maths";
 
 function Menu() {
   //state
-  // const [products, setProducts] = useState(fakeMenu2);
   const { fakeMenus } = useContext(PanelContext);
 
   //comportement
@@ -33,7 +31,6 @@ export default Menu;
 const MenuStyled = styled.div`
   background: $(theme.colors.background_white);
   display: grid;
-  /* grid-template-columns: repeat(4, 1fr); */
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
