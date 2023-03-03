@@ -1,19 +1,21 @@
-import { useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../../api/fakeData/fakeMenu";
+// import { fakeMenu2 } from "../../../../api/fakeData/fakeMenu";
+import PanelContext from "../../../../context/OrderContext";
 import Card from "../../../../reusable-ui/Card";
 import { formatPrice } from "../../../../../utils/maths";
 
 function Menu() {
   //state
-  const [products, setProducts] = useState(fakeMenu2);
+  // const [products, setProducts] = useState(fakeMenu2);
+  const { fakeMenus } = useContext(PanelContext);
 
   //comportement
 
   //affichage
   return (
     <MenuStyled>
-      {products.map(({ id, title, imageSource, price }) => (
+      {fakeMenus.map(({ id, title, imageSource, price }) => (
         <Card
           className="card-mode-admin-panel"
           key={id}

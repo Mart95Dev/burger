@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
 import InputSelect from "./../pages/order/Main/Panel/InputSelect";
 import ImageForm from "./../pages/order/Main/Panel/ImageForm";
 import SubmitForm from "./../pages/order/Main/Panel/SubmitForm";
-import { fakeMenu2 } from "./../api/fakeData/fakeMenu";
+import PanelContext from "../context/OrderContext";
 import {
   configTextInput,
   configSelectInput,
@@ -13,8 +13,10 @@ import {
 
 function FormAdminPanel() {
   //state
+  const { fakeMenus, setFakeMenus } = useContext(PanelContext);
 
-  const [listMenu, setListMenu] = useState(fakeMenu2);
+  console.log(fakeMenus);
+
   const inputText = configTextInput;
   const selectInput = configSelectInput;
   const [title, setTitle] = useState(null);
@@ -23,7 +25,6 @@ function FormAdminPanel() {
   const [isAvailable, setIsAvailable] = useState(true);
   const [isAdvertised, setIsAdvertised] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
-
   const inputStyle = {
     outline: "none",
   };
@@ -33,15 +34,12 @@ function FormAdminPanel() {
     switch (name) {
       case "title":
         setTitle(value);
-        console.log(title);
         break;
       case "imageSource":
         setImagePath(value);
-        console.log(imagePath);
         break;
       case "price":
         setPrice(value);
-        console.log(price);
         break;
       default:
         break;
@@ -52,10 +50,8 @@ function FormAdminPanel() {
     const { name, value } = e.target;
     if (name === "isAvailable") {
       setIsAvailable(value);
-      console.log(isAvailable);
     } else if (name === "isAdvertised") {
       setIsAdvertised(value);
-      console.log(isAdvertised);
     }
   };
 
@@ -72,7 +68,7 @@ function FormAdminPanel() {
     e.preventDefault();
 
     const addMenu = {
-      id: listMenu.lengtht + 1,
+      id: fakeMenus.length + 1,
       imageSource: imagePath,
       title: title,
       price: price,
@@ -80,16 +76,10 @@ function FormAdminPanel() {
       isAvailable: isAvailable,
       isAdvertised: isAdvertised,
     };
+    JSON.stringify(addMenu);
+    setFakeMenus([addMenu, ...fakeMenus]);
 
-    setListMenu([...listMenu, addMenu]);
-    console.log(listMenu);
-    fakeMenu2.push(addMenu);
-
-    // fetch(fakeMenu2, {
-    //   method: "POST",
-    //   mode: "cors",
-    //   body: JSON.stringify(addMenu), // body data type must match "Content-Type" header
-    // });
+    console.log(fakeMenus);
 
     resetForm(e);
     setFormSubmitted(true);
