@@ -16,9 +16,8 @@ export default function AddForm() {
 
   //comportement
   const handleChange = (e) => {
-    const newValue = e.target.value;
-    const name = e.target.name;
-    setNewProduct({ ...newProduct, [name]: newValue });
+    const { name, value } = e.target;
+    setNewProduct({ ...newProduct, [name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -26,7 +25,7 @@ export default function AddForm() {
 
     const newProductToAdd = {
       ...newProduct,
-      id: new Date().getTime(),
+      id: crypto.ramdonUUID(),
     };
 
     handleAdd(newProductToAdd);
