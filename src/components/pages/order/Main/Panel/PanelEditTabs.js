@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import PanelContext from "../../../../context/OrderContext";
+import AddForm from "./FormAdmin/AddForm";
+import EditForm from "./FormAdmin/EditForm";
 
 function PanelEditTabs() {
   //state
@@ -11,8 +13,8 @@ function PanelEditTabs() {
   return (
     <>
       <PanelEditStyled>
-        <div>{tabSelected === "add" ? <p>Ajouter produit</p> : ""}</div>
-        <div>{tabSelected === "edit" ? <p>Modifier produit</p> : ""}</div>
+        <div>{tabSelected === "add" ? <AddForm /> : ""}</div>
+        <div>{tabSelected === "edit" ? <EditForm /> : ""}</div>
       </PanelEditStyled>
     </>
   );

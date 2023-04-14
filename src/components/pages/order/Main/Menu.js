@@ -6,14 +6,14 @@ import { formatPrice } from "./../../../../utils/maths";
 
 function Menu() {
   //state
-  const [products, setProducts] = useState(fakeMenu2);
+  const [menu, setMenu] = useState(fakeMenu2);
 
   //comportement
 
   //affichage
   return (
     <MenuStyled>
-      {products.map(({ id, title, imageSource, price }) => (
+      {menu.map(({ id, title, imageSource, price }) => (
         <Card
           key={id}
           title={title}
