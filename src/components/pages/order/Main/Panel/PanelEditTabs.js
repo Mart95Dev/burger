@@ -11,12 +11,10 @@ function PanelEditTabs() {
 
   //display
   return (
-    <>
-      <PanelEditStyled>
-        <div>{tabSelected === "add" ? <AddForm /> : ""}</div>
-        <div>{tabSelected === "edit" ? <EditForm /> : ""}</div>
-      </PanelEditStyled>
-    </>
+    <PanelEditStyled>
+      {tabSelected === "add" ? <AddForm /> : ""}
+      {tabSelected === "edit" ? <EditForm /> : ""}
+    </PanelEditStyled>
   );
 }
 
@@ -30,8 +28,5 @@ const PanelEditStyled = styled.div`
   right: 0;
   left: 0;
   height: 250px;
-  padding-top: 17px;
-  padding-left: 21px;
-  display: flex;
-  justify-content: start;
+  padding: 30px 70px;
 `;
