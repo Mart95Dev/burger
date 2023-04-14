@@ -29,6 +29,8 @@ export default function AddForm() {
     };
 
     handleAdd(newProductToAdd);
+
+    setNewProduct(EMPTY_PRODUCT);
   };
 
   return (
