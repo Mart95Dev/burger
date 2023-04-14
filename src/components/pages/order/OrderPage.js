@@ -34,7 +34,6 @@ export default function OrderPage() {
     isCollasped,
     setIsCollasped,
     menu,
-    setMenu,
     handleAdd,
   };
 

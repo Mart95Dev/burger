@@ -10,6 +10,5 @@ export default createContext({
   isCollasped: false,
   setIsCollasped: () => {},
   menu: {},
-  setMenu: () => {},
   handleAdd: () => {},
 });
