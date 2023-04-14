@@ -4,18 +4,20 @@ import styled from "styled-components";
 import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "./../../../../utils/maths";
 
+const DEFAULT_IMAGE = "/images/coming-soon.png";
+
 function Menu() {
   //state
   const { menu } = useContext(PanelContext);
 
   //affichage
   return (
-    <MenuStyled>
+    <MenuStyled></MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => (
         <Card
           key={id}
           title={title}
-          imageSource={imageSource}
+          imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           leftDescription={formatPrice(price)}
         />
       ))}
