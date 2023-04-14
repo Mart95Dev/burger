@@ -28,5 +28,5 @@ const PanelEditStyled = styled.div`
   right: 0;
   left: 0;
   height: 250px;
-  padding: 30px 70px;
+  padding: 30px 5px 30px 70px;
 `;
