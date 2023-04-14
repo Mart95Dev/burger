@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import PanelContext from "../../../../context/OrderContext";
+import FormAdminPanel from "./../../../../reusable-ui/FormAdminPanel";
+
+import { theme } from "./../../../../../theme/index";
+import { HiCursorClick } from "react-icons/hi";
 
 function PanelEditTabs() {
   //state
@@ -11,8 +15,17 @@ function PanelEditTabs() {
   return (
     <>
       <PanelEditStyled>
-        <div>{tabSelected === "add" ? <p>Ajouter produit</p> : ""}</div>
-        <div>{tabSelected === "edit" ? <p>Modifier produit</p> : ""}</div>
+        <div>{tabSelected === "add" ? <FormAdminPanel /> : ""}</div>
+        <div className="edit-text">
+          {tabSelected === "edit" ? (
+            <span>
+              Cliquer sur un produit du menu pour le modifier
+              <HiCursorClick className="icon" />
+            </span>
+          ) : (
+            ""
+          )}
+        </div>
       </PanelEditStyled>
     </>
   );
@@ -24,12 +37,42 @@ const PanelEditStyled = styled.div`
   /* grid-column-start: 2; */ //désactiver pour le panel
 
   background: #ffffff;
-  box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: ${theme.shadows.medium};
   right: 0;
   left: 0;
   height: 250px;
   padding-top: 17px;
   padding-left: 21px;
-  display: flex;
-  justify-content: start;
+
+  .edit-text {
+    height: 100%;
+    width: 50%;
+    position: relative;
+    top: 50px;
+
+    span {
+      margin-left: 40px;
+      color: rgb(116, 123, 145);
+      font-family: "Amatic SC", cursive;
+      font-size: 24px;
+      animation: fadeIn 1000ms ease 0s 1 normal;
+
+      .icon {
+        margin-left: 10px;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+  }
+
+  /* display: flex;
+  justify-content: start; */
 `;

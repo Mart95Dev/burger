@@ -2,11 +2,24 @@ import React from "react";
 import styled from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function TextInput({ value, onChange, Icon, ...restProps }) {
+export default function TextInput({
+  value,
+  onChange,
+  Icon,
+  className,
+  inputText,
+  ...restProps
+}) {
   return (
-    <InputStyled>
+    <InputStyled className={className}>
       {Icon && Icon}
-      <input value={value} onChange={onChange} {...restProps} />
+      <input
+        style={inputText && inputText}
+        className={className}
+        value={value}
+        onChange={onChange}
+        {...restProps}
+      />
     </InputStyled>
   );
 }
@@ -17,7 +30,6 @@ const InputStyled = styled.div`
   display: flex;
   align-items: center;
   padding: 18px 24px;
-  margin: 18px opx; // could be handle in parent too
 
   .icon {
     font-size: ${theme.fonts.size.P0};
@@ -35,4 +47,6 @@ const InputStyled = styled.div`
   &::placeholder {
     background: ${theme.colors.white};
     color: ${theme.colors.greyLight};
+
+  
 `;

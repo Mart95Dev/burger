@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
+import { fakeMenu2 } from "../../api/fakeData/fakeMenu";
 import { theme } from "./../../../theme/index";
 
 export default function OrderPage() {
@@ -11,6 +12,7 @@ export default function OrderPage() {
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
+  const [fakeProducts, setFakeProducts] = useState(fakeMenu2);
 
   const panelContextValue = {
     isModeAdmin,
@@ -21,6 +23,8 @@ export default function OrderPage() {
     setTabSelected,
     isCollasped,
     setIsCollasped,
+    fakeProducts,
+    setFakeProducts,
   };
 
   //comportement

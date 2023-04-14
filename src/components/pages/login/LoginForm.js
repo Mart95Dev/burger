@@ -22,25 +22,24 @@ function LoginForm() {
     navigate(`order/${name}`);
   };
   return (
-    <>
-      <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-        <TextInput
-          value={name}
-          onChange={handleChange}
-          type="text"
-          placeholder={"Entrez votre prénom"}
-          required
-          Icon={<BsPersonCircle className="icon" />}
-        />
-        <PrimaryButton
-          label={"Accéder à mon espace"}
-          Icon={<IoChevronForward className="icon-button" />}
-        />
-      </LoginFormStyled>
-    </>
+    <LoginFormStyled action="submit" onSubmit={handleSubmit}>
+      <h1>Bienvenue chez nous !</h1>
+      <hr />
+      <h2>Connectez-vous</h2>
+      <TextInput
+        value={name}
+        onChange={handleChange}
+        type="text"
+        placeholder={"Entrez votre prénom"}
+        required
+        Icon={<BsPersonCircle className="icon" />}
+        className="input"
+      />
+      <PrimaryButton
+        label={"Accéder à mon espace"}
+        Icon={<IoChevronForward className="icon" />}
+      />
+    </LoginFormStyled>
   );
 }
 
@@ -80,5 +79,9 @@ const LoginFormStyled = styled.form`
     align-items: center;
     font-size: ${theme.fonts.size.SM};
     margin-left: 10px;
+  }
+
+  input {
+    background-color: ${theme.colors.white};
   }
 `;
