@@ -1,9 +1,27 @@
-import React from "react";
+import { useContext } from "react";
 import styled from "styled-components";
+import PanelContext from "../../../../../context/OrderContext";
 
 export default function AddForm() {
+  //this.state.
+  const { handleAdd } = useContext(PanelContext);
+
+  const newProduct = {
+    id: new Date().getTime(),
+    title: "Nouveau produit",
+    imageSource:
+      "https://media.carrefour.fr/medias/96c1bbd1b5773070bd03591e7fb23b7c/p_540x540/03103220044797-a1c1-s01.jpg",
+    price: 2.2,
+  };
+
+  //comportement
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAdd(newProduct);
+  };
+
   return (
-    <AddFormStyled>
+    <AddFormStyled onSubmit={handleSubmit}>
       <div className="image-preview">image preview</div>
       <div className="inputs-fields">
         <input type="text" placeholder="Produits" />

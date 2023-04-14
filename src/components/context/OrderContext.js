@@ -9,4 +9,7 @@ export default createContext({
   setTabSelected: () => {},
   isCollasped: false,
   setIsCollasped: () => {},
+  menu: {},
+  setMenu: () => {},
+  handleAdd: () => {},
 });

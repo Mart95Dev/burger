@@ -1,14 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
+import PanelContext from "../../../context/OrderContext";
 import styled from "styled-components";
-import { fakeMenu2 } from "../../../api/fakeData/fakeMenu";
 import Card from "../../../reusable-ui/Card";
 import { formatPrice } from "./../../../../utils/maths";
 
 function Menu() {
   //state
-  const [menu, setMenu] = useState(fakeMenu2);
-
-  //comportement
+  const { menu } = useContext(PanelContext);
 
   //affichage
   return (

@@ -4,6 +4,7 @@ import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
+import { fakeMenu } from "../../api/fakeData/fakeMenu";
 
 export default function OrderPage() {
   //state
@@ -11,6 +12,17 @@ export default function OrderPage() {
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+
+  //comportement
+  const handleAdd = (newProduct) => {
+    // copy du array
+    const menuCopy = [...menu];
+    //2 manip copy array
+    const menuUpdated = [newProduct, ...menuCopy];
+    //3 update du state
+    setMenu(menuUpdated);
+  };
 
   const panelContextValue = {
     isModeAdmin,
@@ -21,6 +33,9 @@ export default function OrderPage() {
     setTabSelected,
     isCollasped,
     setIsCollasped,
+    menu,
+    setMenu,
+    handleAdd,
   };
 
   //comportement
