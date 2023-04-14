@@ -12,7 +12,7 @@ function Menu() {
 
   //affichage
   return (
-    <MenuStyled></MenuStyled>
+    <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => (
         <Card
           key={id}
