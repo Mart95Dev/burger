@@ -1,32 +1,62 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import styled from "styled-components";
 import PanelContext from "../../../../../context/OrderContext";
+
+const EMPTY_PRODUCT = {
+  id: "",
+  title: "",
+  imageSource: "",
+  price: 0,
+};
 
 export default function AddForm() {
   //this.state.
   const { handleAdd } = useContext(PanelContext);
-
-  const newProduct = {
-    id: new Date().getTime(),
-    title: "Nouveau produit",
-    imageSource:
-      "https://media.carrefour.fr/medias/96c1bbd1b5773070bd03591e7fb23b7c/p_540x540/03103220044797-a1c1-s01.jpg",
-    price: 2.2,
-  };
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //comportement
+  const handleChange = (e) => {
+    const newValue = e.target.value;
+    const name = e.target.name;
+    setNewProduct({ ...newProduct, [name]: newValue });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleAdd(newProduct);
+
+    const newProductToAdd = {
+      ...newProduct,
+      id: new Date().getTime(),
+    };
+
+    handleAdd(newProductToAdd);
   };
 
   return (
     <AddFormStyled onSubmit={handleSubmit}>
-      <div className="image-preview">image preview</div>
+      <div className="image-preview">Aucune image</div>
       <div className="inputs-fields">
-        <input type="text" placeholder="Produits" />
-        <input type="text" placeholder="image URL" />
-        <input type="text" placeholder="Prix" />
+        <input
+          name="title"
+          value={newProduct.title}
+          type="text"
+          placeholder="Produits"
+          onChange={handleChange}
+        />
+        <input
+          name="imageSource"
+          value={newProduct.imageSource}
+          type="text"
+          placeholder="image URL"
+          onChange={handleChange}
+        />
+        <input
+          name="price"
+          value={newProduct.price ? newProduct.price : ""}
+          type="number"
+          placeholder="Prix"
+          onChange={handleChange}
+        />
       </div>
       <button className="submit-button">Ajouter un produit</button>
     </AddFormStyled>
