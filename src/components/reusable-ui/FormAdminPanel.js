@@ -3,19 +3,17 @@ import styled from "styled-components";
 import { theme } from "./../../theme/index";
 import TextInput from "./TextInput";
 import InputSelect from "./../pages/order/Main/Panel/InputSelect";
-import ImageForm from "./../pages/order/Main/Panel/ImageForm";
-import SubmitForm from "./../pages/order/Main/Panel/SubmitForm";
+import ImageForm from "./../pages/order/Main/Panel/adminForm/ImageForm";
+import SubmitForm from "./../pages/order/Main/Panel/adminForm/SubmitForm";
 import PanelContext from "../context/OrderContext";
 import {
   configTextInput,
   configSelectInput,
-} from "../../components/pages/order/Main/Panel/configForm";
+} from "../../components/pages/order/Main/Panel/adminForm/configForm.js";
 
 function FormAdminPanel() {
   //state
-  const { fakeMenus, setFakeMenus } = useContext(PanelContext);
-
-  console.log(fakeMenus);
+  const { fakeProducts, setFakeProducts } = useContext(PanelContext);
 
   const inputText = configTextInput;
   const selectInput = configSelectInput;
@@ -39,7 +37,7 @@ function FormAdminPanel() {
         setImagePath(value);
         break;
       case "price":
-        setPrice(value);
+        setPrice(Number(value));
         break;
       default:
         break;
@@ -67,8 +65,8 @@ function FormAdminPanel() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const addMenu = {
-      id: fakeMenus.length + 1,
+    const addProduct = {
+      id: fakeProducts.length + 1,
       imageSource: imagePath,
       title: title,
       price: price,
@@ -76,16 +74,14 @@ function FormAdminPanel() {
       isAvailable: isAvailable,
       isAdvertised: isAdvertised,
     };
-    JSON.stringify(addMenu);
-    setFakeMenus([addMenu, ...fakeMenus]);
-
-    console.log(fakeMenus);
+    JSON.stringify(addProduct);
+    setFakeProducts([addProduct, ...fakeProducts]);
 
     resetForm(e);
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
-    }, 3000);
+    }, 2000);
   };
 
   return (
@@ -101,9 +97,8 @@ function FormAdminPanel() {
               placeholder={item.placeholder}
               className={item.className}
               inputText={inputStyle}
-              type="text"
+              type={item.type}
               onChange={handleChange}
-              required
             />
           ))}
 

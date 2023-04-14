@@ -6,14 +6,14 @@ import { formatPrice } from "../../../../../utils/maths";
 
 function Menu() {
   //state
-  const { fakeMenus } = useContext(PanelContext);
+  const { fakeProducts } = useContext(PanelContext);
 
   //comportement
 
   //affichage
   return (
     <MenuStyled>
-      {fakeMenus.map(({ id, title, imageSource, price }) => (
+      {fakeProducts.map(({ id, title, imageSource, price }) => (
         <Card
           className="card-mode-admin-panel"
           key={id}

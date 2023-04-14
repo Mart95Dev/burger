@@ -6,18 +6,21 @@ import { GoMegaphone } from "react-icons/go";
 const configTextInput = [
   {
     name: "title",
+    type: "texte",
     className: "text-inputs grid-input-first-row",
     Icon: <FaHamburger className="icon color-icon" />,
     placeholder: "Produit (ex: Super Burger)",
   },
   {
     name: "imageSource",
+    type: "texte",
     className: "text-inputs grid-input-second-row",
     Icon: <MdPhotoCamera className="icon color-icon" />,
     placeholder: "Lien URL d'une image (ex: https//photo-frites.jpg)",
   },
   {
     name: "price",
+    type: "number",
     className: "text-inputs grid-price",
     Icon: <MdEuro className="icon color-icon" />,
     placeholder: "Prix",

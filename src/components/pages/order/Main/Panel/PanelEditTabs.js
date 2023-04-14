@@ -19,7 +19,7 @@ function PanelEditTabs() {
         <div className="edit-text">
           {tabSelected === "edit" ? (
             <span>
-              Cliquer sur un produit du menu pour le modifier span{" "}
+              Cliquer sur un produit du menu pour le modifier
               <HiCursorClick className="icon" />
             </span>
           ) : (

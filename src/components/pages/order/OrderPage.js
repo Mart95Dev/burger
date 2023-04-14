@@ -12,7 +12,7 @@ export default function OrderPage() {
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
-  const [fakeMenus, setFakeMenus] = useState(fakeMenu2);
+  const [fakeProducts, setFakeProducts] = useState(fakeMenu2);
 
   const panelContextValue = {
     isModeAdmin,
@@ -23,8 +23,8 @@ export default function OrderPage() {
     setTabSelected,
     isCollasped,
     setIsCollasped,
-    fakeMenus,
-    setFakeMenus,
+    fakeProducts,
+    setFakeProducts,
   };
 
   //comportement

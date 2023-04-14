@@ -1,17 +1,18 @@
-import React from "react";
 import styled from "styled-components";
-import PrimaryButton from "./../../../../reusable-ui/PrimaryButton";
-import { MdCheckCircleOutline } from "react-icons/md";
-import { theme } from "./../../../../../theme/index";
+import PrimaryButton from "./../../../../../reusable-ui/PrimaryButton";
 
-function SubmitForm({ className, formSubmitted, label }) {
+import { theme } from "./../../../../../../theme/index";
+import Message from "./Message";
+
+function SubmitForm({ className, label, formSubmitted }) {
   return (
     <SubmitFormStyled className="submit">
       <PrimaryButton
         className={`add-product-menu ${className}`}
         label={"Ajouter un nouveau produit au menu"}
       />
-      {formSubmitted ? (
+      <Message formSubmitted={formSubmitted} />
+      {/* {formSubmitted ? (
         <div className=" success">
           <span className="icon-success ">
             <MdCheckCircleOutline />
@@ -20,7 +21,7 @@ function SubmitForm({ className, formSubmitted, label }) {
         </div>
       ) : (
         ""
-      )}
+      )} */}
     </SubmitFormStyled>
   );
 }
@@ -51,12 +52,12 @@ const SubmitFormStyled = styled.div`
     }
   }
 
-  .success {
+  /* .success {
     position: absolute;
     width: 100%;
     left: 105%;
     display: flex;
-    /* align-items: center; */
+    align-items: center;
 
     .icon-success {
       display: flex;
@@ -67,6 +68,5 @@ const SubmitFormStyled = styled.div`
     .text-success {
       font-size: ${theme.fonts.size.SM};
       color: ${theme.colors.success};
-    }
-  }
+    } */
 `;

@@ -1,5 +1,5 @@
 import React from "react";
-import { theme } from "./../../../../../theme/index";
+import { theme } from "./../../../../../../theme/index";
 import styled from "styled-components";
 
 function ImageForm({ image, alt }) {

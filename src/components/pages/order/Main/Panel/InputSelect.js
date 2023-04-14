@@ -26,6 +26,7 @@ export default inputSelect;
 const InputSelectStyled = styled.div`
   display: flex;
   align-items: center;
+  color: rgb(245, 245, 247);
   .select {
     margin-left: 10px;
     border: none;
