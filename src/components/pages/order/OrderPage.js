@@ -24,6 +24,17 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const handleDelete = (idOfProductToDelete) => {
+    //1 copy this.state.
+    const menuCopy = [...menu];
+    //2 manip copy this.state.
+    const menuUpdated = menuCopy.filter(
+      (product) => product.id !== idOfProductToDelete
+    );
+    //3 update this.state.
+    setMenu(menuUpdated);
+  };
+
   const panelContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -35,6 +46,7 @@ export default function OrderPage() {
     setIsCollasped,
     menu,
     handleAdd,
+    handleDelete,
   };
 
   //comportement
