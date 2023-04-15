@@ -7,12 +7,20 @@ import { formatPrice } from "./../../../../utils/maths";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 function Menu() {
+  const { menu, isModeAdmin, handleDelete, resetMenu } =
+    useContext(PanelContext);
   //state
-  const { menu, isModeAdmin, handleDelete } = useContext(PanelContext);
 
   //comportement
 
   //affichage
+  if (menu.length === 0)
+    return (
+      <div>
+        <span>Pas de produit</span>
+        <button onClick={resetMenu}>Remettre des produits</button>
+      </div>
+    );
   return (
     <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => (

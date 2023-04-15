@@ -12,7 +12,7 @@ export default function OrderPage() {
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState(fakeMenu.SMALL);
 
   //comportement
   const handleAdd = (newProduct) => {
@@ -35,6 +35,10 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const resetMenu = () => {
+    setMenu(fakeMenu.SMALL);
+  };
+
   const panelContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -47,6 +51,7 @@ export default function OrderPage() {
     menu,
     handleAdd,
     handleDelete,
+    resetMenu,
   };
 
   //comportement
