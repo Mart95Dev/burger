@@ -1,8 +1,10 @@
 import { useContext } from "react";
-import PanelContext from "../../../context/OrderContext";
+import PanelContext from "../../../../../context/OrderContext";
 import styled from "styled-components";
-import Card from "../../../reusable-ui/Card";
-import { formatPrice } from "./../../../../utils/maths";
+import Card from "../../../../../reusable-ui/Card";
+import { formatPrice } from "./../../../../../../utils/maths";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
@@ -14,13 +16,11 @@ function Menu() {
   //comportement
 
   //affichage
-  if (menu.length === 0)
-    return (
-      <div>
-        <span>Pas de produit</span>
-        <button onClick={resetMenu}>Remettre des produits</button>
-      </div>
-    );
+  if (menu.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient />;
+    return <EmptyMenuAdmin onReset={resetMenu} />;
+  }
+
   return (
     <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => (

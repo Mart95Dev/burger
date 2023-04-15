@@ -2,7 +2,7 @@ import { useContext } from "react";
 import PanelContext from "../../../context/OrderContext";
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
-import Menu from "../Main/Menu";
+import Menu from "./Panel/menu/Menu";
 // import Basket from "./Basket";
 import Admin from "./Panel/Admin";
 
