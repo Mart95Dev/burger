@@ -8,7 +8,7 @@ const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 function Menu() {
   //state
-  const { menu } = useContext(PanelContext);
+  const { menu, isModeAdmin } = useContext(PanelContext);
 
   //affichage
   return (
@@ -19,6 +19,7 @@ function Menu() {
           title={title}
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           leftDescription={formatPrice(price)}
+          hasDeleteButton={isModeAdmin}
         />
       ))}
     </MenuStyled>
