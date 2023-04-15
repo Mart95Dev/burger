@@ -2,7 +2,9 @@ import { useState, useContext } from "react";
 import styled from "styled-components";
 import PanelContext from "../../../../../context/OrderContext";
 import { FiCheck } from "react-icons/fi";
-import { theme } from "./../../../../../../theme/index";
+// import { FaHamburger } from "react-icons/fa";
+// import { BsFillCameraFill } from "react-icons/bs";
+// import { MdOutlineEuro } from "react-icons/md";
 
 const EMPTY_PRODUCT = {
   id: "",
