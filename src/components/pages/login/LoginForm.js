@@ -5,7 +5,7 @@ import { theme } from "../../../theme/index";
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import TextInput from "../../reusable-ui/TextInput";
-import PrimaryButton from "./../../reusable-ui/PrimaryButton";
+import PrimaryButton from "./../../reusable-ui/Button";
 
 function LoginForm() {
   //state
@@ -28,12 +28,13 @@ function LoginForm() {
         <hr />
         <h2>Connectez-vous</h2>
         <TextInput
-          value={name}
-          onChange={handleChange}
           type="text"
           placeholder={"Entrez votre prénom"}
-          required
+          value={name}
+          onChange={handleChange}
           Icon={<BsPersonCircle className="icon" />}
+          required
+          version="normal"
         />
         <PrimaryButton
           label={"Accéder à mon espace"}
