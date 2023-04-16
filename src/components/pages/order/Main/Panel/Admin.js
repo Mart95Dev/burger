@@ -22,6 +22,7 @@ const AdminStyled = styled.div`
   display: grid;
   grid-column-start: 2;
   position: absolute;
+  z-index: 2;
   left: 0;
   right: 0;
   bottom: 0;

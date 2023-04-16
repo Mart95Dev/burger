@@ -5,6 +5,8 @@ import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
 import { fakeMenu2 } from "../../api/fakeData/fakeMenu";
 import { theme } from "./../../../theme/index";
+import { fakeMenu } from "../../api/fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../../../components/pages/order/Main/Panel/FormAdmin/AddForm";
 
 export default function OrderPage() {
   //state
@@ -12,7 +14,35 @@ export default function OrderPage() {
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
-  const [fakeProducts, setFakeProducts] = useState(fakeMenu2);
+
+  const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+
+  //comportement
+  const handleAdd = (newProduct) => {
+    // copy du array
+    const menuCopy = [...menu];
+    //2 manip copy array
+    const menuUpdated = [newProduct, ...menuCopy];
+    //3 update du state
+    setMenu(menuUpdated);
+  };
+
+  const handleDelete = (idOfProductToDelete) => {
+    //1 copy this.state.
+    const menuCopy = [...menu];
+    //2 manip copy this.state.
+    const menuUpdated = menuCopy.filter(
+      (product) => product.id !== idOfProductToDelete
+    );
+    //3 update this.state.
+    setMenu(menuUpdated);
+  };
+
+  const resetMenu = () => {
+    setMenu(fakeMenu.SMALL);
+  };
+
 
   const panelContextValue = {
     isModeAdmin,
@@ -23,8 +53,14 @@ export default function OrderPage() {
     setTabSelected,
     isCollasped,
     setIsCollasped,
-    fakeProducts,
-    setFakeProducts,
+
+    menu,
+    handleAdd,
+    handleDelete,
+    resetMenu,
+    newProduct,
+    setNewProduct,
+
   };
 
   //comportement

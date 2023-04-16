@@ -1,23 +1,32 @@
 import styled from "styled-components";
 import { theme } from "../../theme/index";
-import PrimaryButton from "../reusable-ui/PrimaryButton";
-import PanelContext from "../context/OrderContext";
-import { useContext } from "react";
-import { IoMdCloseCircle } from "react-icons/io";
+
+import PrimaryButton from "../reusable-ui/Button";
+import { TiDelete } from "react-icons/ti";
 
 export default function Card({
   title,
   imageSource,
   leftDescription,
-  className,
+  hasDeleteButton,
+  onDelete,
 }) {
-  //state
-  const { isModeAdmin } = useContext(PanelContext);
-
   return (
-    <CardStyled className={isModeAdmin ? className : ""}>
+    <CardStyled>
+      {hasDeleteButton ? (
+        <button
+          className="delete-button"
+          aria-label="delete-button"
+          onClick={onDelete}
+        >
+          <TiDelete className="icon" />
+        </button>
+      ) : (
+        ""
+      )}
+
       <div className="image">
-        {isModeAdmin ? <IoMdCloseCircle className="icon-close" /> : ""}
+     
         <img src={imageSource} alt={title} />
       </div>
       <div className="text-info">
@@ -44,6 +53,34 @@ const CardStyled = styled.div`
   padding-bottom: 10px;
   box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
+  position: relative;
+
+  .delete-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    color: ${theme.colors.primary};
+    z-index: 2;
+    padding: 0;
+    border: none;
+    background: none;
+
+    .icon {
+      height: 100%;
+      width: 100%;
+    }
+
+    :hover {
+      color: ${theme.colors.red};
+    }
+
+    :active {
+      color: ${theme.colors.primary};
+    }
+  }
 
   .image {
     width: 100%;

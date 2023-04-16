@@ -5,7 +5,7 @@ import { theme } from "../../../theme/index";
 import { IoChevronForward } from "react-icons/io5";
 import { BsPersonCircle } from "react-icons/bs";
 import TextInput from "../../reusable-ui/TextInput";
-import PrimaryButton from "./../../reusable-ui/PrimaryButton";
+import PrimaryButton from "./../../reusable-ui/Button";
 
 function LoginForm() {
   //state
@@ -22,24 +22,29 @@ function LoginForm() {
     navigate(`order/${name}`);
   };
   return (
-    <LoginFormStyled action="submit" onSubmit={handleSubmit}>
-      <h1>Bienvenue chez nous !</h1>
-      <hr />
-      <h2>Connectez-vous</h2>
-      <TextInput
-        value={name}
-        onChange={handleChange}
-        type="text"
-        placeholder={"Entrez votre prénom"}
-        required
-        Icon={<BsPersonCircle className="icon" />}
-        className="input"
-      />
-      <PrimaryButton
-        label={"Accéder à mon espace"}
-        Icon={<IoChevronForward className="icon" />}
-      />
-    </LoginFormStyled>
+
+    <>
+      <LoginFormStyled action="submit" onSubmit={handleSubmit}>
+        <h1>Bienvenue chez nous !</h1>
+        <hr />
+        <h2>Connectez-vous</h2>
+        <TextInput
+          type="text"
+          placeholder={"Entrez votre prénom"}
+          value={name}
+          onChange={handleChange}
+          Icon={<BsPersonCircle className="icon" />}
+          className="input-login"
+          required
+          version="normal"
+        />
+        <PrimaryButton
+          label={"Accéder à mon espace"}
+          Icon={<IoChevronForward className="icon-button" />}
+        />
+      </LoginFormStyled>
+    </>
+
   );
 }
 
@@ -81,7 +86,8 @@ const LoginFormStyled = styled.form`
     margin-left: 10px;
   }
 
-  input {
-    background-color: ${theme.colors.white};
-  }
+
+  .input-login {
+    margin: 18px 0; // must be handled in Parent
+
 `;

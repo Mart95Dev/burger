@@ -2,8 +2,9 @@ import { useContext } from "react";
 import PanelContext from "../../../context/OrderContext";
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
-import Menu from "../Main/Panel/Menu";
-import Basket from "./Basket";
+import Menu from "./Panel/menu/Menu";
+// import Basket from "./Basket";
+
 import Admin from "./Panel/Admin";
 
 export default function Main() {

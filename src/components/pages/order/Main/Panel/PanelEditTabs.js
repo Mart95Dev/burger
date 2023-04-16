@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import PanelContext from "../../../../context/OrderContext";
-import FormAdminPanel from "./../../../../reusable-ui/FormAdminPanel";
 
-import { theme } from "./../../../../../theme/index";
-import { HiCursorClick } from "react-icons/hi";
+import AddForm from "./FormAdmin/AddForm";
+import EditForm from "./FormAdmin/EditForm";
+
 
 function PanelEditTabs() {
   //state
@@ -13,21 +13,12 @@ function PanelEditTabs() {
 
   //display
   return (
-    <>
-      <PanelEditStyled>
-        <div>{tabSelected === "add" ? <FormAdminPanel /> : ""}</div>
-        <div className="edit-text">
-          {tabSelected === "edit" ? (
-            <span>
-              Cliquer sur un produit du menu pour le modifier
-              <HiCursorClick className="icon" />
-            </span>
-          ) : (
-            ""
-          )}
-        </div>
-      </PanelEditStyled>
-    </>
+
+    <PanelEditStyled>
+      {tabSelected === "add" ? <AddForm /> : ""}
+      {tabSelected === "edit" ? <EditForm /> : ""}
+    </PanelEditStyled>
+
   );
 }
 
@@ -41,38 +32,7 @@ const PanelEditStyled = styled.div`
   right: 0;
   left: 0;
   height: 250px;
-  padding-top: 17px;
-  padding-left: 21px;
 
-  .edit-text {
-    height: 100%;
-    width: 50%;
-    position: relative;
-    top: 50px;
+  padding: 30px 5px 30px 70px;
 
-    span {
-      margin-left: 40px;
-      color: rgb(116, 123, 145);
-      font-family: "Amatic SC", cursive;
-      font-size: 24px;
-      animation: fadeIn 1000ms ease 0s 1 normal;
-
-      .icon {
-        margin-left: 10px;
-      }
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
-    }
-  }
-
-  /* display: flex;
-  justify-content: start; */
 `;
