@@ -1,3 +1,4 @@
+
 const EMPTY = []
 
 const SMALL = [
@@ -70,6 +71,7 @@ const MEDIUM = [
 ]
 
 const LARGE = [
+
   {
     id: 1,
     imageSource: "/images/burger-bacon-egg.png",
@@ -160,6 +162,7 @@ const LARGE = [
     isAvailable: true,
     isAdvertised: false,
   },
+
 ]
 
 export const fakeMenu = {
@@ -168,3 +171,4 @@ export const fakeMenu = {
   MEDIUM,
   LARGE,
 }
+

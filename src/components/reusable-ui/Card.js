@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme/index";
+
 import PrimaryButton from "../reusable-ui/Button";
 import { TiDelete } from "react-icons/ti";
 
@@ -23,7 +24,9 @@ export default function Card({
       ) : (
         ""
       )}
+
       <div className="image">
+     
         <img src={imageSource} alt={title} />
       </div>
       <div className="text-info">
@@ -40,6 +43,7 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
+  position: relative;
   background: ${theme.colors.white};
   width: 240px;
   height: 330px;
@@ -47,7 +51,7 @@ const CardStyled = styled.div`
   grid-template-rows: 65% 1fr;
   padding: 20px;
   padding-bottom: 10px;
-  box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+  box-shadow: ${theme.shadows.medium};
   border-radius: ${theme.borderRadius.extraRound};
   position: relative;
 
@@ -84,10 +88,32 @@ const CardStyled = styled.div`
     margin-top: 30px;
     margin-bottom: 20px;
 
+    .icon-close {
+      color: ${theme.colors.primary};
+      height: 25px;
+      width: 25px;
+      cursor: pointer;
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      animation: close 500ms ease-in-out 0s 1 normal;
+    }
+
     img {
       width: 100%;
       height: 100%;
       object-fit: contain;
+    }
+  }
+
+  @keyframes close {
+    from {
+      right: -20px;
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+      /* right: 20px; */
     }
   }
 
@@ -112,9 +138,6 @@ const CardStyled = styled.div`
     }
 
     .description {
-      /* display: flex;
-      justify-content: space-between;
-      align-items: center; */
       display: grid;
       grid-template-columns: 1fr 1fr;
       align-items: center;

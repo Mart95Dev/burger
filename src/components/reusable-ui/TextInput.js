@@ -4,6 +4,7 @@ import { theme } from "../../theme/index";
 
 export default function TextInput({
   value,
+
   className,
   onChange,
   Icon,
@@ -13,7 +14,7 @@ export default function TextInput({
   return (
     <InputStyled className={className} version={version}>
       {Icon && Icon}
-      <input value={value} onChange={onChange} {...restProps} />
+      <input value={value} onChange={onChange} {...restProps}/>
     </InputStyled>
   );
 }
@@ -22,6 +23,7 @@ const InputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
+
 
   .icon {
     font-size: ${theme.fonts.size.SM};
@@ -66,6 +68,7 @@ const extraStyleMinimalist = css`
   padding: 8px 16px;
   color: ${theme.colors.greyBlue};
 
+
   input {
     background: ${theme.colors.background_white}; ////+
     color: ${theme.colors.dark};
@@ -74,6 +77,7 @@ const extraStyleMinimalist = css`
       outline: 0; //// add outline
     }
   }
+
 `;
 
 const extraStyle = {

@@ -1,8 +1,10 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import PanelContext from "../../../../context/OrderContext";
+
 import AddForm from "./FormAdmin/AddForm";
 import EditForm from "./FormAdmin/EditForm";
+
 
 function PanelEditTabs() {
   //state
@@ -11,10 +13,12 @@ function PanelEditTabs() {
 
   //display
   return (
+
     <PanelEditStyled>
       {tabSelected === "add" ? <AddForm /> : ""}
       {tabSelected === "edit" ? <EditForm /> : ""}
     </PanelEditStyled>
+
   );
 }
 
@@ -24,9 +28,11 @@ const PanelEditStyled = styled.div`
   /* grid-column-start: 2; */ //désactiver pour le panel
 
   background: #ffffff;
-  box-shadow: 0px -6px 8px -2px rgba(0, 0, 0, 0.1);
+  box-shadow: ${theme.shadows.medium};
   right: 0;
   left: 0;
   height: 250px;
+
   padding: 30px 5px 30px 70px;
+
 `;

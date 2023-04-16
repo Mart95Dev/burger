@@ -22,6 +22,7 @@ function LoginForm() {
     navigate(`order/${name}`);
   };
   return (
+
     <>
       <LoginFormStyled action="submit" onSubmit={handleSubmit}>
         <h1>Bienvenue chez nous !</h1>
@@ -43,6 +44,7 @@ function LoginForm() {
         />
       </LoginFormStyled>
     </>
+
   );
 }
 
@@ -59,7 +61,7 @@ const LoginFormStyled = styled.form`
 
   hr {
     margin-top: ${theme.gridUnit * 3}px;
-    margin-bottom: ${theme.gridUnit * 5}px;
+    margin-bottom: ${theme.gridUnit * 4}px;
     border: 1.5px solid ${theme.colors.loginLine};
     width: 102%;
   }
@@ -84,7 +86,8 @@ const LoginFormStyled = styled.form`
     margin-left: 10px;
   }
 
+
   .input-login {
     margin: 18px 0; // must be handled in Parent
-  }
+
 `;
