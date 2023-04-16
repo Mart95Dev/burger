@@ -4,7 +4,7 @@ import PanelContext from "../../../../context/OrderContext";
 
 import AddForm from "./FormAdmin/AddForm";
 import EditForm from "./FormAdmin/EditForm";
-
+import theme from "./../../../../../theme/index";
 
 function PanelEditTabs() {
   //state
@@ -13,12 +13,10 @@ function PanelEditTabs() {
 
   //display
   return (
-
     <PanelEditStyled>
       {tabSelected === "add" ? <AddForm /> : ""}
       {tabSelected === "edit" ? <EditForm /> : ""}
     </PanelEditStyled>
-
   );
 }
 
@@ -34,5 +32,4 @@ const PanelEditStyled = styled.div`
   height: 250px;
 
   padding: 30px 5px 30px 70px;
-
 `;
