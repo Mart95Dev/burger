@@ -33,6 +33,7 @@ function LoginForm() {
           value={name}
           onChange={handleChange}
           Icon={<BsPersonCircle className="icon" />}
+          className="input-login"
           required
           version="normal"
         />
@@ -81,5 +82,9 @@ const LoginFormStyled = styled.form`
     align-items: center;
     font-size: ${theme.fonts.size.SM};
     margin-left: 10px;
+  }
+
+  .input-login {
+    margin: 18px 0; // must be handled in Parent
   }
 `;
