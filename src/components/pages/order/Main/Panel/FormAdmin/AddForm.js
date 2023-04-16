@@ -12,7 +12,7 @@ import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 import TextInput from "./../../../../../reusable-ui/TextInput";
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
   id: "",
   title: "",
   imageSource: "",
@@ -21,8 +21,7 @@ const EMPTY_PRODUCT = {
 
 export default function AddForm() {
   //this.state.
-  const { handleAdd } = useContext(PanelContext);
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const { handleAdd, newProduct, setNewProduct } = useContext(PanelContext);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   //comportement

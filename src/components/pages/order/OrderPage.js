@@ -5,6 +5,7 @@ import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 import { fakeMenu } from "../../api/fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../../../components/pages/order/Main/Panel/FormAdmin/AddForm";
 
 export default function OrderPage() {
   //state
@@ -13,6 +14,7 @@ export default function OrderPage() {
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
   const [menu, setMenu] = useState(fakeMenu.SMALL);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //comportement
   const handleAdd = (newProduct) => {
@@ -52,6 +54,8 @@ export default function OrderPage() {
     handleAdd,
     handleDelete,
     resetMenu,
+    newProduct,
+    setNewProduct,
   };
 
   //comportement
