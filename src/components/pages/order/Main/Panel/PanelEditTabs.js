@@ -4,7 +4,7 @@ import PanelContext from "../../../../context/OrderContext";
 
 import AddForm from "./FormAdmin/AddForm";
 import EditForm from "./FormAdmin/EditForm";
-import theme from "./../../../../../theme/index";
+import { theme } from "./../../../../../theme/index";
 
 function PanelEditTabs() {
   //state
