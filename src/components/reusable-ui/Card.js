@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme/index";
-import PrimaryButton from "../reusable-ui/PrimaryButton";
+import PrimaryButton from "../reusable-ui/Button";
 import { TiDelete } from "react-icons/ti";
 
 export default function Card({
