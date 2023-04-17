@@ -27,6 +27,7 @@ export default function Card({
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
+
       <div className="text-info">
         <div className="title">{title}</div>
         <div className="description">

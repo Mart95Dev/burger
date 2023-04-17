@@ -2,26 +2,48 @@ import { useContext } from "react";
 import styled from "styled-components";
 import PanelContext from "../../../../context/OrderContext";
 import Card from "../../../../reusable-ui/Card";
+import { theme } from "../../../../../theme";
 import { formatPrice } from "../../../../../utils/maths";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
+
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 function Menu() {
-  //state
-  const { fakeProducts } = useContext(PanelContext);
+  const { menu, isModeAdmin, handleDelete, resetMenu } =
+    useContext(PanelContext);
+  // state
 
-  //comportement
+  // comportements
+  // const handleClick = () => {
+  //   return console.log("coucou");
+  // };
+
+  const test = "coucou";
+
+  // affichage
+  if (menu.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient />;
+    return <EmptyMenuAdmin onReset={resetMenu} />;
+  }
 
   //affichage
   return (
     <MenuStyled>
-      {fakeProducts.map(({ id, title, imageSource, price }) => (
-        <Card
-          className="card-mode-admin-panel"
-          key={id}
-          title={title}
-          imageSource={imageSource}
-          leftDescription={formatPrice(price)}
-        />
-      ))}
+      {menu.map(({ id, title, imageSource, price }) => {
+        return (
+          <Card
+            key={id}
+            title={title}
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+            leftDescription={formatPrice(price)}
+            hasDeleteButton={isModeAdmin}
+            onDelete={() => handleDelete(id)}
+            // onClick={handleClick}
+          />
+        );
+      })}
+      <span>coucou</span>
     </MenuStyled>
   );
 }
@@ -29,7 +51,7 @@ function Menu() {
 export default Menu;
 
 const MenuStyled = styled.div`
-  background: $(theme.colors.background_white);
+  background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-row-gap: 60px;

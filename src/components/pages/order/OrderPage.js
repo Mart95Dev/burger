@@ -13,7 +13,6 @@ export default function OrderPage() {
   const [tabIconSelected, setTabIconSelected] = useState(false);
   const [tabSelected, setTabSelected] = useState("add");
   const [isCollasped, setIsCollasped] = useState(false);
-
   const [menu, setMenu] = useState(fakeMenu.SMALL);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
