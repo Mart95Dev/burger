@@ -1,54 +1,55 @@
 import { useContext } from "react";
 import styled from "styled-components";
-import PanelContext from "../../../../context/OrderContext";
-import Card from "../../../../reusable-ui/Card";
-import { formatPrice } from "../../../../../utils/maths";
+import PanelContext from "../../../../../../context/OrderContext";
+import { theme } from "../../../../../../theme";
+import { formatPrice } from "../../../../../../utils/maths";
+import Card from "../../../../../reusable-ui/Card";
+import EmptyMenuAdmin from "./EmptyMenuAdmin";
+import EmptyMenuClient from "./EmptyMenuClient";
 
-function Menu() {
-  //state
-  const { fakeProducts } = useContext(PanelContext);
+const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
-  //comportement
+export default function Menu() {
+  const { menu, isModeAdmin, handleDelete, resetMenu } =
+    useContext(PanelContext);
+  // state
 
-  //affichage
+  // comportements
+
+  // affichage
+  if (menu.length === 0) {
+    if (!isModeAdmin) return <EmptyMenuClient />;
+    return <EmptyMenuAdmin onReset={resetMenu} />;
+  }
+
   return (
-    <MenuStyled>
-      {fakeProducts.map(({ id, title, imageSource, price }) => (
-        <Card
-          className="card-mode-admin-panel"
-          key={id}
-          title={title}
-          imageSource={imageSource}
-          leftDescription={formatPrice(price)}
-        />
-      ))}
+    <MenuStyled className="menu">
+      {menu.map(({ id, title, imageSource, price }) => {
+        return (
+          <Card
+            key={id}
+            title={title}
+            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+            leftDescription={formatPrice(price)}
+            hasDeleteButton={isModeAdmin}
+            onDelete={() => handleDelete(id)}
+          />
+        );
+      })}
+      <span>coucou</span>
     </MenuStyled>
   );
 }
 
-export default Menu;
-
 const MenuStyled = styled.div`
-  background: $(theme.colors.background_white);
+  /* background: ${theme.colors.background_white}; */
+  background: red;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-row-gap: 60px;
   padding: 50px 50px 150px;
   justify-items: center;
+  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
-
-  .card-mode-admin-panel:hover {
-    transform: scale(1.05);
-    box-shadow: rgb(255 154 35) 0px 0px 8px 0px;
-    animation: scale 500ms ease-in-out 0s 1 normal;
-  }
-
-  @keyframes scale {
-    from {
-      transform: scale(1);
-    }
-    to {
-      transform: scale(1.05);
-    }
-  }
 `;

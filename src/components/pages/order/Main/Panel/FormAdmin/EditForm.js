@@ -1,5 +1,10 @@
 import React from "react";
+import HintMessage from "./../menu/HintMessage";
 
 export default function EditForm() {
-  return <div>editForm</div>;
+  return (
+    <div>
+      <HintMessage />
+    </div>
+  );
 }

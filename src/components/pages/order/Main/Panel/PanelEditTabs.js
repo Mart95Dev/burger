@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import PanelContext from "../../../../context/OrderContext";
-
 import AddForm from "./FormAdmin/AddForm";
 import EditForm from "./FormAdmin/EditForm";
 import { theme } from "./../../../../../theme/index";
+// import HintMessage from "./menu/HintMessage";
 
 function PanelEditTabs() {
   //state
@@ -16,6 +16,7 @@ function PanelEditTabs() {
     <PanelEditStyled>
       {tabSelected === "add" ? <AddForm /> : ""}
       {tabSelected === "edit" ? <EditForm /> : ""}
+      {/* {tabSelected === "edit" ? <HintMessage /> : ""} */}
     </PanelEditStyled>
   );
 }
