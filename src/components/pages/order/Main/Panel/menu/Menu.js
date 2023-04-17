@@ -15,10 +15,10 @@ function Menu() {
 
   //comportement
   const handleClick = (idProductSelected) => {
-    const productSelected = menu.find(
+    const productClicked = menu.find(
       (product) => product.id === idProductSelected
     );
-    setproductSelected(productSelected);
+    setproductSelected(productClicked);
   };
 
   //affichage
