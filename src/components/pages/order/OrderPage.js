@@ -3,7 +3,6 @@ import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
-import { fakeMenu2 } from "../../api/fakeData/fakeMenu";
 import { theme } from "./../../../theme/index";
 import { fakeMenu } from "../../api/fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "../../../components/pages/order/Main/Panel/FormAdmin/AddForm";
@@ -43,7 +42,6 @@ export default function OrderPage() {
     setMenu(fakeMenu.SMALL);
   };
 
-
   const panelContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -60,7 +58,6 @@ export default function OrderPage() {
     resetMenu,
     newProduct,
     setNewProduct,
-
   };
 
   //comportement
