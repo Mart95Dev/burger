@@ -9,11 +9,17 @@ import EmptyMenuClient from "./EmptyMenuClient";
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, setproductSelected } =
     useContext(PanelContext);
   //state
 
   //comportement
+  const handleClick = (idProductSelected) => {
+    const productSelected = menu.find(
+      (product) => product.id === idProductSelected
+    );
+    setproductSelected(productSelected);
+  };
 
   //affichage
   if (menu.length === 0) {
@@ -31,6 +37,7 @@ function Menu() {
           leftDescription={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
         />
       ))}
     </MenuStyled>

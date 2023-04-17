@@ -7,13 +7,7 @@ import SubmitMessage from "./SubmitMessage";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 import TextInput from "./../../../../../reusable-ui/TextInput";
-
-export const EMPTY_PRODUCT = {
-  id: "",
-  title: "",
-  imageSource: "",
-  price: 0,
-};
+import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
 
 export default function AddForm() {
   //this.state.
