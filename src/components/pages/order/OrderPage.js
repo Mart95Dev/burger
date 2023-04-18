@@ -25,7 +25,7 @@ export default function OrderPage() {
 
   const handleAdd = (newProduct) => {
     // copy du array
-    const menuCopy = deepClone(menu);
+    const menuCopy = [...menu];
     //2 manip copy array
     const menuUpdated = [newProduct, ...menuCopy];
     //3 update du state
@@ -34,7 +34,7 @@ export default function OrderPage() {
 
   const handleDelete = (idOfProductToDelete) => {
     //1 copy this.state.
-    const menuCopy = deepClone(menu);
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     //2 manip copy this.state.
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
@@ -45,7 +45,7 @@ export default function OrderPage() {
 
   const handleEdit = (productBeingEdited) => {
     // copy du array
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
     //2 manip copy array
     const indexOfProductToEdit = menu.findIndex(
       (product) => product.id === productBeingEdited.id
