@@ -1,16 +1,14 @@
-import { useState, useContext } from "react";
-import HintMessage from "./../menu/HintMessage";
+import { useContext } from "react";
+// import HintMessage from "./../menu/HintMessage";
 import PanelContext from "../../../../../context/OrderContext";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import TextInput from "./../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
-// import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
 
 export default function EditForm() {
   const { productSelected, setproductSelected, handleEdit } =
     useContext(PanelContext);
-  // const [productBeingEdited, setproductBeingEdited] = useState(EMPTY_PRODUCT);
   const inputTexts = getInputTextsConfig(productSelected);
 
   const handleChange = (e) => {
