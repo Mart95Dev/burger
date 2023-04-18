@@ -6,6 +6,7 @@ import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 import { fakeMenu } from "../../api/fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "./../../../enums/product";
+import { deepClone } from "./../../../utils/array";
 
 export default function OrderPage() {
   //state
@@ -24,7 +25,7 @@ export default function OrderPage() {
 
   const handleAdd = (newProduct) => {
     // copy du array
-    const menuCopy = [...menu];
+    const menuCopy = deepClone(menu);
     //2 manip copy array
     const menuUpdated = [newProduct, ...menuCopy];
     //3 update du state
@@ -33,7 +34,7 @@ export default function OrderPage() {
 
   const handleDelete = (idOfProductToDelete) => {
     //1 copy this.state.
-    const menuCopy = [...menu];
+    const menuCopy = deepClone(menu);
     //2 manip copy this.state.
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
