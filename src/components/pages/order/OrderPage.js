@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
@@ -18,6 +18,10 @@ export default function OrderPage() {
   const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT);
 
   //comportement
+  useEffect(() => {
+    document.title = "Crazee Burger | Menu";
+  }, []);
+
   const handleAdd = (newProduct) => {
     // copy du array
     const menuCopy = [...menu];
@@ -73,8 +77,6 @@ export default function OrderPage() {
     setproductSelected,
     handleEdit,
   };
-
-  //comportement
 
   //display
   return (
