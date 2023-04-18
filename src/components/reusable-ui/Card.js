@@ -48,7 +48,7 @@ export default function Card({
 const CardStyled = styled.div`
   ${(props) => props.isHoverable && hoverableStyle};
   border-radius: ${theme.borderRadius.extraRound};
-  height: 333px;
+  height: 330px;
   /* border: 1px solid red; */
   .card {
     position: relative;
