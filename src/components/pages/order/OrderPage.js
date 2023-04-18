@@ -38,6 +38,18 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const handleEdit = (productBeingEdited) => {
+    // copy du array
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+    //2 manip copy array
+    const indexOfProductToEdit = menu.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+    menuCopy[indexOfProductToEdit] = productBeingEdited;
+    //3 update du state
+    setMenu(menuCopy);
+  };
+
   const resetMenu = () => {
     setMenu(fakeMenu.SMALL);
   };
@@ -59,6 +71,7 @@ export default function OrderPage() {
     setNewProduct,
     productSelected,
     setproductSelected,
+    handleEdit,
   };
 
   //comportement

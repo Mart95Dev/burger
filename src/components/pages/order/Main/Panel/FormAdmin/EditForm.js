@@ -5,16 +5,19 @@ import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import TextInput from "./../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
-import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
+// import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
 
 export default function EditForm() {
-  const { productSelected } = useContext(PanelContext);
-  const [productBeingEdited, setproductBeingEdited] = useState(EMPTY_PRODUCT);
+  const { productSelected, setproductSelected, handleEdit } =
+    useContext(PanelContext);
+  // const [productBeingEdited, setproductBeingEdited] = useState(EMPTY_PRODUCT);
   const inputTexts = getInputTextsConfig(productSelected);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setproductBeingEdited({ ...productBeingEdited, [name]: value });
+    const productBedingUpdated = { ...productSelected, [name]: value };
+    setproductSelected(productBedingUpdated);
+    handleEdit(productBedingUpdated);
   };
 
   return (
