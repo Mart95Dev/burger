@@ -1,14 +1,15 @@
 import styled from "styled-components";
 import { theme } from "../../../../../theme";
+import HeaderBasket from "./HeaderBasket";
+import FooterBasket from "./FooterBasket";
+import ContentBasket from "./ContentBasket";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <div className="header">Montant</div>
-      <div className="content">
-        <span>Votre commande est vide</span>
-      </div>
-      <div className="footer">Footer</div>
+      <HeaderBasket />
+      <ContentBasket className="content-basket" />
+      <FooterBasket />
     </BasketStyled>
   );
 }
@@ -26,26 +27,7 @@ const BasketStyled = styled.div`
   box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 0px 15px;
 
-  .header {
-    border: 1px solid red;
-    background: black;
-    color: white;
-    height: 70px;
-    z-index: 3;
-  }
-  .content {
-    border: 1px solid blue;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .content-basket {
     overflow-y: scroll;
-  }
-  .footer {
-    border: 1px solid green;
-    background: black;
-    color: white;
-    height: 70px;
-    z-index: 3;
   }
 `;
