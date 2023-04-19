@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BsHeartFill } from "react-icons/bs";
+import { theme } from "./../../../../../theme/index";
 
 function FooterBasket() {
   return (
@@ -16,21 +16,16 @@ const FooterBasketStyled = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid green;
-  background: black;
-  color: white;
+  background: ${theme.colors.background_dark};
+  color: ${theme.colors.white};
   height: 70px;
-  z-index: 3;
+  z-index: 2;
 
   span {
-    font-family: "Amatic SC";
+    font-family: ${theme.fonts.family.stylish};
     font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
+    font-weight: ${theme.fonts.weights.bold};
+    font-size: ${theme.fonts.size.P2};
     line-height: 25px;
-  }
-
-  .heart {
-    background-color: red;
   }
 `;

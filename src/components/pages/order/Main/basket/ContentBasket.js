@@ -17,6 +17,7 @@ const ContentBasketStyled = styled.div`
   flex-grow: 1;
   justify-content: center;
   overflow-y: scroll;
+  z-index: 1;
 
   span {
     font-family: "Amatic SC";

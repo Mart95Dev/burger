@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { theme } from "./../../../../../theme/index";
 
 function HeaderBasket() {
   return (
@@ -17,26 +18,22 @@ const HeaderBasketStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
-  border: 1px solid red;
-  background: black;
-  color: #ffa01b;
+  background: ${theme.colors.background_dark};
+  color: ${theme.colors.primary};
   height: 70px;
   z-index: 3;
 
-  .total {
-    font-family: "Amatic SC";
+  .total,
+  .addition {
+    font-family: ${theme.fonts.family.stylish};
     font-style: normal;
-    font-weight: 400;
-    font-size: 36px;
+    font-weight: ${theme.fonts.weights.regular};
+    font-size: ${theme.fonts.size.P4};
     line-height: 45px;
   }
 
   .addition {
-    font-family: "Amatic SC";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 45px;
+    font-weight: ${theme.fonts.weights.bold};
     display: flex;
     letter-spacing: 2px;
   }
