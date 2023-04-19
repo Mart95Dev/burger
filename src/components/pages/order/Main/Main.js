@@ -3,7 +3,7 @@ import PanelContext from "../../../context/OrderContext";
 import styled from "styled-components";
 import { theme } from "../../../../theme/index";
 import Menu from "./Panel/menu/Menu";
-import Basket from "./Basket";
+import Basket from "./basket/Basket";
 
 import Admin from "./Panel/Admin";
 
