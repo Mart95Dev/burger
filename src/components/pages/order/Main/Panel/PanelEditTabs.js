@@ -24,8 +24,6 @@ function PanelEditTabs() {
 export default PanelEditTabs;
 
 const PanelEditStyled = styled.div`
-  /* grid-column-start: 2; //désactiver pour le panel */
-
   background: #ffffff;
   box-shadow: ${theme.shadows.medium};
   right: 0;
