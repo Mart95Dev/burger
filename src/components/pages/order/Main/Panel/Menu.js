@@ -32,6 +32,7 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
+            isSelected={true}
             // isHoverable={isModeAdmin} //@FIXME
           />
         );

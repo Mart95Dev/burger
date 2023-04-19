@@ -11,12 +11,13 @@ export default function Card({
   hasDeleteButton,
   onDelete,
   onClick,
+  isSelected,
   // isHoverable, //@FIXME
 }) {
-  console.log(hasDeleteButton);
+  console.log(isSelected);
   return (
     <CardStyled onClick={onClick} isHoverable={hasDeleteButton}>
-      <div className="card">
+      <div className="card" style={isSelected ? { background: "orange" } : {}}>
         {hasDeleteButton ? (
           <button
             className="delete-button"
