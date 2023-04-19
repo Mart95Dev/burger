@@ -14,13 +14,17 @@ function HeaderBasket() {
 export default HeaderBasket;
 
 const HeaderBasketStyled = styled.div`
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 350px;
+  height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 12px 16px;
   background: ${theme.colors.background_dark};
   color: ${theme.colors.primary};
-  height: 70px;
   z-index: 3;
 
   .total,

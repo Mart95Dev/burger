@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 function ContentBasket({ className }) {
@@ -13,8 +12,10 @@ export default ContentBasket;
 
 const ContentBasketStyled = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
-  flex-grow: 1;
+  /* width: 350px; */
+  height: 100%;
   justify-content: center;
   overflow-y: scroll;
   z-index: 1;

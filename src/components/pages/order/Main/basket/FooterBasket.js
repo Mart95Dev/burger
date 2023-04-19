@@ -13,12 +13,16 @@ function FooterBasket() {
 export default FooterBasket;
 
 const FooterBasketStyled = styled.div`
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 350px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: ${theme.colors.background_dark};
   color: ${theme.colors.white};
-  height: 70px;
   z-index: 2;
 
   span {
