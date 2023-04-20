@@ -6,7 +6,7 @@ import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 import { fakeMenu } from "../../api/fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "./../../../enums/product";
-import { deepClone } from "./../../../utils/array";
+// import { cloneArray } from "./../../../utils/array";
 
 export default function OrderPage() {
   //state
@@ -45,7 +45,7 @@ export default function OrderPage() {
 
   const handleEdit = (productBeingEdited) => {
     // copy du array
-    const menuCopy = deepClone(menu);
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     //2 manip copy array
     const indexOfProductToEdit = menu.findIndex(
       (product) => product.id === productBeingEdited.id
