@@ -13,9 +13,9 @@ export default function EditForm() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const productBedingUpdated = { ...productSelected, [name]: value };
-    setproductSelected(productBedingUpdated);
-    handleEdit(productBedingUpdated);
+    const productBeingUpdated = { ...productSelected, [name]: value };
+    setproductSelected(productBeingUpdated);
+    handleEdit(productBeingUpdated);
   };
 
   return (

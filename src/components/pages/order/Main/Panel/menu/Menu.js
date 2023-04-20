@@ -5,12 +5,19 @@ import Card from "../../../../../reusable-ui/Card";
 import { formatPrice } from "./../../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu, setproductSelected } =
-    useContext(PanelContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setproductSelected,
+  } = useContext(PanelContext);
   //state
 
   //comportement
@@ -39,7 +46,7 @@ function Menu() {
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
           isHoverable={isModeAdmin}
-          isSelected={false}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
         />
       ))}
     </MenuStyled>
