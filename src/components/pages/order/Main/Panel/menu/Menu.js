@@ -28,6 +28,11 @@ function Menu() {
     setproductSelected(productClicked);
   };
 
+  const handleCardOnDelete = (e, idProductDelete) => {
+    e.stopPropagation();
+    handleDelete(idProductDelete);
+  };
+
   //affichage
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
@@ -43,10 +48,11 @@ function Menu() {
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           leftDescription={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
-          onDelete={() => handleDelete(id)}
+          onDelete={(e) => handleCardOnDelete(e, id)}
           onClick={() => handleClick(id)}
           isHoverable={isModeAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
+          onCardDelete={handleCardOnDelete}
         />
       ))}
     </MenuStyled>
