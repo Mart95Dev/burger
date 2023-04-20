@@ -22,6 +22,7 @@ function Menu() {
 
   //comportement
   const handleClick = (idProductSelected) => {
+    if (!isModeAdmin) return;
     const productClicked = menu.find(
       (product) => product.id === idProductSelected
     );
