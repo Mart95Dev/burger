@@ -170,7 +170,8 @@ const CardStyled = styled.div`
       }
     }
   }
-  ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle}
+  ${({ isHoverable, isSelected }) =>
+    isHoverable && isSelected && selectedStyle}//@FIXME
 `;
 
 const hoverableStyle = css`
