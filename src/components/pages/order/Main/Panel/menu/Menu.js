@@ -17,12 +17,16 @@ function Menu() {
     resetMenu,
     productSelected,
     setproductSelected,
+    setTabSelected,
+    setIsCollasped,
   } = useContext(PanelContext);
   //state
 
   //comportement
   const handleClick = (idProductSelected) => {
     if (!isModeAdmin) return;
+    setIsCollasped(false);
+    setTabSelected("edit");
     const productClicked = menu.find(
       (product) => product.id === idProductSelected
     );
