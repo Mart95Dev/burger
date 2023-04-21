@@ -1,6 +1,5 @@
-import styled from "styled-components";
-import { css } from "styled-components";
-import { theme } from "../../theme/index";
+import styled, { css } from "styled-components";
+import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
 
@@ -11,24 +10,23 @@ export default function Card({
   hasDeleteButton,
   onDelete,
   onClick,
-  isSelected,
   isHoverable,
+  isSelected,
 }) {
+  // state (vide)
+
+  // comportements (vide)
+
+  // affichage
   return (
     <CardStyled
+      className="produit"
       onClick={onClick}
       isHoverable={isHoverable}
       isSelected={isSelected}
     >
-      <div
-        className="card"
-        style={
-          isHoverable && isSelected
-            ? { background: "orange", color: "white" } //@FIXME
-            : {}
-        }
-      >
-        {hasDeleteButton ? (
+      <div className="card">
+        {hasDeleteButton && (
           <button
             className="delete-button"
             aria-label="delete-button"
@@ -36,9 +34,8 @@ export default function Card({
           >
             <TiDelete className="icon" />
           </button>
-        ) : (
-          ""
         )}
+
         <div className="image">
           <img src={imageSource} alt={title} />
         </div>
@@ -61,23 +58,25 @@ export default function Card({
 }
 
 const CardStyled = styled.div`
-  ${({ isHoverable }) => isHoverable && hoverableStyle};
+  ${({ isHoverable }) => isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
   height: 330px;
+
   .card {
-    position: relative;
     background: ${theme.colors.white};
+    box-sizing: border-box;
     width: 240px;
     height: 330px;
     display: grid;
     grid-template-rows: 65% 1fr;
     padding: 20px;
     padding-bottom: 10px;
-    box-shadow: ${theme.shadows.medium};
+    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     border-radius: ${theme.borderRadius.extraRound};
     position: relative;
 
     .delete-button {
+      border: 1px solid red;
       position: absolute;
       top: 15px;
       right: 15px;
@@ -91,14 +90,15 @@ const CardStyled = styled.div`
       background: none;
 
       .icon {
+        /* border: 1px solid blue; */
         height: 100%;
         width: 100%;
       }
 
       :hover {
         color: ${theme.colors.red};
+        /* background-color: red; */
       }
-
       :active {
         color: ${theme.colors.primary};
       }
@@ -109,17 +109,6 @@ const CardStyled = styled.div`
       height: auto;
       margin-top: 30px;
       margin-bottom: 20px;
-
-      .icon-close {
-        color: ${theme.colors.primary};
-        height: 25px;
-        width: 25px;
-        cursor: pointer;
-        position: absolute;
-        top: 18px;
-        right: 18px;
-        animation: close 500ms ease-in-out 0s 1 normal;
-      }
 
       img {
         width: 100%;
@@ -151,7 +140,6 @@ const CardStyled = styled.div`
       .description {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        align-items: center;
 
         .left-description {
           display: flex;
@@ -175,71 +163,14 @@ const CardStyled = styled.div`
             font-size: ${theme.fonts.size.XS};
             cursor: pointer;
             padding: 12px;
-            margin-top: 5px;
           }
         }
       }
     }
+
+    ${({ isHoverable, isSelected }) =>
+      isHoverable && isSelected && selectedStyle}
   }
-  .SelectedCardStyle. {
-    background: ${theme.colors.primary};
-    .primary-button {
-      color: ${theme.colors.primary};
-      background-color: ${theme.colors.white};
-      border: 1px solid ${theme.colors.white};
-      transition: all 200ms ease-out;
-      :hover {
-        color: ${theme.colors.white};
-        background-color: ${theme.colors.primary};
-        border: 1px solid ${theme.colors.white};
-        transition: all 200ms ease-out;
-      }
-      :active {
-        background-color: ${theme.colors.white};
-        color: ${theme.colors.primary};
-      }
-
-      &.is-disabled {
-        opacity: 50%;
-        cursor: not-allowed;
-        z-index: 2;
-      }
-
-      &.with-focus {
-        border: 1px solid white;
-        background-color: ${theme.colors.white};
-        color: ${theme.colors.primary};
-        :hover {
-          color: ${theme.colors.white};
-          background-color: ${theme.colors.primary};
-          border: 1px solid ${theme.colors.white};
-        }
-        :active {
-          background-color: ${theme.colors.white};
-          color: ${theme.colors.primary};
-        }
-      }
-    }
-
-    .delete-button {
-      color: ${theme.colors.white};
-
-      :active {
-        color: ${theme.colors.white};
-      }
-    }
-
-    .text-info {
-      .description {
-        .left-description {
-          color: ${theme.colors.white};
-        }
-      }
-    }
-  }
-
-  /* ${({ isHoverable, isSelected }) =>
-    isHoverable && isSelected && selectedStyle} //@FIXME */
 `;
 
 const hoverableStyle = css`
@@ -251,61 +182,59 @@ const hoverableStyle = css`
   }
 `;
 
-const selectedStyle = css``;
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+  .primary-button {
+    color: ${theme.colors.primary};
+    background-color: ${theme.colors.white};
+    border: 1px solid ${theme.colors.white};
+    transition: all 200ms ease-out;
+    :hover {
+      color: ${theme.colors.white};
+      background-color: ${theme.colors.primary};
+      border: 1px solid ${theme.colors.white};
+      transition: all 200ms ease-out;
+    }
+    :active {
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+    }
 
-/* const selectedStyle = css` */
-//   background: ${theme.colors.primary};
-//   .primary-button {
-//     color: ${theme.colors.primary};
-//     background-color: ${theme.colors.white};
-//     border: 1px solid ${theme.colors.white};
-//     transition: all 200ms ease-out;
-//     :hover {
-//       color: ${theme.colors.white};
-//       background-color: ${theme.colors.primary};
-//       border: 1px solid ${theme.colors.white};
-//       transition: all 200ms ease-out;
-//     }
-//     :active {
-//       background-color: ${theme.colors.white};
-//       color: ${theme.colors.primary};
-//     }
+    &.is-disabled {
+      opacity: 50%;
+      cursor: not-allowed;
+      z-index: 2;
+    }
 
-//     &.is-disabled {
-//       opacity: 50%;
-//       cursor: not-allowed;
-//       z-index: 2;
-//     }
+    &.with-focus {
+      border: 1px solid white;
+      background-color: ${theme.colors.white};
+      color: ${theme.colors.primary};
+      :hover {
+        color: ${theme.colors.white};
+        background-color: ${theme.colors.primary};
+        border: 1px solid ${theme.colors.white};
+      }
+      :active {
+        background-color: ${theme.colors.white};
+        color: ${theme.colors.primary};
+      }
+    }
+  }
 
-//     &.with-focus {
-//       border: 1px solid white;
-//       background-color: ${theme.colors.white};
-//       color: ${theme.colors.primary};
-//       :hover {
-//         color: ${theme.colors.white};
-//         background-color: ${theme.colors.primary};
-//         border: 1px solid ${theme.colors.white};
-//       }
-//       :active {
-//         background-color: ${theme.colors.white};
-//         color: ${theme.colors.primary};
-//       }
-//     }
-//   }
+  .delete-button {
+    color: ${theme.colors.white};
 
-//   .delete-button {
-//     color: ${theme.colors.white};
+    :active {
+      color: ${theme.colors.white};
+    }
+  }
 
-//     :active {
-//       color: ${theme.colors.white};
-//     }
-//   }
-
-//   .text-info {
-//     .description {
-//       .left-description {
-//         color: ${theme.colors.white};
-//       }
-//     }
-//   }
-// `;
+  .text-info {
+    .description {
+      .left-description {
+        color: ${theme.colors.white};
+      }
+    }
+  }
+`;
