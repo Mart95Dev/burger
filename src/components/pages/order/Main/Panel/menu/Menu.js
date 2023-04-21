@@ -19,17 +19,19 @@ function Menu() {
     setproductSelected,
     setTabSelected,
     setIsCollasped,
+    titleEditRef,
   } = useContext(PanelContext);
   //state
 
   //comportement
-  const handleClick = (idProductSelected) => {
+  const handleClick = async (idProductSelected) => {
     if (!isModeAdmin) return;
-    setIsCollasped(false);
-    setTabSelected("edit");
+    await setIsCollasped(false);
+    await setTabSelected("edit");
     const productClicked = menu.find(
       (product) => product.id === idProductSelected
     );
+    await titleEditRef.current.focus();
     setproductSelected(productClicked);
   };
 

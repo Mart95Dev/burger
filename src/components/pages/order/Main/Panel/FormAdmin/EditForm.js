@@ -7,7 +7,7 @@ import TextInput from "./../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 
 export default function EditForm() {
-  const { productSelected, setproductSelected, handleEdit } =
+  const { productSelected, setproductSelected, handleEdit, titleEditRef } =
     useContext(PanelContext);
   const inputTexts = getInputTextsConfig(productSelected);
 
@@ -31,6 +31,7 @@ export default function EditForm() {
             key={input.id}
             onChange={handleChange}
             version="minimalist"
+            ref={input.name === "title" ? titleEditRef : null}
           />
         ))}
       </div>

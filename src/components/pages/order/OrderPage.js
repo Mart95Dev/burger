@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
@@ -17,6 +17,7 @@ export default function OrderPage() {
   const [menu, setMenu] = useState(fakeMenu.SMALL);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT);
+  const titleEditRef = useRef();
 
   //comportement
   useEffect(() => {
@@ -77,6 +78,7 @@ export default function OrderPage() {
     productSelected,
     setproductSelected,
     handleEdit,
+    titleEditRef,
   };
 
   //display
