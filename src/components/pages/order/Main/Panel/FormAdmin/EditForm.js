@@ -5,6 +5,7 @@ import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import TextInput from "./../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
+import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
   //this.state.
@@ -45,7 +46,9 @@ export default function EditForm() {
               />
             ))}
           </div>
-          <div className="submit"></div>
+          <div className="submit">
+            <EditInfoMessage />
+          </div>
         </>
       ) : (
         <HintMessage />
@@ -74,8 +77,7 @@ const EditFormStyled = styled.form`
     grid-area: 4/2/5/3;
     display: flex;
     align-items: center;
-
-    
-    }
+    position: relative;
+    top: 3px;
   }
 `;
