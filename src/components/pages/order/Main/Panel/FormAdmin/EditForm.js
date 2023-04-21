@@ -1,10 +1,7 @@
 import { useContext } from "react";
 import HintMessage from "./../menu/HintMessage";
 import PanelContext from "../../../../../context/OrderContext";
-import styled from "styled-components";
-import ImagePreview from "./ImagePreview";
-import TextInput from "./../../../../../reusable-ui/TextInput";
-import { getInputTextsConfig } from "./inputTextConfig";
+import Form from "./Form";
 import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
@@ -14,10 +11,9 @@ export default function EditForm() {
     productSelected,
     setproductSelected,
     handleEdit,
-    // titleEditRef,
+    // titleEditRef, //@FIXME
     hasAlreadyBeenClicked,
   } = useContext(PanelContext);
-  const inputTexts = getInputTextsConfig(productSelected);
 
   //comportement
   const handleChange = async (e) => {
@@ -28,56 +24,18 @@ export default function EditForm() {
   };
 
   return (
-    <EditFormStyled>
+    <>
       {hasAlreadyBeenClicked ? (
-        <>
-          <ImagePreview
-            imageSource={productSelected.imageSource}
-            title={productSelected.title}
-          />
-          <div className="input-fields">
-            {inputTexts.map((input) => (
-              <TextInput
-                {...input}
-                key={input.id}
-                onChange={handleChange}
-                version="minimalist"
-                // ref={input.name === "title" ? titleEditRef : null}
-              />
-            ))}
-          </div>
-          <div className="submit">
-            <EditInfoMessage />
-          </div>
-        </>
+        <Form
+          product={productSelected}
+          onChange={handleChange}
+          // ref={titleEditRef}
+        >
+          <EditInfoMessage />
+        </Form>
       ) : (
         <HintMessage />
       )}
-    </EditFormStyled>
+    </>
   );
 }
-
-const EditFormStyled = styled.form`
-  display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: repeat(4, 1fr);
-  height: 100%;
-  width: 70%;
-  grid-column-gap: 20px;
-  grid-row-gap: 8px;
-
-  .input-fields {
-    grid-area: 1/2/-2/3;
-
-    display: grid;
-    grid-row-gap: 8px;
-  }
-
-  .submit {
-    grid-area: 4/2/5/3;
-    display: flex;
-    align-items: center;
-    position: relative;
-    top: 3px;
-  }
-`;

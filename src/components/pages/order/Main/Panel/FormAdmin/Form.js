@@ -1,11 +1,12 @@
+import React from "react";
 import styled from "styled-components";
-import Button from "./../../../../../reusable-ui/Button";
-import SubmitMessage from "./SubmitMessage";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
 import TextInput from "./../../../../../reusable-ui/TextInput";
 
-export default function Form({ onSubmit, onChange, product, isSubmitted }) {
+// const Form = React.forwardRef(
+//   ({ onSubmit, onChange, product, isSubmitted }, ref) => {
+const Form = ({ onSubmit, onChange, product, isSubmitted, children }, ref) => {
   //this.state.
 
   //comportement
@@ -22,20 +23,15 @@ export default function Form({ onSubmit, onChange, product, isSubmitted }) {
             key={input.id}
             onChange={onChange}
             version="minimalist"
+            // ref={ref && input.name === "title" ? ref : null}
           />
         ))}
       </div>
-      <div className="submit">
-        <Button
-          className="submit-button"
-          label={"Ajouter un nouveau produit au menu"}
-          version="success"
-        />
-        {isSubmitted && <SubmitMessage />}
-      </div>
+      <div className="submit">{children}</div>
     </FormStyled>
   );
-}
+};
+export default Form;
 
 const FormStyled = styled.form`
   display: grid;
@@ -57,6 +53,8 @@ const FormStyled = styled.form`
     grid-area: 4/2/5/3;
     display: flex;
     align-items: center;
+    position: relative;
+    top: 3px;
 
     .submit-button {
       width: 50%;
