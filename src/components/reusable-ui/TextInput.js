@@ -4,15 +4,7 @@ import { theme } from "../../theme/index";
 
 const TextInput = React.forwardRef(
   (
-    {
-      value,
-
-      className,
-      onChange,
-      Icon,
-      version = "normal",
-      ...restProps
-    },
+    { value, className, onChange, Icon, version = "normal", ...restProps },
     ref
   ) => {
     return (
@@ -32,12 +24,13 @@ const InputStyled = styled.div`
   align-items: center;
 
   .icon {
+    display: flex; // to center icon vertically
     font-size: ${theme.fonts.size.SM};
     margin: 0 13px 0 8px;
-    display: flex; // to center icon vertically
   }
 
   input {
+    margin-left: 10px;
     border: none;
     font-size: ${theme.fonts.size.SM};
     width: 100%;
