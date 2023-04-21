@@ -1,5 +1,5 @@
 import { useContext } from "react";
-// import HintMessage from "./../menu/HintMessage";
+import HintMessage from "./../menu/HintMessage";
 import PanelContext from "../../../../../context/OrderContext";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
@@ -7,35 +7,49 @@ import TextInput from "./../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 
 export default function EditForm() {
-  const { productSelected, setproductSelected, handleEdit, titleEditRef } =
-    useContext(PanelContext);
+  //this.state.
+
+  const {
+    productSelected,
+    setproductSelected,
+    handleEdit,
+    // titleEditRef,
+    hasAlreadyBeenClicked,
+  } = useContext(PanelContext);
   const inputTexts = getInputTextsConfig(productSelected);
 
-  const handleChange = (e) => {
+  //comportement
+  const handleChange = async (e) => {
     const { name, value } = e.target;
     const productBeingUpdated = { ...productSelected, [name]: value };
-    setproductSelected(productBeingUpdated);
+    await setproductSelected(productBeingUpdated);
     handleEdit(productBeingUpdated);
   };
 
   return (
     <EditFormStyled>
-      <ImagePreview
-        imageSource={productSelected.imageSource}
-        title={productSelected.title}
-      />
-      <div className="input-fields">
-        {inputTexts.map((input) => (
-          <TextInput
-            {...input}
-            key={input.id}
-            onChange={handleChange}
-            version="minimalist"
-            ref={input.name === "title" ? titleEditRef : null}
+      {hasAlreadyBeenClicked ? (
+        <>
+          <ImagePreview
+            imageSource={productSelected.imageSource}
+            title={productSelected.title}
           />
-        ))}
-      </div>
-      <div className="submit"></div>
+          <div className="input-fields">
+            {inputTexts.map((input) => (
+              <TextInput
+                {...input}
+                key={input.id}
+                onChange={handleChange}
+                version="minimalist"
+                // ref={input.name === "title" ? titleEditRef : null}
+              />
+            ))}
+          </div>
+          <div className="submit"></div>
+        </>
+      ) : (
+        <HintMessage />
+      )}
     </EditFormStyled>
   );
 }

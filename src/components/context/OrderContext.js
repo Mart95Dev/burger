@@ -22,4 +22,7 @@ export default createContext({
   setproductSelected: () => {},
 
   titleEditRef: {},
+
+  hasAlreadyBeenClicked: false,
+  setHasAlreadyBeenClicked: () => {},
 });

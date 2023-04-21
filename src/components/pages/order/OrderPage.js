@@ -6,7 +6,7 @@ import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 import { fakeMenu } from "../../api/fakeData/fakeMenu";
 import { EMPTY_PRODUCT } from "./../../../enums/product";
-// import { cloneArray } from "./../../../utils/array";
+// import { cloneArray } from "./../../../utils/array"; //@FIXME
 
 export default function OrderPage() {
   //state
@@ -18,6 +18,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
+  const [hasAlreadyBeenClicked, setHasAlreadyBeenClicked] = useState(false);
 
   //comportement
   useEffect(() => {
@@ -58,6 +59,7 @@ export default function OrderPage() {
 
   const resetMenu = () => {
     setMenu(fakeMenu.SMALL);
+    setHasAlreadyBeenClicked(false);
   };
 
   const panelContextValue = {
@@ -79,6 +81,8 @@ export default function OrderPage() {
     setproductSelected,
     handleEdit,
     titleEditRef,
+    hasAlreadyBeenClicked,
+    setHasAlreadyBeenClicked,
   };
 
   //display

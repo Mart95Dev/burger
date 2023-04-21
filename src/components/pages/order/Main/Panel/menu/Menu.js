@@ -6,6 +6,7 @@ import { formatPrice } from "./../../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
@@ -19,7 +20,8 @@ function Menu() {
     setproductSelected,
     setTabSelected,
     setIsCollasped,
-    titleEditRef,
+    // titleEditRef,
+    setHasAlreadyBeenClicked,
   } = useContext(PanelContext);
   //state
 
@@ -31,13 +33,16 @@ function Menu() {
     const productClicked = menu.find(
       (product) => product.id === idProductSelected
     );
-    await titleEditRef.current.focus();
+    // await titleEditRef.current.focus(); //@FIXME
     setproductSelected(productClicked);
+    setHasAlreadyBeenClicked(true);
   };
 
   const handleCardOnDelete = (e, idProductDelete) => {
     e.stopPropagation();
     handleDelete(idProductDelete);
+    setHasAlreadyBeenClicked(false);
+    setproductSelected(EMPTY_PRODUCT);
   };
 
   //affichage
