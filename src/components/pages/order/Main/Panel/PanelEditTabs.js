@@ -16,7 +16,6 @@ function PanelEditTabs() {
     <PanelEditStyled>
       {tabSelected === "add" ? <AddForm /> : ""}
       {tabSelected === "edit" ? <EditForm /> : ""}
-      {/* {tabSelected === "edit" ? <HintMessage /> : ""} */}
     </PanelEditStyled>
   );
 }
