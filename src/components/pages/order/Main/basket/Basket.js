@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import BoxHeader from "./BoxBasket";
-import BoxFooter from "./BoxBasket";
-import Body from "./BodyBasket";
+import BoxHeader from "./BasketBox";
+import BoxFooter from "./BasketBox";
+import BasketBody from "./BasketBody";
 import Total from "./Total";
 import TextFooter from "./TextCodeReact";
 import { formatPrice } from "./../../../../../utils/maths";
@@ -13,7 +13,7 @@ export default function Basket() {
         <Total amountToPay={formatPrice(0.0)} />
       </BoxHeader>
 
-      <Body />
+      <BasketBody />
 
       <BoxFooter>
         <TextFooter />

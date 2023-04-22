@@ -1,14 +1,13 @@
 import styled from "styled-components";
 import { theme } from "./../../../../../theme/index";
 
-function BoxBasket({ children }) {
-  return <BoxBasketStyled>{children}</BoxBasketStyled>;
+function BasketBox({ children }) {
+  return <BasketBoxStyled>{children}</BasketBoxStyled>;
 }
 
-export default BoxBasket;
+export default BasketBox;
 
-const BoxBasketStyled = styled.div`
-  border: 3px solid yellow;
+const BasketBoxStyled = styled.div`
   height: 70px;
   background: ${theme.colors.background_dark};
   z-index: 2;
