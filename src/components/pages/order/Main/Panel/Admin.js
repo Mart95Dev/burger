@@ -20,7 +20,7 @@ export default Admin;
 
 const AdminStyled = styled.div`
   display: grid;
-  /* grid-column-start: 2; */
+  grid-column-start: 2;
 
   position: absolute;
   z-index: 2;
