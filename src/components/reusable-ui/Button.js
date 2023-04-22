@@ -43,7 +43,7 @@ const extraStylePrimary = css`
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.primary};
-    transition: all 200ms ease-out;
+    /* transition: all 200ms ease-out; */
   }
   :active {
     background-color: ${theme.colors.primary};
@@ -84,7 +84,7 @@ const extraStyleSuccess = css`
   background: ${theme.colors.success};
   border: 1px solid ${theme.colors.success};
   border-radius: ${theme.borderRadius.round};
-  height: 35px;
+  height: 100%;
   padding: 0 1.5em;
   font-weight: ${theme.fonts.weights.semiBold};
   :hover {

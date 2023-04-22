@@ -14,7 +14,15 @@ export default createContext({
   handleAdd: () => {},
   resetMenu: () => {},
   handleDelete: () => {},
+  handleEdit: () => {},
 
   setNewProduct: () => {},
   newProduct: {},
+  productSelected: {},
+  setproductSelected: () => {},
+
+  titleEditRef: {},
+
+  hasAlreadyBeenClicked: false,
+  setHasAlreadyBeenClicked: () => {},
 });

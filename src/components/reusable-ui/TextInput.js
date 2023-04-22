@@ -2,36 +2,35 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { theme } from "../../theme/index";
 
-export default function TextInput({
-  value,
+const TextInput = React.forwardRef(
+  (
+    { value, className, onChange, Icon, version = "normal", ...restProps },
+    ref
+  ) => {
+    return (
+      <InputStyled className={className} version={version}>
+        {Icon && Icon}
+        <input ref={ref} value={value} onChange={onChange} {...restProps} />
+      </InputStyled>
+    );
+  }
+);
 
-  className,
-  onChange,
-  Icon,
-  version = "normal",
-  ...restProps
-}) {
-  return (
-    <InputStyled className={className} version={version}>
-      {Icon && Icon}
-      <input value={value} onChange={onChange} {...restProps}/>
-    </InputStyled>
-  );
-}
+export default TextInput;
 
 const InputStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   display: flex;
   align-items: center;
 
-
   .icon {
+    display: flex; // to center icon vertically
     font-size: ${theme.fonts.size.SM};
     margin: 0 13px 0 8px;
-    display: flex; // to center icon vertically
   }
 
   input {
+    margin-left: 10px;
     border: none;
     font-size: ${theme.fonts.size.SM};
     width: 100%;
@@ -68,7 +67,6 @@ const extraStyleMinimalist = css`
   padding: 8px 16px;
   color: ${theme.colors.greyBlue};
 
-
   input {
     background: ${theme.colors.background_white}; ////+
     color: ${theme.colors.dark};
@@ -77,7 +75,6 @@ const extraStyleMinimalist = css`
       outline: 0; //// add outline
     }
   }
-
 `;
 
 const extraStyle = {

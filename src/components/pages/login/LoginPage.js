@@ -1,9 +1,14 @@
-import React from "react";
+import { useEffect } from "react";
 import LoginForm from "./LoginForm";
 import styled from "styled-components";
 import Logo from "./../../reusable-ui/Logo";
 
 export default function LoginPage() {
+  //comportement
+  useEffect(() => {
+    document.title = "Crazee Burger | 100% React";
+  }, []);
+
   return (
     <LoginPageStyled>
       <Logo className={"logo-login-page"} />

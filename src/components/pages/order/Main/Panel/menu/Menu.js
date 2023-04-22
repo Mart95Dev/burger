@@ -5,15 +5,45 @@ import Card from "../../../../../reusable-ui/Card";
 import { formatPrice } from "./../../../../../../utils/maths";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from "./helper";
+import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
 
 const DEFAULT_IMAGE = "/images/coming-soon.png";
 
 function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
-    useContext(PanelContext);
+  const {
+    menu,
+    isModeAdmin,
+    handleDelete,
+    resetMenu,
+    productSelected,
+    setproductSelected,
+    setTabSelected,
+    setIsCollasped,
+    // titleEditRef,
+    setHasAlreadyBeenClicked,
+  } = useContext(PanelContext);
   //state
 
   //comportement
+  const handleClick = async (idProductSelected) => {
+    if (!isModeAdmin) return;
+    await setIsCollasped(false);
+    await setTabSelected("edit");
+    const productClicked = menu.find(
+      (product) => product.id === idProductSelected
+    );
+    // await titleEditRef.current.focus(); //@FIXME
+    setproductSelected(productClicked);
+    setHasAlreadyBeenClicked(true);
+  };
+
+  const handleCardOnDelete = (e, idProductDelete) => {
+    e.stopPropagation();
+    handleDelete(idProductDelete);
+    setHasAlreadyBeenClicked(false);
+    setproductSelected(EMPTY_PRODUCT);
+  };
 
   //affichage
   if (menu.length === 0) {
@@ -30,7 +60,11 @@ function Menu() {
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
           leftDescription={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
-          onDelete={() => handleDelete(id)}
+          onDelete={(e) => handleCardOnDelete(e, id)}
+          onClick={() => handleClick(id)}
+          isHoverable={isModeAdmin}
+          isSelected={checkIfProductIsClicked(id, productSelected.id)}
+          onCardDelete={handleCardOnDelete}
         />
       ))}
     </MenuStyled>

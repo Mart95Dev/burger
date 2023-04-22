@@ -26,5 +26,6 @@ const HintMessageStyled = styled.div`
 
   span {
     margin-left: 10px;
+    width: 400px;
   }
 `;

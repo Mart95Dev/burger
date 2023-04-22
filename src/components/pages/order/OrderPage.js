@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import Navbar from "../order/Navbar/Navbar";
 import Main from "../order/Main/Main";
 import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 import { fakeMenu } from "../../api/fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "../../../components/pages/order/Main/Panel/FormAdmin/AddForm";
+import { EMPTY_PRODUCT } from "./../../../enums/product";
+// import { cloneArray } from "./../../../utils/array"; //@FIXME
 
 export default function OrderPage() {
   //state
@@ -15,8 +16,15 @@ export default function OrderPage() {
   const [isCollasped, setIsCollasped] = useState(false);
   const [menu, setMenu] = useState(fakeMenu.SMALL);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT);
+  const titleEditRef = useRef();
+  const [hasAlreadyBeenClicked, setHasAlreadyBeenClicked] = useState(false);
 
   //comportement
+  useEffect(() => {
+    document.title = "Crazee Burger | Menu";
+  }, []);
+
   const handleAdd = (newProduct) => {
     // copy du array
     const menuCopy = [...menu];
@@ -28,7 +36,7 @@ export default function OrderPage() {
 
   const handleDelete = (idOfProductToDelete) => {
     //1 copy this.state.
-    const menuCopy = [...menu];
+    const menuCopy = JSON.parse(JSON.stringify(menu));
     //2 manip copy this.state.
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
@@ -37,8 +45,21 @@ export default function OrderPage() {
     setMenu(menuUpdated);
   };
 
+  const handleEdit = (productBeingEdited) => {
+    // copy du array
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+    //2 manip copy array
+    const indexOfProductToEdit = menu.findIndex(
+      (product) => product.id === productBeingEdited.id
+    );
+    menuCopy[indexOfProductToEdit] = productBeingEdited;
+    //3 update du state
+    setMenu(menuCopy);
+  };
+
   const resetMenu = () => {
     setMenu(fakeMenu.SMALL);
+    setHasAlreadyBeenClicked(false);
   };
 
   const panelContextValue = {
@@ -50,16 +71,19 @@ export default function OrderPage() {
     setTabSelected,
     isCollasped,
     setIsCollasped,
-
     menu,
     handleAdd,
     handleDelete,
     resetMenu,
     newProduct,
     setNewProduct,
+    productSelected,
+    setproductSelected,
+    handleEdit,
+    titleEditRef,
+    hasAlreadyBeenClicked,
+    setHasAlreadyBeenClicked,
   };
-
-  //comportement
 
   //display
   return (

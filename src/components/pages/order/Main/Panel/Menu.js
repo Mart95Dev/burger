@@ -13,7 +13,6 @@ export default function Menu() {
   const { menu, isModeAdmin, handleDelete, resetMenu } =
     useContext(PanelContext);
   // state
-
   // comportements
 
   // affichage
@@ -33,17 +32,17 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
+            isSelected={true}
+            // isHoverable={isModeAdmin} //@FIXME
           />
         );
       })}
-      <span>coucou</span>
     </MenuStyled>
   );
 }
 
 const MenuStyled = styled.div`
-  /* background: ${theme.colors.background_white}; */
-  background: red;
+  background: ${theme.colors.background_white};
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
