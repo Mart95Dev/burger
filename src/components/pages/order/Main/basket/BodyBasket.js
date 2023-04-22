@@ -1,24 +1,24 @@
 import styled from "styled-components";
+import { theme } from "./../../../../../theme/index";
 
-function ContentBasket({ className }) {
+function BodyBasket() {
   return (
-    <ContentBasketStyled className={className}>
+    <BodyBasketStyled>
       <span>Votre commande est vide</span>
-    </ContentBasketStyled>
+    </BodyBasketStyled>
   );
 }
 
-export default ContentBasket;
+export default BodyBasket;
 
-const ContentBasketStyled = styled.div`
-  display: flex;
+const BodyBasketStyled = styled.div`
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  /* width: 350px; */
-  height: 100%;
   justify-content: center;
+  background: ${theme.colors.background_white};
+  box-shadow: ${theme.shadows.basket};
   overflow-y: scroll;
-  z-index: 1;
 
   span {
     font-family: "Amatic SC";
@@ -27,6 +27,6 @@ const ContentBasketStyled = styled.div`
     font-size: 36px;
     line-height: 72px;
 
-    color: #747b91;
+    color: ${theme.colors.greyBlue};
   }
 `;

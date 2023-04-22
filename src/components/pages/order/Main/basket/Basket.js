@@ -1,33 +1,29 @@
 import styled from "styled-components";
-import { theme } from "../../../../../theme";
-import HeaderBasket from "./HeaderBasket";
-import FooterBasket from "./FooterBasket";
-import ContentBasket from "./ContentBasket";
+import BoxHeader from "./BoxBasket";
+import BoxFooter from "./BoxBasket";
+import Body from "./BodyBasket";
+import Total from "./Total";
+import TextFooter from "./TextCodeReact";
+import { formatPrice } from "./../../../../../utils/maths";
 
 export default function Basket() {
   return (
     <BasketStyled>
-      <HeaderBasket />
-      <ContentBasket className="content" />
-      <FooterBasket />
+      <BoxHeader>
+        <Total amountToPay={formatPrice(0.0)} />
+      </BoxHeader>
+
+      <Body />
+
+      <BoxFooter>
+        <TextFooter />
+      </BoxFooter>
     </BasketStyled>
   );
 }
 
 const BasketStyled = styled.div`
-  width: 350px;
-  max-height: 100%;
   display: flex;
   flex-direction: column;
-  flex: none;
-  order: 0;
-  flex-grow: 0;
-
-  background: ${theme.colors.background_white};
-  box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 0px 15px;
-
-  .content {
-    overflow-y: scroll;
-  }
 `;
