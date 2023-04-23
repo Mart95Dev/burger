@@ -49,7 +49,7 @@ export default function Card({
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                // onClick={(event) => event.stopPropagation()}
+                onClick={(event) => event.stopPropagation()} // stop click to other card
               />
             </div>
           </div>
