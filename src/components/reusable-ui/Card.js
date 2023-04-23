@@ -40,14 +40,16 @@ export default function Card({
           <img src={imageSource} alt={title} />
         </div>
         <div className="text-info">
+          {/*title */}
           <div className="title">{title}</div>
           <div className="description">
-            <div className="left-description">{leftDescription}</div>
+            {/* price*/}
+            <div className="left-description">{leftDescription}</div>{" "}
             <div className="right-description">
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={(event) => event.stopPropagation()}
+                // onClick={(event) => event.stopPropagation()}
               />
             </div>
           </div>

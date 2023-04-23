@@ -6,15 +6,17 @@ import { formatPrice } from "../../../../../../utils/maths";
 import Card from "../../../../../reusable-ui/Card";
 import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
+import { checkIfProductIsClicked } from './menu/helper';
 
 const IMAGE_BY_DEFAULT = "/images/coming-soon.png";
 
 export default function Menu() {
-  const { menu, isModeAdmin, handleDelete, resetMenu } =
+  const { menu, isModeAdmin, handleDelete, resetMenu, productSelected } =
     useContext(PanelContext);
   // state
-  // comportements
 
+ 
+}
   // affichage
   if (menu.length === 0) {
     if (!isModeAdmin) return <EmptyMenuClient />;
@@ -32,8 +34,8 @@ export default function Menu() {
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={() => handleDelete(id)}
-            isSelected={true}
-            // isHoverable={isModeAdmin} //@FIXME
+            isHoverable={isModeAdmin}
+            isSelected={checkIfProductIsClicked(id, productSelected)}
           />
         );
       })}
