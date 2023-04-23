@@ -58,7 +58,7 @@ function Menu() {
           key={id}
           title={title}
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
-          leftDescription={formatPrice(price)}
+          priceInfo={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
           onDelete={(e) => handleCardOnDelete(e, id)}
           onClick={() => handleClick(id)}

@@ -6,7 +6,7 @@ import { TiDelete } from "react-icons/ti";
 export default function Card({
   title,
   imageSource,
-  leftDescription,
+  priceInfo,
   hasDeleteButton,
   onDelete,
   onClick,
@@ -42,7 +42,8 @@ export default function Card({
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
-            <div className="left-description">{leftDescription}</div>
+            {/* price*/}
+            <div className="left-description">{priceInfo}</div>{" "}
             <div className="right-description">
               <Button
                 className="primary-button"

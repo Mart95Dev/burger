@@ -4,7 +4,7 @@ import PanelContext from "../components/context/OrderContext";
 // import { cloneArray } from "./../../../utils/array"; //@FIXME
 
 export const useMenu = () => {
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
   const { setHasAlreadyBeenClicked } = useContext(PanelContext);
 
   const handleAdd = (newProduct) => {
