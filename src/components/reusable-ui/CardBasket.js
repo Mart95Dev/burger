@@ -37,9 +37,23 @@ const CardBasketStyled = styled.div`
   margin-top: 20px;
   overflow: hidden;
   box-sizing: content-box;
-
   display: grid;
   grid-template-columns: 30% 45% 25%;
+
+  :hover {
+    cursor: pointer;
+
+    .right-description {
+      background: red;
+
+      .quantity {
+        display: none;
+      }
+      .icon-delete {
+        display: block;
+      }
+    }
+  }
 
   .image {
     grid-column-start: 1;
@@ -93,14 +107,22 @@ const CardBasketStyled = styled.div`
     font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.primary};
 
-    :hover {
-      background: red;
-    }
-
     .icon-delete {
       display: none;
+      color: white;
       width: 20px;
       height: 18px;
     }
-  }
+
+    :hover {
+      .icon-delete {
+        color: black;      
+      }
+    }
+
+    :active {
+      .icon-delete {
+        color: white;      
+      }
+    }
 `;
