@@ -43,6 +43,18 @@ export const useMenu = () => {
     }
     setBasket(basketCopyUpdated);
   };
+
+  const handleDeleteBasket = (idProductBasketToDelete) => {
+    const basketCopy = JSON.parse(JSON.stringify(basket));
+    //2 manip copy this.state.
+    const basketUpdated = basketCopy.filter(
+      (product) => product.id !== idProductBasketToDelete
+    );
+    console.log(basketUpdated);
+    //3 update this.state.
+    setBasket(basketUpdated);
+  };
+
   ////////////////////
 
   const handleDelete = (idOfProductToDelete) => {
@@ -82,6 +94,7 @@ export const useMenu = () => {
     handleDelete,
     resetMenu,
     handleAddBasket,
+    handleDeleteBasket,
     amountTotal,
   };
 };

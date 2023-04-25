@@ -24,6 +24,7 @@ export default function OrderPage() {
     handleAddBasket,
     handleEdit,
     handleDelete,
+    handleDeleteBasket,
     resetMenu,
     amountTotal,
     setAmountTotal,
@@ -56,6 +57,7 @@ export default function OrderPage() {
     setHasAlreadyBeenClicked,
 
     handleAddBasket,
+    handleDeleteBasket,
     basket,
     amountTotal,
     setAmountTotal,

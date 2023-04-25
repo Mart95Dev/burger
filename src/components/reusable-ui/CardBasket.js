@@ -7,6 +7,7 @@ export default function CardBasket({
   imageSource,
   priceInfo,
   quantity,
+  onDeleteBasket,
 }) {
   // comportements (vide)
 
@@ -21,7 +22,7 @@ export default function CardBasket({
         <div className="price">{priceInfo}</div>
       </div>
       <div className="right-description">
-        <MdDeleteForever className="icon-delete" />
+        <MdDeleteForever className="icon-delete" onClick={onDeleteBasket} />
         <p className="quantity">X{quantity}</p>
       </div>
     </CardBasketStyled>
