@@ -63,6 +63,7 @@ export const useMenu = () => {
         amountTotal -
           productPriceDelete[0].price * productPriceDelete[0].quantity
       );
+      if (amountTotal < 0) return setAmountTotal(0);
       //3 update this.state.
       return setBasket(basketUpdated);
     } else {
