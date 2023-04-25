@@ -59,8 +59,10 @@ export const useMenu = () => {
         (product) => product.id === idProductBasketToDelete
       );
 
-      setAmountTotal(amountTotal - productPriceDelete[0].price);
-
+      setAmountTotal(
+        amountTotal -
+          productPriceDelete[0].price * productPriceDelete[0].quantity
+      );
       //3 update this.state.
       return setBasket(basketUpdated);
     } else {
@@ -85,7 +87,9 @@ export const useMenu = () => {
       (product) => product.id === idOfProductToDelete
     );
 
-    setAmountTotal(amountTotal - productPriceDelete[0].price);
+    setAmountTotal(
+      amountTotal - productPriceDelete[0].price * productPriceDelete[0].quantity
+    );
     //3 update this.state.
     setMenu(menuUpdated);
     setBasket(basketUpdated);
