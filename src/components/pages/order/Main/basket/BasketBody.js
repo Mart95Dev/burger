@@ -1,17 +1,34 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { theme } from "./../../../../../theme/index";
-// import { EMPTY_PRODUCT_CARD } from "./../../../../../enums/product";
-// import CardBasket from "./../../../../reusable-ui/CardBasket";
+import CardBasket from "./../../../../reusable-ui/CardBasket";
+import EmptyBasket from "./EmptyBasket";
+import PanelContext from "../../../../context/OrderContext";
+import { formatPrice } from "./../../../../../utils/maths";
+import { DEFAULT_IMAGE } from "./../imageDefault";
 
 function BasketBody({ className }) {
   //this.state.
+  const { basket } = useContext(PanelContext);
 
   //comportement
 
   //display
   return (
     <BasketBodyStyled>
-      <span className="empyt-message">Votre commande est vide. </span>
+      {basket.length === 0 ? (
+        <EmptyBasket />
+      ) : (
+        basket.map(({ id, title, imageSource, price, quantity }) => (
+          <CardBasket
+            key={id}
+            title={title}
+            imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
+            priceInfo={formatPrice(price)}
+            quantity={quantity}
+          />
+        ))
+      )}
     </BasketBodyStyled>
   );
 }
@@ -24,15 +41,4 @@ const BasketBodyStyled = styled.div`
   background: ${theme.colors.background_white};
   box-shadow: ${theme.shadows.basket};
   overflow-x: hidden;
-
-  .empyt-message {
-    display: flex;
-    height: calc(95vh - 10vh - 70px - 70px);
-    align-items: center;
-    justify-content: center;
-    line-height: 2px;
-    font-family: ${theme.fonts.family.stylish};
-    font-size: ${theme.fonts.size.P4};
-    color: ${theme.colors.greyBlue};
-  }
 `;

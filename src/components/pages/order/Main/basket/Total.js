@@ -5,8 +5,8 @@ import { theme } from "./../../../../../theme/index";
 function Total({ amountToPay }) {
   return (
     <TotalStyled>
-      <span className="total">Total</span>
-      <span className="amount">{amountToPay}</span>
+      <span>Total</span>
+      <span>{amountToPay}</span>
     </TotalStyled>
   );
 }

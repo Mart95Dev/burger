@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
+import { useContext } from "react";
+import PanelContext from "../context/OrderContext";
 
 export default function Card({
   title,
@@ -12,8 +14,10 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
+  productId,
 }) {
   // state (vide)
+  const { handleAddBasket } = useContext(PanelContext);
 
   // comportements (vide)
 
@@ -48,7 +52,7 @@ export default function Card({
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={(event) => event.stopPropagation()}
+                onClick={(event) => handleAddBasket(event, productId)}
               />
             </div>
           </div>
