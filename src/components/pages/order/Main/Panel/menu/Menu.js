@@ -7,8 +7,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
-
-const DEFAULT_IMAGE = "/images/coming-soon.png";
+import { DEFAULT_IMAGE } from "./../../imageDefault";
 
 function Menu() {
   const {
@@ -39,7 +38,6 @@ function Menu() {
   };
 
   const handleCardOnDelete = (e, idProductDelete) => {
-    e.stopPropagation();
     handleDelete(idProductDelete);
     setHasAlreadyBeenClicked(false);
     setproductSelected(EMPTY_PRODUCT);
@@ -65,6 +63,8 @@ function Menu() {
           isHoverable={isModeAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
           onCardDelete={handleCardOnDelete}
+          // onCardButton={(event) => handleAddBasket(event, id)}
+          productId={id}
         />
       ))}
     </MenuStyled>
