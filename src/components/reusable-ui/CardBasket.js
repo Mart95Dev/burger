@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
+import { MdDeleteForever } from "react-icons/md";
 
 export default function CardBasket({
   title,
@@ -16,13 +17,12 @@ export default function CardBasket({
         <img src={imageSource} alt={title} />
       </div>
       <div className="text-info">
-        {/*title */}
-        <div className="title">{title}</div>
-        {/* price*/}
+        <p className="title">{title}</p>
         <div className="price">{priceInfo}</div>
       </div>
       <div className="right-description">
-        <p>X{quantity}</p>
+        <MdDeleteForever className="icon-delete" />
+        <p className="quantity">X{quantity}</p>
       </div>
     </CardBasketStyled>
   );
@@ -32,18 +32,20 @@ const CardBasketStyled = styled.div`
   border-radius: ${theme.borderRadius.round};
   background: ${theme.colors.white};
   box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.2);
-  width: 300px;
+  width: 318px;
   height: 86px;
   margin-top: 20px;
+  overflow: hidden;
+  box-sizing: content-box;
 
   display: grid;
-  grid-template-columns: 30% 1fr 30%;
+  grid-template-columns: 30% 45% 25%;
 
   .image {
     grid-column-start: 1;
     width: 100%;
     height: 100%;
-    padding: 8px 21px 8px 16px;
+    padding: 8px 0px 8px 16px;
 
     img {
       width: 86px;
@@ -54,20 +56,21 @@ const CardBasketStyled = styled.div`
 
   .text-info {
     grid-column-start: 2;
+    width: 150%;
     display: grid;
-    justify-content: left;
-    padding-left: 21px;
+    justify-content: start;
+    padding-left: 25px;
     grid-template-rows: 1fr 1fr;
 
     .title {
       display: grid;
       justify-content: start;
       align-content: end;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       font-size: ${theme.fonts.size.P3};
       font-weight: ${theme.fonts.weights.bold};
       color: ${theme.colors.dark};
-      white-space: nowrap;
-      text-overflow: ellipsis;
       font-family: "Amatic SC", cursive;
     }
 
@@ -89,5 +92,15 @@ const CardBasketStyled = styled.div`
     align-content: center;
     font-size: ${theme.fonts.size.SM};
     color: ${theme.colors.primary};
+
+    :hover {
+      background: red;
+    }
+
+    .icon-delete {
+      display: none;
+      width: 20px;
+      height: 18px;
+    }
   }
 `;
