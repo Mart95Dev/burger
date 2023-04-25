@@ -20,6 +20,7 @@ export const useMenu = () => {
   //////////BASKET
   const handleAddBasket = (event, productId) => {
     event.stopPropagation();
+
     let basketCopyUpdated = [];
     const basketCopy = [...basket];
 
@@ -45,14 +46,30 @@ export const useMenu = () => {
   };
 
   const handleDeleteBasket = (idProductBasketToDelete) => {
-    const basketCopy = JSON.parse(JSON.stringify(basket));
-    //2 manip copy this.state.
-    const basketUpdated = basketCopy.filter(
-      (product) => product.id !== idProductBasketToDelete
-    );
-    console.log(basketUpdated);
-    //3 update this.state.
-    setBasket(basketUpdated);
+    if (basket.length > 0) {
+      console.log(basket.length);
+      const basketCopy = JSON.parse(JSON.stringify(basket));
+      console.log(amountTotal);
+
+      const basketUpdated = basketCopy.filter(
+        (product) => product.id !== idProductBasketToDelete
+      );
+
+      //2 manip copy this.state.
+      console.log("dans le if");
+      const productPriceDelete = basketCopy.filter(
+        (product) => product.id === idProductBasketToDelete
+      );
+
+      setAmountTotal(amountTotal - productPriceDelete[0].price);
+      console.log(amountTotal);
+
+      //3 update this.state.
+      return setBasket(basketUpdated);
+    } else {
+      setAmountTotal(amountTotal);
+      return console.log(amountTotal);
+    }
   };
 
   ////////////////////

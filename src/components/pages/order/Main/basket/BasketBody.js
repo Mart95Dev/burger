@@ -9,7 +9,8 @@ import { DEFAULT_IMAGE } from "./../imageDefault";
 
 function BasketBody({ className }) {
   //this.state.
-  const { basket, handleDeleteBasket, isModeAdmin } = useContext(PanelContext);
+  const { basket, handleDeleteBasket, isModeAdmin, setAmountTotal } =
+    useContext(PanelContext);
 
   //comportement
   const hasModeAdminActived = (id) => {
