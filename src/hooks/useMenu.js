@@ -49,26 +49,22 @@ export const useMenu = () => {
     if (basket.length > 0) {
       console.log(basket.length);
       const basketCopy = JSON.parse(JSON.stringify(basket));
-      console.log(amountTotal);
 
       const basketUpdated = basketCopy.filter(
         (product) => product.id !== idProductBasketToDelete
       );
 
       //2 manip copy this.state.
-      console.log("dans le if");
       const productPriceDelete = basketCopy.filter(
         (product) => product.id === idProductBasketToDelete
       );
 
       setAmountTotal(amountTotal - productPriceDelete[0].price);
-      console.log(amountTotal);
 
       //3 update this.state.
       return setBasket(basketUpdated);
     } else {
-      setAmountTotal(amountTotal);
-      return console.log(amountTotal);
+      return setAmountTotal(amountTotal);
     }
   };
 
@@ -77,12 +73,22 @@ export const useMenu = () => {
   const handleDelete = (idOfProductToDelete) => {
     //1 copy this.state.
     const menuCopy = JSON.parse(JSON.stringify(menu));
+    const basketCopy = JSON.parse(JSON.stringify(basket));
     //2 manip copy this.state.
     const menuUpdated = menuCopy.filter(
       (product) => product.id !== idOfProductToDelete
     );
+    const basketUpdated = basketCopy.filter(
+      (product) => product.id !== idOfProductToDelete
+    );
+    const productPriceDelete = basketCopy.filter(
+      (product) => product.id === idOfProductToDelete
+    );
+
+    setAmountTotal(amountTotal - productPriceDelete[0].price);
     //3 update this.state.
     setMenu(menuUpdated);
+    setBasket(basketUpdated);
   };
 
   const handleEdit = (productBeingEdited) => {
