@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import BoxHeader from "./BasketBox";
 import BoxFooter from "./BasketBox";
@@ -5,12 +6,19 @@ import BasketBody from "./BasketBody";
 import Total from "./Total";
 import TextFooter from "./TextCodeReact";
 import { formatPrice } from "./../../../../../utils/maths";
+import PanelContext from "../../../../context/OrderContext";
 
 export default function Basket() {
+  //state
+  const { amountTotal } = useContext(PanelContext);
+
+  //comportement
+
+  //display
   return (
     <BasketStyled>
       <BoxHeader className="position-header">
-        <Total amountToPay={formatPrice(0.0)} />
+        <Total amountToPay={formatPrice(amountTotal)} />
       </BoxHeader>
 
       <BasketBody />

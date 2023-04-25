@@ -1,20 +1,49 @@
 import { useState, useContext } from "react";
 import { fakeMenu } from "./../components/api/fakeData/fakeMenu";
 import PanelContext from "../components/context/OrderContext";
-// import { cloneArray } from "./../../../utils/array"; //@FIXME
 
 export const useMenu = () => {
   const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const [basket, setBasket] = useState([]);
+  const [amountTotal, setAmountTotal] = useState(0);
+
   const { setHasAlreadyBeenClicked } = useContext(PanelContext);
 
   const handleAdd = (newProduct) => {
-    // copy du array
+    //1 copy du array
     const menuCopy = [...menu];
     //2 manip copy array
     const menuUpdated = [newProduct, ...menuCopy];
     //3 update du state
     setMenu(menuUpdated);
   };
+  //////////BASKET
+  const handleAddBasket = (event, productId) => {
+    event.stopPropagation();
+    let basketCopyUpdated = [];
+    const basketCopy = [...basket];
+
+    let hasProductAlreadyAdded = false;
+
+    basketCopyUpdated = basketCopy.map((el) => {
+      if (el.id === productId) {
+        el.quantity++;
+        setAmountTotal(amountTotal + el.price);
+        hasProductAlreadyAdded = true;
+      }
+      return el;
+    });
+
+    if (hasProductAlreadyAdded === false) {
+      const productAdd = menu.find((product) => product.id === productId);
+      const newProductBasket = { ...productAdd, quantity: 1 };
+      setAmountTotal(amountTotal + productAdd.price);
+
+      basketCopyUpdated = [newProductBasket, ...basketCopy];
+    }
+    setBasket(basketCopyUpdated);
+  };
+  ////////////////////
 
   const handleDelete = (idOfProductToDelete) => {
     //1 copy this.state.
@@ -44,5 +73,15 @@ export const useMenu = () => {
     setHasAlreadyBeenClicked(false);
   };
 
-  return { menu, setMenu, handleAdd, handleEdit, handleDelete, resetMenu };
+  return {
+    basket,
+    menu,
+    setMenu,
+    handleAdd,
+    handleEdit,
+    handleDelete,
+    resetMenu,
+    handleAddBasket,
+    amountTotal,
+  };
 };

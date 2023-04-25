@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
-// import Button from "./Button";
-// import { TiDelete } from "react-icons/ti";
 
-export default function CardBasket({ title, imageSource, priceInfo }) {
-  // state (vide)
-
+export default function CardBasket({
+  title,
+  imageSource,
+  priceInfo,
+  quantity,
+}) {
   // comportements (vide)
 
   // affichage
@@ -21,7 +22,7 @@ export default function CardBasket({ title, imageSource, priceInfo }) {
         <div className="price">{priceInfo}</div>
       </div>
       <div className="right-description">
-        <p>X1</p>
+        <p>X{quantity}</p>
       </div>
     </CardBasketStyled>
   );
@@ -39,11 +40,54 @@ const CardBasketStyled = styled.div`
   grid-template-columns: 30% 1fr 30%;
 
   .image {
+    grid-column-start: 1;
+    width: 100%;
+    height: 100%;
+    padding: 8px 21px 8px 16px;
+
+    img {
+      width: 86px;
+      height: 70px;
+      object-fit: contain;
+    }
   }
 
   .text-info {
+    grid-column-start: 2;
+    display: grid;
+    justify-content: left;
+    padding-left: 21px;
+    grid-template-rows: 1fr 1fr;
+
+    .title {
+      display: grid;
+      justify-content: start;
+      align-content: end;
+      font-size: ${theme.fonts.size.P3};
+      font-weight: ${theme.fonts.weights.bold};
+      color: ${theme.colors.dark};
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-family: "Amatic SC", cursive;
+    }
+
+    .price {
+      display: grid;
+      justify-content: start;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      font-weight: ${theme.fonts.weights.medium};
+      font-weight: ${theme.fonts.weights.medium};
+      color: ${theme.colors.primary};
+    }
   }
 
   .right-description {
+    grid-column-start: 3;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    font-size: ${theme.fonts.size.SM};
+    color: ${theme.colors.primary};
   }
 `;
