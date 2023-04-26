@@ -6,6 +6,7 @@ import PanelContext from "../../context/OrderContext";
 import { theme } from "./../../../theme/index";
 import { EMPTY_PRODUCT } from "./../../../enums/product";
 import { useMenu } from "../../../hooks/useMenu";
+import { useBasket } from "./../../../hooks/useBasket";
 
 export default function OrderPage() {
   //state
@@ -15,20 +16,19 @@ export default function OrderPage() {
   const [isCollasped, setIsCollasped] = useState(false);
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
   const [productSelected, setproductSelected] = useState(EMPTY_PRODUCT);
+  const [productSelectedBasket, setproductSelectedBasket] =
+    useState(EMPTY_PRODUCT);
   const titleEditRef = useRef();
   const [hasAlreadyBeenClicked, setHasAlreadyBeenClicked] = useState(false);
+  const { menu, handleAdd, handleEdit, handleDelete, resetMenu } = useMenu();
+
   const {
     basket,
-    menu,
-    handleAdd,
     handleAddBasket,
-    handleEdit,
-    handleDelete,
     handleDeleteBasket,
-    resetMenu,
     amountTotal,
     setAmountTotal,
-  } = useMenu();
+  } = useBasket();
   //comportement
   useEffect(() => {
     document.title = "Crazee Burger | Menu";
@@ -61,6 +61,8 @@ export default function OrderPage() {
     basket,
     amountTotal,
     setAmountTotal,
+    productSelectedBasket,
+    setproductSelectedBasket,
   };
 
   //display
