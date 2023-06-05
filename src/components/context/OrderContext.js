@@ -25,4 +25,14 @@ export default createContext({
 
   hasAlreadyBeenClicked: false,
   setHasAlreadyBeenClicked: () => {},
+
+  //basket
+  handleAddBasket: () => {},
+  basket: [],
+  setBasket: () => {},
+  amountTotal: 0,
+  setAmountTotal: () => {},
+  handleDeleteBasket: () => {},
+  productSelectedBasket: {},
+  setproductSelectedBasket: () => {},
 });

@@ -7,17 +7,19 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin";
 import EmptyMenuClient from "./EmptyMenuClient";
 import { checkIfProductIsClicked } from "./helper";
 import { EMPTY_PRODUCT } from "./../../../../../../enums/product";
-
-const DEFAULT_IMAGE = "/images/coming-soon.png";
+import { DEFAULT_IMAGE } from "./../../imageDefault";
 
 function Menu() {
   const {
+    basket,
     menu,
     isModeAdmin,
     handleDelete,
     resetMenu,
     productSelected,
     setproductSelected,
+    productSelectedBasket,
+    setproductSelectedBasket,
     setTabSelected,
     setIsCollasped,
     // titleEditRef,
@@ -30,16 +32,19 @@ function Menu() {
     if (!isModeAdmin) return;
     await setIsCollasped(false);
     await setTabSelected("edit");
-    const productClicked = menu.find(
+    const productClickedMenu = menu.find(
       (product) => product.id === idProductSelected
     );
     // await titleEditRef.current.focus(); //@FIXME
-    setproductSelected(productClicked);
+    setproductSelected(productClickedMenu);
+    const productClickedBasket = basket.find(
+      (product) => product.id === productSelected.id
+    );
+    setproductSelectedBasket(productClickedBasket);
     setHasAlreadyBeenClicked(true);
   };
 
   const handleCardOnDelete = (e, idProductDelete) => {
-    e.stopPropagation();
     handleDelete(idProductDelete);
     setHasAlreadyBeenClicked(false);
     setproductSelected(EMPTY_PRODUCT);
@@ -58,13 +63,14 @@ function Menu() {
           key={id}
           title={title}
           imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
-          leftDescription={formatPrice(price)}
+          priceInfo={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
           onDelete={(e) => handleCardOnDelete(e, id)}
           onClick={() => handleClick(id)}
           isHoverable={isModeAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
           onCardDelete={handleCardOnDelete}
+          productId={id}
         />
       ))}
     </MenuStyled>

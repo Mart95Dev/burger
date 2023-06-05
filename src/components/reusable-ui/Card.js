@@ -2,18 +2,22 @@ import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import Button from "./Button";
 import { TiDelete } from "react-icons/ti";
+import { useContext } from "react";
+import PanelContext from "../context/OrderContext";
 
 export default function Card({
   title,
   imageSource,
-  leftDescription,
+  priceInfo,
   hasDeleteButton,
   onDelete,
   onClick,
   isHoverable,
   isSelected,
+  productId,
 }) {
   // state (vide)
+  const { handleAddBasket } = useContext(PanelContext);
 
   // comportements (vide)
 
@@ -42,12 +46,13 @@ export default function Card({
         <div className="text-info">
           <div className="title">{title}</div>
           <div className="description">
-            <div className="left-description">{leftDescription}</div>
+            {/* price*/}
+            <div className="left-description">{priceInfo}</div>{" "}
             <div className="right-description">
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={(event) => event.stopPropagation()}
+                onClick={(event) => handleAddBasket(event, productId)}
               />
             </div>
           </div>
@@ -90,14 +95,12 @@ const CardStyled = styled.div`
       background: none;
 
       .icon {
-        /* border: 1px solid blue; */
         height: 100%;
         width: 100%;
       }
 
       :hover {
         color: ${theme.colors.red};
-        /* background-color: red; */
       }
       :active {
         color: ${theme.colors.primary};
@@ -134,7 +137,7 @@ const CardStyled = styled.div`
         overflow: hidden;
         width: 100%;
         text-overflow: ellipsis;
-        font-family: "Amatic SC", cursive;
+        font-family: ${theme.fonts.family.stylish};
       }
 
       .description {
@@ -169,7 +172,7 @@ const CardStyled = styled.div`
     }
 
     ${({ isHoverable, isSelected }) =>
-      isHoverable && isSelected && selectedStyle}
+      isHoverable && isSelected && selectedStyle};
   }
 `;
 
