@@ -6,7 +6,7 @@ import Logo from "./../../reusable-ui/Logo";
 export default function LoginPage() {
   //comportement
   useEffect(() => {
-    document.title = "Crazee Burger | 100% React";
+    document.title = "Ticot Burger | 100% chicken";
   }, []);
 
   return (

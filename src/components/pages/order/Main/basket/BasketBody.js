@@ -9,8 +9,7 @@ import { DEFAULT_IMAGE } from "./../imageDefault";
 
 function BasketBody({ className }) {
   //this.state.
-  const { basket, handleDeleteBasket, isModeAdmin, setAmountTotal } =
-    useContext(PanelContext);
+  const { basket, handleDeleteBasket, isModeAdmin } = useContext(PanelContext);
 
   //comportement
   const hasModeAdminActived = (id) => {
@@ -33,6 +32,7 @@ function BasketBody({ className }) {
             priceInfo={formatPrice(price)}
             quantity={quantity}
             onDeleteBasket={() => hasModeAdminActived(id)}
+            isModeAdminActived={isModeAdmin}
           />
         ))
       )}

@@ -11,12 +11,15 @@ import { DEFAULT_IMAGE } from "./../../imageDefault";
 
 function Menu() {
   const {
+    basket,
     menu,
     isModeAdmin,
     handleDelete,
     resetMenu,
     productSelected,
     setproductSelected,
+    productSelectedBasket,
+    setproductSelectedBasket,
     setTabSelected,
     setIsCollasped,
     // titleEditRef,
@@ -29,11 +32,15 @@ function Menu() {
     if (!isModeAdmin) return;
     await setIsCollasped(false);
     await setTabSelected("edit");
-    const productClicked = menu.find(
+    const productClickedMenu = menu.find(
       (product) => product.id === idProductSelected
     );
     // await titleEditRef.current.focus(); //@FIXME
-    setproductSelected(productClicked);
+    setproductSelected(productClickedMenu);
+    const productClickedBasket = basket.find(
+      (product) => product.id === productSelected.id
+    );
+    setproductSelectedBasket(productClickedBasket);
     setHasAlreadyBeenClicked(true);
   };
 
@@ -63,7 +70,6 @@ function Menu() {
           isHoverable={isModeAdmin}
           isSelected={checkIfProductIsClicked(id, productSelected.id)}
           onCardDelete={handleCardOnDelete}
-          // onCardButton={(event) => handleAddBasket(event, id)}
           productId={id}
         />
       ))}

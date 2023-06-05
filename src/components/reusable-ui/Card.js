@@ -95,14 +95,12 @@ const CardStyled = styled.div`
       background: none;
 
       .icon {
-        /* border: 1px solid blue; */
         height: 100%;
         width: 100%;
       }
 
       :hover {
         color: ${theme.colors.red};
-        /* background-color: red; */
       }
       :active {
         color: ${theme.colors.primary};
@@ -139,7 +137,7 @@ const CardStyled = styled.div`
         overflow: hidden;
         width: 100%;
         text-overflow: ellipsis;
-        font-family: "Amatic SC", cursive;
+        font-family: ${theme.fonts.family.stylish};
       }
 
       .description {
@@ -174,7 +172,7 @@ const CardStyled = styled.div`
     }
 
     ${({ isHoverable, isSelected }) =>
-      isHoverable && isSelected && selectedStyle}
+      isHoverable && isSelected && selectedStyle};
   }
 `;
 

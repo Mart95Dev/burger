@@ -31,7 +31,7 @@ export default function OrderPage() {
   } = useBasket();
   //comportement
   useEffect(() => {
-    document.title = "Crazee Burger | Menu";
+    document.title = "Ticot Burger | Menu";
   }, []);
 
   const panelContextValue = {

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { theme } from "../../theme";
 import { MdDeleteForever } from "react-icons/md";
 
@@ -8,12 +8,18 @@ export default function CardBasket({
   priceInfo,
   quantity,
   onDeleteBasket,
+  isSelected,
+  isModeAdminActived,
 }) {
   // comportements (vide)
-
+  console.log(isModeAdminActived);
   // affichage
   return (
-    <CardBasketStyled>
+    <CardBasketStyled
+      isModeAdminActived={isModeAdminActived}
+      isSelected={isSelected}
+      style={isSelected ? { background: "orange" } : { background: "blue" }}
+    >
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -21,8 +27,8 @@ export default function CardBasket({
         <p className="title">{title}</p>
         <div className="price">{priceInfo}</div>
       </div>
-      <div className="right-description">
-        <MdDeleteForever className="icon-delete" onClick={onDeleteBasket} />
+      <div className="right-description" onClick={onDeleteBasket}>
+        <MdDeleteForever className="icon-delete" />
         <p className="quantity">X{quantity}</p>
       </div>
     </CardBasketStyled>
@@ -39,10 +45,12 @@ const CardBasketStyled = styled.div`
   overflow: hidden;
   box-sizing: content-box;
   display: grid;
-  grid-template-columns: 30% 45% 25%;
+  grid-template-columns: 30% 46% 24%;
 
   :hover {
-    cursor: pointer;
+    /* cursor: pointer; */
+    cursor: ${({ isModeAdminActived }) =>
+      isModeAdminActived ? "pointer" : "default"};
 
     .right-description {
       background: red;
@@ -60,7 +68,7 @@ const CardBasketStyled = styled.div`
     grid-column-start: 1;
     width: 100%;
     height: 100%;
-    padding: 8px 0px 8px 16px;
+    padding: 8px 0px 8px 10px;
 
     img {
       width: 86px;
@@ -74,7 +82,7 @@ const CardBasketStyled = styled.div`
     width: 150%;
     display: grid;
     justify-content: start;
-    padding-left: 25px;
+    padding-left: 20px;
     grid-template-rows: 1fr 1fr;
 
     .title {
@@ -126,4 +134,10 @@ const CardBasketStyled = styled.div`
         color: white;      
       }
     }
+
+    /* ${({ isSelected }) => isSelected && selectedStyle} */
+`;
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
 `;

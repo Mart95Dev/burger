@@ -33,4 +33,6 @@ export default createContext({
   amountTotal: 0,
   setAmountTotal: () => {},
   handleDeleteBasket: () => {},
+  productSelectedBasket: {},
+  setproductSelectedBasket: () => {},
 });
